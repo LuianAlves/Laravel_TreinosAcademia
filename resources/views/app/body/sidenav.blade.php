@@ -27,11 +27,6 @@
                         <i class="bi bi-circle"></i><span>Novo Aluno</span>
                     </a>
                 </li>
-                <li>
-                    <a href="icons-bootstrap.html">
-                        <i class="bi bi-circle"></i><span>Procurar Aluno</span>
-                    </a>
-                </li>
             </ul>
         </li>
 
@@ -77,7 +72,7 @@
             </a>
             <ul id="charts-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                 <li>
-                    <a href="charts-chartjs.html">
+                    {{-- <a href="{{ route('treinos.categoria.index') }}"> --}}
                         <i class="bi bi-circle"></i><span>Adicionar Categoria</span>
                     </a>
                 </li>

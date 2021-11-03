@@ -1,9 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Backend\Treinos;
 
-use App\Models\Admin\CategoriaTreinos;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+
+use App\Models\Treinos\CategoriaTreinos;
 
 class CategoriaTreinosController extends Controller
 {

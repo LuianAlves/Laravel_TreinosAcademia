@@ -26,6 +26,7 @@ class CreateAlunosTable extends Migration
             $table->string('pagamento')->nullable();
             $table->string('codigo_aluno')->nullable();
             $table->string('genero')->nullable();
+            $table->string('data_cadastro')->nullable();
             $table->timestamps();
         });
     }

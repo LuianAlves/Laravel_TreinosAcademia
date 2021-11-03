@@ -34,6 +34,8 @@
 
 * Criado o CRUD para Alunos
 * Usando AJAX para listar informações dos Alunos através do Modal
+* Criado Cards para Pesquisa de Alunos por Nome, Codigo, Data de Cadastro
+* Configurado a paginação padrão para as tabelas
 
 
 </p>

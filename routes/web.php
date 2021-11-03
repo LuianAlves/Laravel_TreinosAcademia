@@ -2,9 +2,10 @@
 
 // Backend
 use App\Http\Controllers\Backend\AlunoController;
+use App\Http\Controllers\Backend\GeralController;
 
-// All
-use App\Http\Controllers\All\ModalController;
+// Backend/Treinos
+use App\Http\Controllers\Backend\Treinos\CategoriaTreinosController;
 
 
 use Illuminate\Support\Facades\Route;
@@ -21,7 +22,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
@@ -32,6 +33,20 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 /* ---------------------------------- BACKEND ---------------------------------- */ 
 
+// ---------- Rota Geral ---------- //
+
+// Search Alunos
+    Route::any('aluno/search', [GeralController::class, 'searchAluno'])->name('alunos.search');
+    Route::any('aluno/search/cadastro', [GeralController::class, 'searchCadastroAluno'])->name('alunos.search.cadastro');
+
+
+// ---------- Área do Aluno ---------- //
 
 // Alunos
-Route::resource('alunos', AlunoController::class);
+    Route::resource('alunos', AlunoController::class);
+
+
+
+// ---------- Área Administrativa ---------- //
+
+// Route::resource('treinos/categoria', [CategoriaTreinosController::class]);

@@ -547,7 +547,7 @@
                         })), a.appendChild(i)
                     }))), s && (null !== this.dom.tHead && this.dom.removeChild(this.dom.tHead), this.dom.appendChild(s)), a && (this.dom.tBodies.length && this.dom.removeChild(this.dom.tBodies[0]), this.dom.appendChild(a))
                 },
-                l = { sortable: !0, searchable: !0, paging: !0, perPage: 10, perPageSelect: [5, 10, 15, 20, 25], nextPrev: !0, firstLast: !1, prevText: "&lsaquo;", nextText: "&rsaquo;", firstText: "&laquo;", lastText: "&raquo;", ellipsisText: "&hellip;", ascText: "▴", descText: "▾", truncatePager: !0, pagerDelta: 2, scrollY: "", fixedColumns: !0, fixedHeight: !1, header: !0, hiddenHeader: !1, footer: !1, labels: { placeholder: "Pesquisar...", perPage: "{select} por página", noRows: "Nenhum Aluno Encontrado!", info: "Listando {start} de {end} páginas" }, layout: { top: "{select}{search}", bottom: "{info}{pager}" } };
+                l = { sortable: !0, searchable: !0, paging: !0, perPage: 10, perPageSelect: [5, 10, 15, 20, 25], nextPrev: !0, firstLast: !1, prevText: "&lsaquo;", nextText: "&rsaquo;", firstText: "&laquo;", lastText: "", ellipsisText: "&hellip;", ascText: "▴", descText: "▾", truncatePager: !0, pagerDelta: 2, scrollY: "", fixedColumns: !0, fixedHeight: !1, header: !0, hiddenHeader: !1, footer: !1, labels: { placeholder: "", perPage: "", noRows: "", info: "" }, layout: { top: "", bottom: "" } };
             class o {
                 constructor(t, e = {}) {
                     const s = "string" == typeof t ? document.querySelector(t) : t;

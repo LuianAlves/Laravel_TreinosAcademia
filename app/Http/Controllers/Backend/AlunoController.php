@@ -20,7 +20,7 @@ class AlunoController extends Controller
      */
     public function index()
     {
-        $alunos = Aluno::orderBy('nome', 'ASC')->get();
+        $alunos = Aluno::orderBy('nome', 'ASC')->paginate(5);
 
         return view('app.alunos.index', compact('alunos'));
     }
@@ -62,6 +62,7 @@ class AlunoController extends Controller
             'objetivo' => $request->objetivo,
             'codigo_aluno' => 'JP' . mt_rand(1000, 9999),
             'genero' => $request->genero,
+            'data_cadastro' => Carbon::now()->format('d m Y'),
             'created_at' => Carbon::now()
         ]);
 
