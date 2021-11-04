@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Models\Aluno;
+use App\Models\Treinos\CategoriaTreinos;
+
 use Datetime;
 
 class GeralController extends Controller
@@ -40,5 +42,16 @@ class GeralController extends Controller
 
         return view('app.alunos.index', compact('alunos'));
   
+    }
+
+    public function searchCategoriaTreino(Request $request) {
+        $request->validate(
+            ['search_categoria_treino' => 'required' ],
+            [ 'required' => 'Digite uma categoria!' ]
+        );
+
+        $categoria_treino = CategoriaTreinos::where('nome_categoria_treino', 'LIKE', '%'.$request->search_categoria_treino.'%')->latest()->paginate(6);
+
+        return view('app.treinos.categorias.index', compact('categoria_treino'));
     }
 }

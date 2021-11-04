@@ -65,6 +65,8 @@
 
     <!-- Include MODAL TREINOS->CATEGORIAS AJAX -->
         @include('app.treinos.categorias.modals.create_categoria_treinos')
+    <!-- Include MODAL TREINOS->EXERCICIOS AJAX -->
+        @include('app.treinos.exercicios.modals.create_exercicio')
 
     @endauth
 </body>

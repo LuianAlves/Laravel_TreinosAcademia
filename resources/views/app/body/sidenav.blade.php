@@ -13,17 +13,17 @@
 
         {{-- Alunos --}}
         <li class="nav-item">
-            <a class="nav-link collapsed" data-bs-target="#icons-nav" data-bs-toggle="collapse" href="#">
-                <i class="bi bi-person"></i><span>Alunos</span><i class="bi bi-chevron-down ms-auto"></i>
+            <a class="nav-link collapsed" data-bs-target="#alunos" data-bs-toggle="collapse" href="#">
+                <i class="bx bx-user fs-5"></i><span>Alunos</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
-            <ul id="icons-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+            <ul id="alunos" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                 <li>
                     <a href="{{ route('alunos.index') }}">
                         <i class="bi bi-circle"></i><span>Listagem de Alunos</span>
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('alunos.create') }}">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#createAluno">
                         <i class="bi bi-circle"></i><span>Novo Aluno</span>
                     </a>
                 </li>
@@ -67,23 +67,42 @@
 
         {{-- Categoria de Treino --}}
         <li class="nav-item">
-            <a class="nav-link collapsed" data-bs-target="#charts-nav" data-bs-toggle="collapse" href="#">
-                <i class="bi bi-bar-chart"></i><span>Categorias de Treino</span><i class="bi bi-chevron-down ms-auto"></i>
+            <a class="nav-link collapsed" data-bs-target="#categoriaTreino" data-bs-toggle="collapse" href="#">
+                <i class="bx bx-category-alt fs-5"></i><span>Categorias de Treino</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
-            <ul id="charts-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+            <ul id="categoriaTreino" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                 <li>
                     <a href="{{ route('categoria.index') }}">
                         <i class="bi bi-circle"></i><span>Listagem de Categorias</span>
                     </a>
                 </li>
                 <li>
-                    <a href="charts-apexcharts.html">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#createCategoriaTreino">
                         <i class="bi bi-circle"></i><span>Adicionar Categoria</span>
                     </a>
                 </li>
             </ul>
         </li>
-        
+
+        {{-- Exercicios do Treino --}}
+        <li class="nav-item">
+            <a class="nav-link collapsed" data-bs-target="#exercicioTreino" data-bs-toggle="collapse" href="#">
+                <i class="bx bx-dumbbell fs-5"></i><span>Exercícios</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="exercicioTreino" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                <li>
+                    <a href="{{ route('exercicio.index') }}">
+                        <i class="bi bi-circle"></i><span>Listagem de Exercícios</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#createExercicioTreino">
+                        <i class="bi bi-circle"></i><span>Adicionar Exercício</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
         <li class="nav-heading">Configurações do Painel</li>
 
         {{-- Categoria de Treino --}}

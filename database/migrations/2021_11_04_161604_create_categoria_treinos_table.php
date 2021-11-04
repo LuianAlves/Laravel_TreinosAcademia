@@ -15,6 +15,7 @@ class CreateCategoriaTreinosTable extends Migration
     {
         Schema::create('categoria_treinos', function (Blueprint $table) {
             $table->id();
+            $table->string('nome_categoria_treino');
             $table->timestamps();
         });
     }

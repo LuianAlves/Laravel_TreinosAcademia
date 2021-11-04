@@ -9,6 +9,7 @@ use App\Http\Controllers\Backend\GeralController;
 
 // Backend/Treinos
 use App\Http\Controllers\Backend\Treinos\CategoriaTreinosController;
+use App\Http\Controllers\Backend\Treinos\ExercicioTreinosController;
 
 
 use Illuminate\Support\Facades\Route;
@@ -46,7 +47,8 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 // Search Alunos
     Route::any('aluno/search', [GeralController::class, 'searchAluno'])->name('alunos.search');
     Route::any('aluno/search/cadastro', [GeralController::class, 'searchCadastroAluno'])->name('alunos.search.cadastro');
-
+// Search Categoria de Treinos
+    Route::any('/treinos/categoria/search', [GeralController::class, 'searchCategoriaTreino'])->name('categoria.treinos.search');
 
 // ---------- Área do Aluno ---------- //
 // Alunos
@@ -56,5 +58,6 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 // ---------- Área Administrativa ---------- //
 Route::prefix('treinos')->group(function() {
-    Route::resource('categoria', CategoriaTreinosController::class);
+    Route::resource('categoria', CategoriaTreinosController::class)->except('create', 'show');
+    Route::resource('exercicio', ExercicioTreinosController::class);
 });

@@ -7,10 +7,6 @@
 
     <section class="section">
         <div class="row">
-            <div class="d-flex justify-content-end">
-                <div class="mt-3">
-                </div>
-            </div>
 
             {{-- Pesquisa por Nome --}}
             <div class="col-6">

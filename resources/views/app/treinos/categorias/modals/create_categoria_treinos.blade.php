@@ -16,9 +16,9 @@
                             <div class="col-8">
                                 <div class="input-group mb-3">
                                     <span class="input-group-text"><i class="bx bx-dumbbell"></i></span>
-                                    <input type="text" name="categoria_treino" class="form-control" placeholder="Categoria">
+                                    <input type="text" name="nome_categoria_treino" class="form-control" placeholder="Categoria" autofocus>
                                 </div>
-                                @error('categoria_treino')
+                                @error('nome_categoria_treino')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>

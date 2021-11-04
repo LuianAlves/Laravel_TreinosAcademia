@@ -32,13 +32,22 @@
 
 ## Até o momento:
 
-* Criado o CRUD para Alunos
-* Usando AJAX para listar informações dos Alunos através do Modal
-* Criado Cards para Pesquisa de Alunos por Nome, Codigo, Data de Cadastro
 * Configurado a paginação padrão para as tabelas
+
+* CRUD para Alunos
+* Usando AJAX para listar informações dos Alunos através do Modal
+* Cards para Pesquisa de Alunos por Nome, Codigo, Data de Cadastro
 * View de Login/Register configurada com o template
-* Usando AJAX para criar novos Alunos através do Modal 
+* AJAX para criar novos Alunos através do Modal 
 * Configurado Dropdown para Serviços na Listagem de Alunos
+
+* CRUD para Categoria de Treinos
+* AJAX para criar novas categorias
+* Input para pesquisas Categorias
+
+* CRUD para Exercicios
+* AJAX para criar novos exercicios
+
 
 
 

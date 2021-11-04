@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Models\Treinos\CategoriaTreinos;
+use Carbon\Carbon;
 
 class CategoriaTreinosController extends Controller
 {
@@ -16,18 +17,11 @@ class CategoriaTreinosController extends Controller
      */
     public function index()
     {
-        return view('app.treinos.categorias.index');
+        $categoria_treino = CategoriaTreinos::orderBy('nome_categoria_treino', 'ASC')->paginate(6);
+
+        return view('app.treinos.categorias.index', compact('categoria_treino'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -37,19 +31,21 @@ class CategoriaTreinosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nome_categoria_treino' => 'required'
+        ], [
+            'nome_categoria_treino.required' => 'Adicione uma categoria'
+        ]);
+
+        CategoriaTreinos::insert([
+            'nome_categoria_treino' => $request->nome_categoria_treino,
+            'created_at' => Carbon::now()
+        ]);
+
+        return redirect()->route('categoria.index');
+
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Admin\CategoriaTreinos  $categoriaTreinos
-     * @return \Illuminate\Http\Response
-     */
-    public function show(CategoriaTreinos $categoriaTreinos)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -57,9 +53,11 @@ class CategoriaTreinosController extends Controller
      * @param  \App\Models\Admin\CategoriaTreinos  $categoriaTreinos
      * @return \Illuminate\Http\Response
      */
-    public function edit(CategoriaTreinos $categoriaTreinos)
+    public function edit($id)
     {
-        //
+        $categoriaTreinos = CategoriaTreinos::findOrFail($id);
+
+        return view('app.treinos.categorias.edit', compact('categoriaTreinos'));
     }
 
     /**
@@ -69,9 +67,20 @@ class CategoriaTreinosController extends Controller
      * @param  \App\Models\Admin\CategoriaTreinos  $categoriaTreinos
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, CategoriaTreinos $categoriaTreinos)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'nome_categoria_treino' => 'required'
+        ], [
+            'nome_categoria_treino.required' => 'Adicione uma categoria'
+        ]);
+
+        CategoriaTreinos::findOrFail($id)->update([
+            'nome_categoria_treino' => $request->nome_categoria_treino,
+            'updated_at' => Carbon::now()
+        ]);
+
+        return redirect()->route('categoria.index');
     }
 
     /**
@@ -80,8 +89,10 @@ class CategoriaTreinosController extends Controller
      * @param  \App\Models\Admin\CategoriaTreinos  $categoriaTreinos
      * @return \Illuminate\Http\Response
      */
-    public function destroy(CategoriaTreinos $categoriaTreinos)
+    public function destroy($id)
     {
-        //
+        CategoriaTreinos::findOrFail($id)->delete();
+        
+        return redirect()->route('categoria.index');
     }
 }
