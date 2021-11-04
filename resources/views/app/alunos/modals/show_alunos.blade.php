@@ -1,10 +1,10 @@
 <div class="modal fade" id="showAluno" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="codigo_aluno"></h5>
                 <span style="margin: auto 6px; font-size: 26px;">-</span>
-                <span style="font-size: 18px; text-transform: capitalize;" id="nome"></span>
+                <span style="font-size: 20px; font-weight: bold; text-transform: capitalize; color: #63699e;" id="nome"></span>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">

@@ -1,6 +1,9 @@
 <?php
 
 // Backend
+use App\Http\Controllers\User\UserController;
+
+// Backend
 use App\Http\Controllers\Backend\AlunoController;
 use App\Http\Controllers\Backend\GeralController;
 
@@ -31,22 +34,27 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 
 
+/* ---------------------------------- Login ---------------------------------- */ 
+// Logout
+    Route::get('/logout', [UserController::class, 'logout'])->name('logout');
+
+
+
 /* ---------------------------------- BACKEND ---------------------------------- */ 
 
 // ---------- Rota Geral ---------- //
-
 // Search Alunos
     Route::any('aluno/search', [GeralController::class, 'searchAluno'])->name('alunos.search');
     Route::any('aluno/search/cadastro', [GeralController::class, 'searchCadastroAluno'])->name('alunos.search.cadastro');
 
 
 // ---------- Área do Aluno ---------- //
-
 // Alunos
     Route::resource('alunos', AlunoController::class);
 
 
 
 // ---------- Área Administrativa ---------- //
-
-// Route::resource('treinos/categoria', [CategoriaTreinosController::class]);
+Route::prefix('treinos')->group(function() {
+    Route::resource('categoria', CategoriaTreinosController::class);
+});

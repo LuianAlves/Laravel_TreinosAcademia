@@ -29,10 +29,12 @@
     
         <!-- Template Main CSS File -->
         <link href="{{ asset('backend/assets/css/style.css') }}" rel="stylesheet">
+
     </head>
 
 <body>
 
+    @auth
     <!-- Navbar Start-->
         @include('app.body.navbar')
     <!-- Navbar Ends -->
@@ -58,8 +60,13 @@
     <!-- Scripts end -->
 
     <!-- Include MODAL ALUNOS AJAX -->
+        @include('app.alunos.modals.create_alunos')
         @include('app.alunos.modals.show_alunos')
 
+    <!-- Include MODAL TREINOS->CATEGORIAS AJAX -->
+        @include('app.treinos.categorias.modals.create_categoria_treinos')
+
+    @endauth
 </body>
 
 </html>

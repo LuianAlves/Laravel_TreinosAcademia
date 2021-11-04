@@ -104,7 +104,7 @@
                                 @endphp
 
                                 <div class="mt-3">
-                                    <a href="#" class="btn btn-sm text-white fs-5 pb-0 pt-0" data-bs-toggle="modal" data-bs-target="#createAluno" style="font-weight: 700; background: #4154f1;">+</a>
+                                    <a href="#" class="btn btn-sm text-white fs-5 pb-0 pt-0" data-bs-toggle="modal" data-bs-target="#createCategoriaTreino" style="font-weight: 700; background: #4154f1;">+</a>
                                 </div>
                             </div>
                         </div>
@@ -114,27 +114,14 @@
                                 <thead style="color: #7b84d6;">
                                     <tr>
                                         <th scope="col">Código</th>
-                                        {{-- <th scope="col">Professor</th> --}}
-                                        <th class="text-center" scope="col">Aluno</th>
-                                        <th class="text-center" scope="col">Telefone</th>
                                         <th class="text-center" scope="col">Treino</th>
                                         <th class="text-center" scope="col">Serviços</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($alunos as $aluno)
+                                    {{-- @foreach ($alunos as $aluno)
                                         <tr>
                                             <th class="text-muted">{{ $aluno->codigo_aluno }}</th>
-                                            {{-- <th>{{ $aluno->user->name }}</th> --}}
-                                            <td class="text-center" width="25%">{{ $aluno->nome }}</td>
-                                            <td class="text-center">{{ $aluno->telefone }}</td>
-                                            <td class="text-center">
-                                                @if($aluno->tipo_treino == 'personal' || $aluno->tipo_treino == 'Personal')
-                                                    <b>{{ ucfirst($aluno->tipo_treino) }}</b>
-                                                @else
-                                                    <span class="text-muted">{{ ucfirst($aluno->tipo_treino) }}</span>
-                                                @endif
-                                            </td>
                                             <td class="text-center pt-1">
                                                 <li class="nav-item dropdown" style="list-style: none;">
                                                     <a class="nav-link nav-profile text-success pe-0" href="#" data-bs-toggle="dropdown">
@@ -202,7 +189,7 @@
                                                 </li>
                                             </td>
                                         </tr>
-                                    @endforeach
+                                    @endforeach --}}
                                 </tbody>
                             </table>
                         </div>
@@ -216,7 +203,7 @@
                                 @endif
                             </div>
                         </div>
-                        {{ $alunos->links('app.geral.paginate') }}
+                        {{-- {{ $alunos->links('app.geral.paginate') }} --}}
 
                     </div>
                 </div>

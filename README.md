@@ -36,6 +36,10 @@
 * Usando AJAX para listar informações dos Alunos através do Modal
 * Criado Cards para Pesquisa de Alunos por Nome, Codigo, Data de Cadastro
 * Configurado a paginação padrão para as tabelas
+* View de Login/Register configurada com o template
+* Usando AJAX para criar novos Alunos através do Modal 
+* Configurado Dropdown para Serviços na Listagem de Alunos
+
 
 
 </p>

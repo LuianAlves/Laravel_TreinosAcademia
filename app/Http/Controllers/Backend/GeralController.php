@@ -22,7 +22,7 @@ class GeralController extends Controller
         $alunos = Aluno::where('nome', 'LIKE', '%'.$request->search.'%')
                         ->orWhere('codigo_aluno', 'LIKE', '%'.$request->search.'%')
                         ->latest()
-                        ->paginate(15);
+                        ->paginate(10);
 
         return view('app.alunos.index', compact('alunos'));
     }
@@ -36,7 +36,7 @@ class GeralController extends Controller
         $data = new Datetime($request->search_cadastro);
         $data_formatada = $data->format('d m Y');
 
-        $alunos = Aluno::where('data_cadastro', $data_formatada)->latest()->paginate(15);
+        $alunos = Aluno::where('data_cadastro', $data_formatada)->latest()->paginate(10);
 
         return view('app.alunos.index', compact('alunos'));
   

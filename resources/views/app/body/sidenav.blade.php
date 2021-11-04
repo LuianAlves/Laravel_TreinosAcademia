@@ -72,18 +72,55 @@
             </a>
             <ul id="charts-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                 <li>
-                    {{-- <a href="{{ route('treinos.categoria.index') }}"> --}}
-                        <i class="bi bi-circle"></i><span>Adicionar Categoria</span>
+                    <a href="{{ route('categoria.index') }}">
+                        <i class="bi bi-circle"></i><span>Listagem de Categorias</span>
                     </a>
                 </li>
                 <li>
                     <a href="charts-apexcharts.html">
-                        <i class="bi bi-circle"></i><span>Listagem de Categorias</span>
+                        <i class="bi bi-circle"></i><span>Adicionar Categoria</span>
                     </a>
                 </li>
             </ul>
         </li>
         
+        <li class="nav-heading">Configurações do Painel</li>
+
+        {{-- Categoria de Treino --}}
+        <li class="nav-item">
+            <a class="nav-link collapsed" data-bs-target="#profile" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-bar-chart"></i><span>Minha Conta</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="profile" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                <li>
+                    <a href="charts-apexcharts.html">
+                        <i class="bi bi-circle"></i><span>Atualizar Informações</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="charts-apexcharts.html">
+                        <i class="bi bi-circle"></i><span>Atualizar Senha</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+        <li class="nav-heading">EXTRA</li>
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="{{ route('logout') }}">
+                <i class="bx bx-voicemail fs-4 text-success"></i>
+                <span class="text-success">Enviar Email</span>
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="{{ route('logout') }}">
+                <i class="bi bi-box-arrow-right fs-5 text-danger"></i>
+                <span class="text-danger">Deslogar</span>
+            </a>
+        </li>
+
         {{-- Exercios do Treino --}}
         {{-- <li class="nav-item">
             <a class="nav-link collapsed" data-bs-target="#charts-nav" data-bs-toggle="collapse" href="#">
