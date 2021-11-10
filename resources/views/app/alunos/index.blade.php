@@ -163,12 +163,18 @@
                                                             </a>
                                                         </li>
 
-                                                        <li>
-                                                            <a class="dropdown-item d-flex align-items-center" href="{{ route('treino.index', $aluno->id) }}">
-                                                                <i class="bx bx-dumbbell"></i>
-                                                                <span>Treinos Montados</span>
-                                                            </a>
-                                                        </li>
+                                                        @php
+                                                            $treino_montado = App\Models\Treinos\Treino::where('aluno_id', $aluno->id)->first();
+                                                        @endphp
+
+                                                        @if(!empty($treino_montado))
+                                                            <li>
+                                                                <a class="dropdown-item d-flex align-items-center" href="{{ route('treino.index', $aluno->id) }}">
+                                                                    <i class="bx bx-dumbbell"></i>
+                                                                    <span>Treinos Montados</span>
+                                                                </a>
+                                                            </li>
+                                                        @endif
 
                                                         <li>
                                                             <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">

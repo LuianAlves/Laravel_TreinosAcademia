@@ -90,7 +90,7 @@ class AlunoController extends Controller
      * @param  \App\Models\Aluno  $aluno
      * @return \Illuminate\Http\Response
      */
-    public function edit(Aluno $aluno)
+    public function edit($id)
     {
         $aluno = Aluno::findOrFail($id);
 

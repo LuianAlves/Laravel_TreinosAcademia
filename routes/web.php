@@ -10,8 +10,6 @@ use App\Http\Controllers\User\UserController;
 
 // Aluno
 use App\Http\Controllers\Aluno\AlunoController;
-use App\Http\Controllers\Aluno\MontarTreinoController;
-use App\Http\Controllers\Aluno\MontarExerciciosController;
 
 // Treinos
 use App\Http\Controllers\Treinos\TreinoController;

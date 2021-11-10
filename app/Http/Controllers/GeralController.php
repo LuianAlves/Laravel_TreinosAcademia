@@ -22,7 +22,7 @@ class GeralController extends Controller
             [ 'required' => 'Este Campo é Obrigatório!' ]
         );
 
-        $alunos = Aluno::where('professor_id', Auth::id())->where('nome', 'LIKE', '%'.$request->search.'%')
+        $alunos = Aluno::where('nome', 'LIKE', '%'.$request->search.'%')
                         ->orWhere('codigo_aluno', 'LIKE', '%'.$request->search.'%')
                         ->latest()
                         ->paginate(10);
@@ -40,7 +40,7 @@ class GeralController extends Controller
         $data = new Datetime($request->search_cadastro);
         $data_formatada = $data->format('d m Y');
 
-        $alunos = Aluno::where('professor_id', Auth::id())->where('data_cadastro', $data_formatada)->latest()->paginate(10);
+        $alunos = Aluno::where('data_cadastro', $data_formatada)->latest()->paginate(10);
 
         return view('app.alunos.index', compact('alunos'));
     }
@@ -52,7 +52,7 @@ class GeralController extends Controller
             [ 'required' => 'Digite uma categoria!' ]
         );
 
-        $categoria_treino = CategoriaTreinos::where('professor_id', Auth::id())->where('nome_categoria_treino', 'LIKE', '%'.$request->search_categoria_treino.'%')->latest()->paginate(6);
+        $categoria_treino = CategoriaTreinos::where('nome_categoria_treino', 'LIKE', '%'.$request->search_categoria_treino.'%')->latest()->paginate(6);
 
         return view('app.treinos.categorias.index', compact('categoria_treino'));
     }
