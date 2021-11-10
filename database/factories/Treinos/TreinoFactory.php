@@ -1,10 +1,10 @@
 <?php
 
-namespace Database\Factories;
+namespace Database\Factories\Treinos;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class AlunoFactory extends Factory
+class TreinoFactory extends Factory
 {
     /**
      * Define the model's default state.

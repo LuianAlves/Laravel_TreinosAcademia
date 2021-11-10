@@ -48,6 +48,14 @@
 * CRUD para Exercicios
 * AJAX para criar novos exercicios
 
+* /--- No momento contém alguns códigos desnecessários, em breve será retirados! --/ *
+
+* CRUD para Montar Treinos
+* Modals para montar treino de alunos
+* Rotas para adicionar treinos A/B/C/D
+* View para listar cada treino baseando-se no Código do Treino
+
+
 
 
 

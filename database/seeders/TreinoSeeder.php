@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 
-class CategoriaTreinosSeeder extends Seeder
+class TreinoSeeder extends Seeder
 {
     /**
      * Run the database seeds.

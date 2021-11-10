@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Backend\Treinos;
+namespace App\Http\Controllers\Treinos;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;

@@ -28,40 +28,7 @@
                     </a>
                 </li>
             </ul>
-        </li>
-
-        {{-- Montar Treino --}}
-        {{-- <li class="nav-item">
-            <a class="nav-link collapsed" data-bs-target="#icons-nav" data-bs-toggle="collapse" href="#">
-                <i class="bi bi-person"></i><span>Montar Treino</span><i class="bi bi-chevron-down ms-auto"></i>
-            </a>
-            <ul id="icons-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-                <li>
-                    <a href="{{ route('alunos.index') }}">
-                        <i class="bi bi-circle"></i><span>Novo Treino</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ route('alunos.create') }}">
-                        <i class="bi bi-circle"></i><span>Treinos Montados</span>
-                    </a>
-                </li>
-            </ul>
-        </li> --}}
-
-        {{-- Contratos --}}
-        {{-- <li class="nav-item">
-            <a class="nav-link collapsed" data-bs-target="#icons-nav" data-bs-toggle="collapse" href="#">
-                <i class="bi bi-person"></i><span>Contratos</span><i class="bi bi-chevron-down ms-auto"></i>
-            </a>
-            <ul id="icons-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-                <li>
-                    <a href="{{ route('alunos.index') }}">
-                        <i class="bi bi-circle"></i><span>Contratos Feitos</span>
-                    </a>
-                </li>
-            </ul>
-        </li> --}}
+        </li>   
 
         <li class="nav-heading">Configurar Treinos</li>
 
@@ -103,10 +70,10 @@
             </ul>
         </li>
 
-        <li class="nav-heading">Configurações do Painel</li>
+        {{-- <li class="nav-heading">Configurações do Painel</li> --}}
 
         {{-- Categoria de Treino --}}
-        <li class="nav-item">
+        {{-- <li class="nav-item">
             <a class="nav-link collapsed" data-bs-target="#profile" data-bs-toggle="collapse" href="#">
                 <i class="bi bi-bar-chart"></i><span>Minha Conta</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
@@ -122,16 +89,16 @@
                     </a>
                 </li>
             </ul>
-        </li>
+        </li> --}}
 
         <li class="nav-heading">EXTRA</li>
 
-        <li class="nav-item">
+        {{-- <li class="nav-item">
             <a class="nav-link collapsed" href="{{ route('logout') }}">
                 <i class="bx bx-voicemail fs-4 text-success"></i>
                 <span class="text-success">Enviar Email</span>
             </a>
-        </li>
+        </li> --}}
 
         <li class="nav-item">
             <a class="nav-link collapsed" href="{{ route('logout') }}">

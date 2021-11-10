@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Backend;
+namespace App\Http\Controllers\Aluno;
 
 use App\Http\Controllers\Controller;
 
@@ -20,8 +20,8 @@ class AlunoController extends Controller
      */
     public function index()
     {
-        $alunos = Aluno::where('professor_id', Auth::id())->orderBy('id', 'DESC')->paginate(10);
-
+        $alunos = Aluno::orderBy('id', 'DESC')->paginate(10);
+        
         return view('app.alunos.index', compact('alunos'));
     }
 

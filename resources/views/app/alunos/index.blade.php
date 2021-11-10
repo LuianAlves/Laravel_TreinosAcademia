@@ -157,12 +157,19 @@
                                                         </li>
     
                                                         <li>
-                                                            <a class="dropdown-item d-flex align-items-center" href="#">
+                                                            <a class="dropdown-item d-flex align-items-center" href="{{ route('treino.create', $aluno->id) }}">
                                                                 <i class="bx bx-dumbbell"></i>
                                                                 <span>Montar Treino</span>
                                                             </a>
                                                         </li>
-                                    
+
+                                                        <li>
+                                                            <a class="dropdown-item d-flex align-items-center" href="{{ route('treino.index', $aluno->id) }}">
+                                                                <i class="bx bx-dumbbell"></i>
+                                                                <span>Treinos Montados</span>
+                                                            </a>
+                                                        </li>
+
                                                         <li>
                                                             <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
                                                                 <i class="bx bx-dollar-circle"></i>
