@@ -30,6 +30,20 @@
             </ul>
         </li>   
 
+        {{-- Treino dos Alunos --}}
+        <li class="nav-item">
+            <a class="nav-link collapsed" data-bs-target="#montarTreino" data-bs-toggle="collapse" href="#">
+                <i class="bx bx-user fs-5"></i><span>Treinos</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="montarTreino" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                <li>
+                    <a href="{{ route('montar.index') }}">
+                        <i class="bi bi-circle"></i><span>Montar Treino Personal</span>
+                    </a>
+                </li>
+            </ul>
+        </li>  
+
         <li class="nav-heading">Configurar Treinos</li>
 
         {{-- Categoria de Treino --}}
@@ -70,17 +84,17 @@
             </ul>
         </li>
 
-        {{-- <li class="nav-heading">Configurações do Painel</li> --}}
+        {{-- <li class="nav-heading">Configurar Avaliação Física</li> --}}
 
         {{-- Categoria de Treino --}}
         {{-- <li class="nav-item">
             <a class="nav-link collapsed" data-bs-target="#profile" data-bs-toggle="collapse" href="#">
-                <i class="bi bi-bar-chart"></i><span>Minha Conta</span><i class="bi bi-chevron-down ms-auto"></i>
+                <i class="bi bi-bar-chart"></i><span>Cálculos</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
             <ul id="profile" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                 <li>
                     <a href="charts-apexcharts.html">
-                        <i class="bi bi-circle"></i><span>Atualizar Informações</span>
+                        <i class="bi bi-circle"></i><span>IMC</span>
                     </a>
                 </li>
                 <li>
@@ -89,7 +103,7 @@
                     </a>
                 </li>
             </ul>
-        </li> --}}
+        </li>  --}}
 
         <li class="nav-heading">EXTRA</li>
 

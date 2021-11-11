@@ -119,8 +119,11 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($alunos as $aluno)
+                        
                                         <tr>
-                                            <th class="text-muted">{{ $aluno->codigo_aluno }}</th>
+                                            <th class="text-muted">
+                                                {{ $aluno->codigo_aluno }}
+                                            </th>
                                             {{-- <th>{{ $aluno->user->name }}</th> --}}
                                             <td class="text-center" width="25%">{{ $aluno->nome }}</td>
                                             <td class="text-center">{{ $aluno->telefone }}</td>
@@ -139,15 +142,15 @@
                                                     
                                                     <ul class="dropdown-menu" id="dropdown-menu-user">
                                                         <li>
-                                                            <a class="dropdown-item d-flex align-items-center" href="#" data-bs-toggle="modal" data-bs-target="#showAluno" id="{{ $aluno->id }}" onclick="visualizarAluno(this.id)">
-                                                                <i class="bx bx-minus-front"></i>
+                                                            <a class="dropdown-item d-flex align-items-center" style="font-weight: 600;" href="#" data-bs-toggle="modal" data-bs-target="#showAluno" id="{{ $aluno->id }}" onclick="visualizarAluno(this.id)">
+                                                                <i class="bx bx-minus-front fs-4 text-primary"></i>
                                                                 <span>Visualizar Informações</span>
                                                             </a>
                                                         </li>
                                                         
                                                         <li>
-                                                            <a class="dropdown-item d-flex align-items-center" href="{{ route('alunos.edit', $aluno->id) }}">
-                                                                <i class="bx bx-edit"></i>
+                                                            <a class="dropdown-item d-flex align-items-center" style="font-weight: 600;" href="{{ route('alunos.edit', $aluno->id) }}">
+                                                                <i class="bx bx-edit fs-4 text-warning"></i>
                                                                 <span>Editar Informações</span>
                                                             </a>
                                                         </li>
@@ -157,36 +160,41 @@
                                                         </li>
     
                                                         <li>
-                                                            <a class="dropdown-item d-flex align-items-center" href="{{ route('treino.create', $aluno->id) }}">
-                                                                <i class="bx bx-dumbbell"></i>
+                                                            <a class="dropdown-item d-flex align-items-center" style="font-weight: 600;" href="{{ route('montar.create', $aluno->id) }}">
+                                                                <i class="bx bx-dumbbell fs-4 text-info"></i>
                                                                 <span>Montar Treino</span>
                                                             </a>
                                                         </li>
 
+
                                                         @php
-                                                            $treino_montado = App\Models\Treinos\Treino::where('aluno_id', $aluno->id)->first();
+                                                            $treinos = App\Models\TreinoAluno\MontarTreino::where('aluno_id', $aluno->id)->first();
                                                         @endphp
 
-                                                        @if(!empty($treino_montado))
+                                                        @if(!empty($treinos))
                                                             <li>
-                                                                <a class="dropdown-item d-flex align-items-center" href="{{ route('treino.index', $aluno->id) }}">
-                                                                    <i class="bx bx-dumbbell"></i>
+                                                                <a class="dropdown-item d-flex align-items-center" style="font-weight: 600;" href="{{ route('montado.index', $aluno->id) }}">
+                                                                    <i class="bx bx-dumbbell fs-4" style="color: rgb(103, 17, 153);"></i>
                                                                     <span>Treinos Montados</span>
                                                                 </a>
                                                             </li>
                                                         @endif
 
                                                         <li>
-                                                            <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
-                                                                <i class="bx bx-dollar-circle"></i>
+                                                            <hr class="dropdown-divider">
+                                                        </li>
+
+                                                        <li>
+                                                            <a class="dropdown-item d-flex align-items-center" href="pages-faq.html" style="font-weight: 600;">
+                                                                <i class="bx bx-dollar-circle fs-4 text-success"></i>
                                                                 <span>Pagamentos</span>
                                                             </a>
                                                         </li>
     
                                                         @if($aluno->tipo_treino == 'personal' || $aluno->tipo_treino == 'Personal')
                                                             <li>
-                                                                <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
-                                                                    <i class="bx bx-notepad"></i>
+                                                                <a class="dropdown-item d-flex align-items-center" style="font-weight: 600;" href="pages-faq.html">
+                                                                    <i class="bx bx-notepad fs-4" style="color: rgb(129, 86, 5);"></i>
                                                                     <span>Montar Contrato</span>
                                                                 </a>
                                                             </li>
@@ -200,8 +208,8 @@
                                                             <form id="form_{{ $aluno->id }}" action="{{ route('alunos.destroy', $aluno->id) }}" method="post">
                                                             @method('DELETE')
                                                             @csrf
-                                                                <a class="dropdown-item d-flex align-items-center" href="#" onclick="document.getElementById('form_{{ $aluno->id }}').submit()">
-                                                                    <i class="bx bx-block text-danger"></i>
+                                                                <a class="dropdown-item d-flex align-items-center" href="#" style="font-weight: 600;" onclick="document.getElementById('form_{{ $aluno->id }}').submit()">
+                                                                    <i class="bx bx-block fs-4 text-danger"></i>
                                                                     <span class="text-danger">Remover Aluno</span>
                                                                 </a>
                                                             </form>

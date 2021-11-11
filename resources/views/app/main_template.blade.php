@@ -35,7 +35,38 @@
     {{-- Selicionar categorias do modal quando for montar treino --}}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
+
+    {{-- MODAL TREINOS ADICIONAR EXERCICO AO LADO DIREITO --}}
+    <script>
+
+        $(document).ready(function(){
+        $('.vclick').click(function(){
+            $(this).closest('.vflipper').toggleClass('vflip');
+        });
+        
     
+        //
+        // Listen for change event 
+        //
+        $('.vback :checkbox').on('change', function(e) {
+            //
+            // get the labels list of all  checked elements
+            //
+            var result = $('.vback :checkbox:checked').map(function(index, element) {
+            if (element.checked) {
+                return element.parentNode.textContent;
+            }
+            }).get();
+            
+            //
+            // add this text to the label
+            //
+            $('#lbl').text(result.join(', '))
+        })
+        }); 
+
+    </script>
+
 </head>
 
 <body>
@@ -77,7 +108,7 @@
 
         {{-- Controlando o Input Range de Frequencia no Modal de Treinos para Alunos --}}
         <script type="text/javascript">
-            var values = ["1", "2", "3", "4", "5"]
+            var values = ["0", "1", "2", "3", "4", "5"]
 
             document.getElementById("frequencia").addEventListener("input", function(e) {
                 var text = values[e.target.value]

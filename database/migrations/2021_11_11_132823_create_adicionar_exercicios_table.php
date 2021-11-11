@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMontarExerciciosTable extends Migration
+class CreateAdicionarExerciciosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,8 @@ class CreateMontarExerciciosTable extends Migration
      */
     public function up()
     {
-        Schema::create('montar_exercicios', function (Blueprint $table) {
+        Schema::create('adicionar_exercicios', function (Blueprint $table) {
             $table->id();
-            $table->string('nome_exercicio')->unsiged();
             $table->timestamps();
         });
     }
@@ -27,6 +26,6 @@ class CreateMontarExerciciosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('montar_exercicios');
+        Schema::dropIfExists('adicionar_exercicios');
     }
 }

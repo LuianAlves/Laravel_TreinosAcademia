@@ -15,16 +15,14 @@ class CreateMontarTreinosTable extends Migration
     {
         Schema::create('montar_treinos', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('professor_id')->unsigned();
             $table->unsignedBigInteger('aluno_id')->unsigned();
-            $table->string('codigo_treino');
-            $table->string('nivel_treino')->nullable();
-            $table->string('frequencia')->nullable();
-            $table->string('divisao_treino')->nullable();
-            $table->string('nome_treino')->nullable();
+            $table->integer('codigo_treino');
+            $table->string('professor');
+            $table->string('nivel_aluno');
+            $table->string('frequencia');
+            $table->string('divisao');
             $table->timestamps();
 
-            $table->foreign('professor_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('aluno_id')->references('id')->on('alunos')->onDelete('cascade');
         });
     }

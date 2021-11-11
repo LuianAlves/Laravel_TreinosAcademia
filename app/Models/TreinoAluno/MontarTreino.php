@@ -1,6 +1,8 @@
 <?php
 
-namespace App\Models\Treinos;
+namespace App\Models\TreinoAluno;
+
+use App\Models\Aluno;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
