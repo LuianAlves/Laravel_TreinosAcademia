@@ -15,8 +15,17 @@ class CreateAdicionarExerciciosTable extends Migration
     {
         Schema::create('adicionar_exercicios', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('treino_id')->unsigned();
+            $table->unsignedBigInteger('exercicio_id')->unsigned();
+            $table->string('repeticao')->nullable();
+            $table->string('serie')->nullable();
+            $table->string('codigo_treino');
+            $table->string('divisao_treino');
             $table->timestamps();
-        });
+
+            $table->foreign('treino_id')->references('id')->on('montar_treinos')->onDelete('cascade');
+            $table->foreign('exercicio_id')->references('id')->on('exercicio_treinos')->onDelete('cascade');
+        });      
     }
 
     /**

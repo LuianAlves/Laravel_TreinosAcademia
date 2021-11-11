@@ -8,6 +8,7 @@
     <section class="section">
         <div class="row">
 
+            {{-- BUTTONS --}}
             <div class="col-lg-12">
                 <div class="card mt-3">
                     <div class="card-header">
@@ -51,6 +52,122 @@
                     </div>
                 </div>
             </div>
+
+            {{-- LISTA DE EXERCICIOS - TREINO A --}}
+            @if($treino_a != null)
+                <div class="col-6" style="margin-top: 15px; max-height: 500px; overflow-y: auto;">
+                    <div class="card">
+                        <div class="card-header">Treino A</div>
+                        <div class="card-body">
+                            <table class="table table-sm">
+                                <thead>
+                                    <tr>
+                                        <th>Exercícios</th>
+                                        <th>Série</th>
+                                        <th>Repetição</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach($treino_a as $treino)
+                                        <tr>
+                                            <td>{{ $treino->exercicio->nome_exercicio }}</td>
+                                            <td>{{ $treino->serie }} x</td>
+                                            <td>{{ $treino->repeticao }}</td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            @endif
+
+            {{-- LISTA DE EXERCICIOS - TREINO B --}}
+            @if($treino_b != null)
+                <div class="col-6" style="margin-top: 15px; max-height: 500px; overflow-y: auto;">
+                    <div class="card">
+                        <div class="card-header">Treino B</div>
+                        <div class="card-body">
+                            <table class="table table-sm">
+                                <thead>
+                                    <tr>
+                                        <th>Exercícios</th>
+                                        <th>Série</th>
+                                        <th>Repetição</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach($treino_b as $treino)
+                                        <tr>
+                                            <td>{{ $treino->exercicio->nome_exercicio }}</td>
+                                            <td>{{ $treino->serie }} x</td>
+                                            <td>{{ $treino->repeticao }}</td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            @endif
+
+            {{-- LISTA DE EXERCICIOS - TREINO C --}}
+            @if($treino_c != null)
+                <div class="col-6" style="margin-top: 15px; max-height: 500px; overflow-y: auto;">
+                    <div class="card">
+                        <div class="card-header">Treino C</div>
+                        <div class="card-body">
+                            <table class="table table-sm">
+                                <thead>
+                                    <tr>
+                                        <th>Exercícios</th>
+                                        <th>Série</th>
+                                        <th>Repetição</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach($treino_c as $treino)
+                                        <tr>
+                                            <td>{{ $treino->exercicio->nome_exercicio }}</td>
+                                            <td>{{ $treino->serie }} x</td>
+                                            <td>{{ $treino->repeticao }}</td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            @endif
+
+            {{-- LISTA DE EXERCICIOS - TREINO D --}}
+            @if($treino_d != null)
+                <div class="col-6" style="margin-top: 15px; max-height: 500px; overflow-y: auto;">
+                    <div class="card">
+                        <div class="card-header">Treino D</div>
+                        <div class="card-body">
+                            <table class="table table-sm">
+                                <thead>
+                                    <tr>
+                                        <th>Exercícios</th>
+                                        <th>Série</th>
+                                        <th>Repetição</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach($treino_d as $treino)
+                                        <tr>
+                                            <td>{{ $treino->exercicio->nome_exercicio }}</td>
+                                            <td>{{ $treino->serie }} x</td>
+                                            <td>{{ $treino->repeticao }}</td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            @endif
 
         </div>
     </section>

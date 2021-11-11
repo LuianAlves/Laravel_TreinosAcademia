@@ -72,7 +72,8 @@ Route::middleware('auth')->group(function () {
         // Adicionar Exercicios
         Route::get('adicionar/{treino_id}', [AdicionarExercicioController::class, 'index'])->name('adicionar.index');
         Route::get('adicionar/create/{divisao}/{treino_id}', [AdicionarExercicioController::class, 'create'])->name('adicionar.create');
-        Route::resource('adicionar', AdicionarExercicioController::class)->except('index', 'create');
+        Route::post('adicionar/store/{divisao}/{treino_id}', [AdicionarExercicioController::class, 'store'])->name('adicionar.store');
+        Route::resource('adicionar', AdicionarExercicioController::class)->except('index', 'create', 'store');
     });
 
 // ---------- Área Administrativa ---------- //
