@@ -20,6 +20,9 @@ use App\Http\Controllers\Aluno\Treinos\AdicionarExercicioController;
 use App\Http\Controllers\Treinos\CategoriaTreinosController;
 use App\Http\Controllers\Treinos\ExercicioTreinosController;
 
+// Downloads
+use App\Http\Controllers\DownloadController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -61,7 +64,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('alunos', AlunoController::class)->except('create');
 
     // Montar Treino
-    Route::prefix('treino')->group(function () {
+    Route::prefix('assessoria/treino')->group(function () {
         // Montar
         Route::get('montar/create/{aluno_id}', [MontarTreinoController::class, 'create'])->name('montar.create');
         Route::resource('montar', MontarTreinoController::class)->except('create');
@@ -76,6 +79,11 @@ Route::middleware('auth')->group(function () {
         Route::get('adicionar/edit/{id}/{exercicio_id}', [AdicionarExercicioController::class, 'edit'])->name('adicionar.edit');
         Route::post('adicionar/update/{id}/{exercicio_id}', [AdicionarExercicioController::class, 'update'])->name('adicionar.update');
         Route::get('adicionar/destroy/{id}/{exercicio_id}', [AdicionarExercicioController::class, 'destroy'])->name('adicionar.destroy');
+    });
+
+    // Downloads
+    Route::prefix('download')->group(function() {
+        Route::get('/personal/treinos/{divisao}/{treino_id}', [DownloadController::class, 'DownloadPersonal'])->name('download.personal');
     });
 
 // ---------- Área Administrativa ---------- //

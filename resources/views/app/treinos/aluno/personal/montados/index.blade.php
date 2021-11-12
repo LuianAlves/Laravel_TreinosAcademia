@@ -76,7 +76,7 @@
                                                         <li>
                                                             <a class="dropdown-item d-flex align-items-center" style="font-weight: 600;" href="{{ route('adicionar.index', $treino->id) }}">
                                                                 <i class="bx bx-minus-front fs-4 text-primary"></i>
-                                                               <span>Adicionar Exercícios</span>
+                                                               <span>Configurar Exercícios</span>
                                                             </a>
                                                         </li>
     

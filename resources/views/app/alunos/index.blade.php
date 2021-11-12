@@ -174,7 +174,7 @@
                                                         @if(!empty($treinos))
                                                             <li>
                                                                 <a class="dropdown-item d-flex align-items-center" style="font-weight: 600;" href="{{ route('montado.index', $aluno->id) }}">
-                                                                    <i class="bx bx-dumbbell fs-4" style="color: rgb(103, 17, 153);"></i>
+                                                                    <i class="bx bx-abacus fs-4" style="color: rgb(103, 17, 153);"></i>
                                                                     <span>Treinos Montados</span>
                                                                 </a>
                                                             </li>

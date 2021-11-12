@@ -19,9 +19,7 @@
 
                             {{-- Todas as Categorias --}}
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link active" id="todas-categorias-tab" data-bs-toggle="pill"
-                                    data-bs-target="#todas-as-categorias" type="button" role="tab"
-                                    aria-controls="todas-as-categorias" aria-selected="true">TODOS</button>
+                                <button class="nav-link active" id="todas-categorias-tab" data-bs-toggle="pill" data-bs-target="#todas-as-categorias" type="button" role="tab" aria-controls="todas-as-categorias" aria-selected="true">TODOS</button>
                             </li>
 
                             {{-- Foreach com Cada Categoria de Treino --}}
@@ -33,10 +31,7 @@
                                     $categoria = str_replace($comAcentos, $semAcentos, $limpar);
                                 @endphp
                                 <li class="nav-item" role="presentation">
-                                    <button class="nav-link" id="{{ strtolower($categoria) }}-tab" data-bs-toggle="pill"
-                                        data-bs-target="#{{ strtolower($categoria) }}" type="button" role="tab"
-                                        aria-controls="{{ strtolower($categoria) }}"
-                                        aria-selected="false">{{ strtoupper($cat->nome_categoria_treino) }}</button>
+                                    <button class="nav-link" id="{{ strtolower($categoria) }}-tab" data-bs-toggle="pill" data-bs-target="#{{ strtolower($categoria) }}" type="button" role="tab" aria-controls="{{ strtolower($categoria) }}" aria-selected="false">{{ strtoupper($cat->nome_categoria_treino) }}</button>
                                 </li>
                             @endforeach
                         </ul>
@@ -61,8 +56,8 @@
                                                                 <input class="form-check-input" type="checkbox"
                                                                     name="{{ $exercicio->id }}"
                                                                     value="{{ $exercicio->nome_exercicio }}"
-                                                                    id="{{ $exercicio->id }}">
-                                                                <label class="form-check-label" for="{{ $exercicio->id }}">
+                                                                    id="todas_{{ $exercicio->id }}">
+                                                                <label class="form-check-label" for="todas_{{ $exercicio->id }}">
                                                                     {{ $exercicio->nome_exercicio }}
                                                                 </label>
                                                             </div>
@@ -82,7 +77,7 @@
                                             $categoria = str_replace($comAcentos, $semAcentos, $limpar);
                                             
                                         @endphp
-                                        <div class="tab-pane fade  vflipper" id="{{ strtolower($categoria) }}"
+                                        <div class="tab-pane fade" id="{{ strtolower($categoria) }}"
                                             role="tabpanel" aria-labelledby="profile-tab">
                                             <table class="table table-sm">
                                                 <h5 class="card-title text-muted">Exercícios
@@ -94,21 +89,20 @@
                                                             ->get();
                                                     @endphp
                                                     @foreach ($exercicios as $exercicio)
-                                                        <tr class="vback" id="val">
-                                                            <td class="text-muted p-3">
-                                                                <div class="form-check">
-                                                                    <input class="form-check-input" type="checkbox"
-                                                                        name="{{ $exercicio->id }}"
-                                                                        value="{{ $exercicio->nome_exercicio }}"
-                                                                        id="{{ $exercicio->id }}">
-                                                                    <label class="form-check-label"
-                                                                        for="{{ $exercicio->id }}">
-                                                                        {{ $exercicio->nome_exercicio }}
-                                                                    </label>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                    @endforeach
+                                                    <tr class="vback" id="val">
+                                                        <td class="text-muted p-3">
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" type="checkbox"
+                                                                    name="{{ $exercicio->id }}"
+                                                                    value="{{ $exercicio->nome_exercicio }}"
+                                                                    id="cat_{{ $exercicio->id }}">
+                                                                <label class="form-check-label" for="cat_{{ $exercicio->id }}">
+                                                                    {{ $exercicio->nome_exercicio }}
+                                                                </label>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
                                                 </tbody>
 
                                             </table>
@@ -129,7 +123,7 @@
                                     <div>
                                         <table class="vclick vfront">
                                             <tbody>
-                                                <tr class="text-success" id=lbl></tr>
+                                                <td style="font-weight: bold; color: rgb(180, 140, 226); white-space: pre-line;" id=lbl></td>
                                             </tbody>
                                         </table>
                                     </div>

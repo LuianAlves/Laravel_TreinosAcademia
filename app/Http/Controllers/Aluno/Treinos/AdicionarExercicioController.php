@@ -72,11 +72,13 @@ class AdicionarExercicioController extends Controller
                 break;
         }
 
-        $data = $request->all();
+        $alldata = $request->all();
+
+        $data = array_unique($alldata);
 
         foreach ($data as $dt => $value) {
             $result = substr($dt, 0, 100);
-
+            
             AdicionarExercicio::insert([
                 'treino_id' => $treino_id,
                 'exercicio_id' => $result,

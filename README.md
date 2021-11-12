@@ -55,6 +55,8 @@
 * Editando Séries/Repetições com javascript
 * Botão para excluir Exercicios
 
+* Download de Treinos Montados
+
 
 
 

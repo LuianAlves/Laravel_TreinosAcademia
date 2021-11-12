@@ -56,12 +56,14 @@
             if (element.checked) {
                 return element.parentNode.textContent;
             }
+            
             }).get();
             
             //
             // add this text to the label
             //
-            $('#lbl').text(result.join(', '))
+            
+            $('#lbl').text(result.join(""))
         })
         }); 
 
