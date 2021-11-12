@@ -52,6 +52,8 @@
 * Modals para montar treino de alunos
 * Rotas para adicionar treinos A/B/C/D
 * Configurado sistema para criar os treinos (séries/repetições com valores default)
+* Editando Séries/Repetições com javascript
+* Botão para excluir Exercicios
 
 
 

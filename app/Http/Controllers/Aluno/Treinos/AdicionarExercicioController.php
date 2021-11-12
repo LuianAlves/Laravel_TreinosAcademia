@@ -17,6 +17,7 @@ class AdicionarExercicioController extends Controller
 {
     public function index($treino_id)
     {
+        $treinos = AdicionarExercicio::where('treino_id', $treino_id)->first();
         $treino_a = AdicionarExercicio::where('treino_id', $treino_id)->where('divisao_treino', 'treino_a')->get();
         $treino_b = AdicionarExercicio::where('treino_id', $treino_id)->where('divisao_treino', 'treino_b')->get();
         $treino_c = AdicionarExercicio::where('treino_id', $treino_id)->where('divisao_treino', 'treino_c')->get();
@@ -24,7 +25,7 @@ class AdicionarExercicioController extends Controller
 
         $treino = MontarTreino::where('id', $treino_id)->orderBy('id', 'DESC')->first();
 
-        return view('app.treinos.aluno.personal.montados.adicionar_exercicios.index', compact('treino', 'treino_a', 'treino_b', 'treino_c', 'treino_d'));
+        return view('app.treinos.aluno.personal.montados.adicionar_exercicios.index', compact('treinos', 'treino', 'treino_a', 'treino_b', 'treino_c', 'treino_d'));
     }
 
     /**
@@ -107,9 +108,11 @@ class AdicionarExercicioController extends Controller
      * @param  \App\Models\TreinoAluno\AdicionarExercicio  $adicionarExercicio
      * @return \Illuminate\Http\Response
      */
-    public function edit(AdicionarExercicio $adicionarExercicio)
+    public function edit($id, $exercicio_id)
     {
-        //
+        $treino = AdicionarExercicio::where('id', $id)->where('exercicio_id', $exercicio_id)->first();
+
+        return view('app.treinos.aluno.personal.montados.adicionar_exercicios.edit', compact('treino'));
     }
 
     /**
@@ -119,9 +122,18 @@ class AdicionarExercicioController extends Controller
      * @param  \App\Models\TreinoAluno\AdicionarExercicio  $adicionarExercicio
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, AdicionarExercicio $adicionarExercicio)
+    public function update(Request $request, $id, $exercicio_id)
     {
-        //
+        $get_id = AdicionarExercicio::where('id', $id)->first();
+        $treino_id = MontarTreino::where('id', $get_id->treino_id)->orderBy('id', 'DESC')->first();
+        
+        AdicionarExercicio::where('id', $id)->where('exercicio_id', $exercicio_id)->update([
+            'serie' => $request->serie,
+            'repeticao' => $request->repeticao,
+            'updated_at' => Carbon::now()
+        ]);
+
+        return redirect()->route('adicionar.index', $treino_id);
     }
 
     /**
@@ -130,8 +142,13 @@ class AdicionarExercicioController extends Controller
      * @param  \App\Models\TreinoAluno\AdicionarExercicio  $adicionarExercicio
      * @return \Illuminate\Http\Response
      */
-    public function destroy(AdicionarExercicio $adicionarExercicio)
+    public function destroy($id, $exercicio_id)
     {
-        //
+        $get_id = AdicionarExercicio::where('id', $id)->first();
+        $treino_id = MontarTreino::where('id', $get_id->treino_id)->orderBy('id', 'DESC')->first();
+
+        AdicionarExercicio::where('id', $id)->where('exercicio_id', $exercicio_id)->delete();
+
+        return redirect()->route('adicionar.index', $treino_id);
     }
 }

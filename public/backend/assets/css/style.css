@@ -637,7 +637,7 @@ h6 {
     font-family: "Poppins", sans-serif;
     font-weight: 700;
     color: #45505b;
-    background-color: #b5bcf5;
+    background-color: #b5bdf581;
 }
 
 .nav-pills .nav-link {
@@ -649,6 +649,25 @@ h6 {
     font-weight: 700;
     padding: 8px;
     margin: 15px;
+}
+
+
+/*--------------------------------------------------------------
+# Buttons Treinos
+--------------------------------------------------------------*/
+
+#button-treinos {
+    background: none;
+    font-family: "Poppins", sans-serif;
+    color: #45505b;
+    border: 1px solid #6776f4;
+    border-radius: 0.25rem;
+    font-weight: 700;
+    padding: 8px;
+}
+
+#button-treinos:hover {
+    background: #b5bdf581;
 }
 
 

@@ -16,8 +16,7 @@
                                 <h4 class="card-title">Treinos do Aluno <b class="fs-5" style="color: #7b84d6;">{{ $id->nome }}</b></h4>
 
                                 <div class="mt-3">
-                                    <a href="{{ route('montar.index') }}" class="btn btn-sm text-white fs-5 pb-0 pt-0" style="font-weight: 700; background: #4154f1;">Voltar</a>
-                                    <a href="#" class="btn btn-sm text-white fs-5 pb-0 pt-0" data-bs-toggle="modal" data-bs-target="#createAluno" style="font-weight: 700; background: #4154f1;">+</a>
+                                    <a href="{{ route('montar.index') }}" class="btn btn-sm text-white" style="font-weight: 700; background: #4154f1;">Voltar</a>
                                 </div>
                             </div>
                         </div>
