@@ -57,16 +57,14 @@ class GeralController extends Controller
         return view('app.treinos.categorias.index', compact('categoria_treino'));
     }
 
-    public function teste(Request $request)
-    {
-        $data = $request->all();
+// NavBar Persquisar Alunos com JQuery
+    public function pesquisarAlunos(Request $request) {
+        $request->validate(['pesquisar' => 'required']);
 
-        foreach ($data as $dt => $value) {
-            $result = substr($dt, 0, 3);
+        $pesquisar = $request->pesquisar;
 
-            echo "<pre>";
-            print_r($result);
-            echo "</pre>";
-        }
+        $alunos = Aluno::where('nome', 'LIKE', "%$pesquisar%")->select('id', 'nome', 'telefone')->orderBy('nome', 'ASC')->limit(6)->get();
+
+        return view('app.geral.pesquisas.pesquisar_alunos_navbar', compact('alunos'));
     }
 }

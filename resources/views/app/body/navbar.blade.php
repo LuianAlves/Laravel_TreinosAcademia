@@ -11,8 +11,9 @@
 
     <div class="search-bar">
         <form class="search-form d-flex align-items-center" method="POST" action="#">
-            <input type="text" name="query" placeholder="Pesquisar" title="Enter search keyword">
-            <button type="submit" title="Pesquisare"><i class="bi bi-search"></i></button>
+            <input type="text" onfocus="mostrar()" onblur="esconder()" id="pesquisar" name="pesquisar" placeholder="Pesquisar">
+            <button type="button"><i class="bi bi-search"></i></button>
+            <div id="pesquisarAlunos" class="pesquisar"></div>
         </form>
     </div>
     <!-- End Search Bar -->
@@ -238,3 +239,45 @@
     <!-- End Icons Navigation -->
 
 </header>
+
+
+
+<style>
+    .search-bar {
+        position: relative;
+    }
+
+    .pesquisar {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: rgb(250, 245, 255);
+        z-index: 999;
+        border-radius: 8px; 
+        margin-top: 5px;
+    }
+
+    .pesquisar ul {
+        list-style: none;
+    }
+
+    .pesquisar ul li a {   
+        font-size: 16px;
+        font-family: "Poppins", sans-serif; 
+        font-weight: 600;    
+        margin-top: 15px;
+        color: #7b84d6;
+    }
+
+    .pesquisar ul #fone { 
+        margin-top: 25px;
+        margin-right: 10%;
+        font-size: 12px;      
+        color: #45505b;
+    }
+
+    .pesquisar i {
+        margin-right: 5px;
+    }
+</style>

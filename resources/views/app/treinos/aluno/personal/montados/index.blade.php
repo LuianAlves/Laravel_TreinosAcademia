@@ -63,7 +63,9 @@
                                                 @endif
                                             </td>
                                             <th class="text-muted text-center">
-                                                {{ Carbon\Carbon::parse($treino->created_at)->format('d/m/Y') }}
+                                                {{ 
+                                                    strftime('%d %B %Y', strtotime($treino->created_at))
+                                                }}
                                             </th>
                                             <td class="text-center pt-1">
                                                 <li class="nav-item dropdown" style="list-style: none;">

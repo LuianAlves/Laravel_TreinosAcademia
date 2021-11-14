@@ -201,3 +201,6 @@
     }
 
 </style>
+
+{{-- Controlando o Input Range de Frequencia no Modal de Treinos para Alunos --}}
+<script src="{{ asset('backend/assets/js/range_input.js') }}" async></script>

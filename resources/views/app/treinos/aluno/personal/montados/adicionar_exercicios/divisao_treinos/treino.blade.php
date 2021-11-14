@@ -89,7 +89,7 @@
                                                             ->get();
                                                     @endphp
                                                     @foreach ($exercicios as $exercicio)
-                                                    <tr class="vback" id="val">
+                                                    <tr class="vback">
                                                         <td class="text-muted p-3">
                                                             <div class="form-check">
                                                                 <input class="form-check-input" type="checkbox"
@@ -123,7 +123,8 @@
                                     <div>
                                         <table class="vclick vfront">
                                             <tbody>
-                                                <td style="font-weight: bold; color: rgb(180, 140, 226); white-space: pre-line;" id=lbl></td>
+                                                <tr id="lbl" style="font-weight: bold; color: rgb(180, 140, 226); white-space: pre-line;">
+                                                </tr>
                                             </tbody>
                                         </table>
                                     </div>

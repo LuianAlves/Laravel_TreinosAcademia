@@ -59,12 +59,16 @@ Route::middleware('auth')->group(function () {
     // Search Categoria de Treinos
     Route::any('/treinos/categoria/search', [GeralController::class, 'searchCategoriaTreino'])->name('categoria.treinos.search');
 
+    // Pesquisar Alunos com JQuery
+    Route::post('pesquisar/alunos', [GeralController::class, 'pesquisarAlunos'])->name('pesquisar-alunos');
+
 // ---------- Área do Aluno ---------- //
     // Alunos
     Route::resource('alunos', AlunoController::class)->except('create');
 
     // Montar Treino
     Route::prefix('assessoria/treino')->group(function () {
+        
         // Montar
         Route::get('montar/create/{aluno_id}', [MontarTreinoController::class, 'create'])->name('montar.create');
         Route::resource('montar', MontarTreinoController::class)->except('create');

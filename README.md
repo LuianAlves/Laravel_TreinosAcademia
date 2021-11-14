@@ -56,6 +56,7 @@
 * Botão para excluir Exercicios
 
 * Download de Treinos Montados
+* Pesquisar Alunos pelo Navbar com Ajax/JQuery
 
 
 

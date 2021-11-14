@@ -34,40 +34,9 @@
 
     {{-- Selicionar categorias do modal quando for montar treino --}}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-
-
-    {{-- MODAL TREINOS ADICIONAR EXERCICO AO LADO DIREITO --}}
-    <script>
-
-        $(document).ready(function(){
-        $('.vclick').click(function(){
-            $(this).closest('.vflipper').toggleClass('vflip');
-        });
-        
     
-        //
-        // Listen for change event 
-        //
-        $('.vback :checkbox').on('change', function(e) {
-            //
-            // get the labels list of all  checked elements
-            //
-            var result = $('.vback :checkbox:checked').map(function(index, element) {
-            if (element.checked) {
-                return element.parentNode.textContent;
-            }
-            
-            }).get();
-            
-            //
-            // add this text to the label
-            //
-            
-            $('#lbl').text(result.join(""))
-        })
-        }); 
-
-    </script>
+    {{-- TREINOS ADICIONAR EXERCICO AO LADO DIREITO --}}
+    <script src="{{ asset('backend/assets/js/arraylist_direita.js') }}" async></script>
 
 </head>
 
@@ -107,22 +76,7 @@
         @include('app.treinos.categorias.modals.create_categoria_treinos')
         <!-- Include MODAL TREINOS->EXERCICIOS AJAX -->
         @include('app.treinos.exercicios.modals.create_exercicio')
-
-        {{-- Controlando o Input Range de Frequencia no Modal de Treinos para Alunos --}}
-        <script type="text/javascript">
-            var values = ["0", "1", "2", "3", "4", "5"]
-
-            document.getElementById("frequencia").addEventListener("input", function(e) {
-                var text = values[e.target.value]
-
-                // document.querySelector(".indicator").style.left = Number((e.target.value*5)-(2*e.target.value)) + "%";
-
-                document.querySelector(".indicator").innerHTML = text;
-            })
-        </script>
     @endauth
-
-
 </body>
 
 </html>

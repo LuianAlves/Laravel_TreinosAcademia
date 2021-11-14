@@ -99,6 +99,13 @@
                                     $prefix = Request::route()->getName();
                                 @endphp
 
+                                <div class="search-bar">
+                                    <form class="search-form d-flex align-items-center" method="POST" action="#">
+                                        <input type="text" onfocus="mostrar()" onblur="esconder()" id="pesquisar" name="pesquisar" placeholder="Pesquisar">
+                                        <button type="button"><i class="bi bi-search"></i></button>
+                                        <div id="pesquisarAlunos" class="pesquisar"></div>
+                                    </form>
+                                </div>
                                 <div class="mt-3">
                                     <a href="#" class="btn btn-sm text-white fs-5 pb-0 pt-0" data-bs-toggle="modal" data-bs-target="#createAluno" style="font-weight: 700; background: #4154f1;">+</a>
                                 </div>

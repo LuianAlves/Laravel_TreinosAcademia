@@ -60,9 +60,11 @@
                             <div class="col-6">
                                 <h5>Treino A</h5>
                             </div>
-                            <div class="col-1">
-                                <a href="{{ route('download.personal', ['divisao' => 'treino_a', 'treino_id' => $treino->id]) }}">PDF</a> 
-                            </div>
+                            @if($treinos == 'treino_a')
+                                <div class="col-1">
+                                    <a href="{{ route('download.personal', ['divisao' => 'treino_a', 'treino_id' => $treino->id]) }}">PDF</a> 
+                                </div>
+                            @endif
                         </div>
                     </div>
                     <div class="card-body">
@@ -137,7 +139,7 @@
             </div>
             
             {{-- LISTA DE EXERCICIOS - TREINO B --}}
-            @if(!empty($treinos->divisao_treino))
+            
                 <div class="col-12" style="margin-top: 15px; max-height: 500px; overflow-y: auto;">
                     <div class="card">
                         <div class="card-header">
@@ -146,7 +148,7 @@
                                     <h5>Treino B</h5>
                                 </div>
                                 <div class="col-1">
-                                    <a href="{{ route('download.personal', ['divisao' => 'treino_b', 'treino_id' => $treino->treino_id]) }}">PDF </a>
+                                    {{-- <a href="{{ route('download.personal', ['divisao' => 'treino_b', 'treino_id' => $treino->treino_id]) }}">PDF </a> --}}
                                 </div>
                             </div>
                         </div>
@@ -220,10 +222,10 @@
                         </div>
                     </div>
                 </div>
-            @endif
+            
             
             {{-- LISTA DE EXERCICIOS - TREINO C --}}
-            @if(!empty($treinos->divisao_treino))
+            
                 <div class="col-12" style="margin-top: 15px; max-height: 500px; overflow-y: auto;">
                     <div class="card">
                         <div class="card-header">
@@ -232,7 +234,7 @@
                                     <h5>Treino C</h5>
                                 </div>
                                 <div class="col-1">
-                                    <a href="{{ route('download.personal', ['divisao' => 'treino_c', 'treino_id' => $treino->treino_id]) }}">PDF</a>
+                                    {{-- <a href="{{ route('download.personal', ['divisao' => 'treino_c', 'treino_id' => $treino->treino_id]) }}">PDF</a> --}}
                                 </div>
                             </div>
                         </div>
@@ -306,10 +308,10 @@
                         </div>
                     </div>
                 </div>
-            @endif
+           
 
             {{-- LISTA DE EXERCICIOS - TREINO D --}}
-            @if(!empty($treinos->divisao_treino))
+            
                 <div class="col-12" style="margin-top: 15px; max-height: 500px; overflow-y: auto;">
                     <div class="card">
                         <div class="card-header">
@@ -318,7 +320,7 @@
                                     <h5>Treino D</h5>
                                 </div>
                                 <div class="col-1">
-                                    <a href="{{ route('download.personal', ['divisao' => 'treino_d', 'treino_id' => $treino->treino_id]) }}">PDF</a>
+                                    {{-- <a href="{{ route('download.personal', ['divisao' => 'treino_d', 'treino_id' => $treino->treino_id]) }}">PDF</a> --}}
                                 </div>
                             </div>
                         </div>
@@ -392,7 +394,7 @@
                         </div>
                     </div>
                 </div>
-            @endif
+            
             
         </div>
     </section>

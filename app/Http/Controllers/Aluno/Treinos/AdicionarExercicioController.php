@@ -17,7 +17,7 @@ class AdicionarExercicioController extends Controller
 {
     public function index($treino_id)
     {
-        $treinos = AdicionarExercicio::where('treino_id', $treino_id)->first();
+        $treinos = AdicionarExercicio::where('treino_id', $treino_id)->pluck('divisao_treino')->first();
         $treino_a = AdicionarExercicio::where('treino_id', $treino_id)->where('divisao_treino', 'treino_a')->get();
         $treino_b = AdicionarExercicio::where('treino_id', $treino_id)->where('divisao_treino', 'treino_b')->get();
         $treino_c = AdicionarExercicio::where('treino_id', $treino_id)->where('divisao_treino', 'treino_c')->get();
