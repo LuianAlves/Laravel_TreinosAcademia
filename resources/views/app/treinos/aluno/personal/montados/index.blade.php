@@ -92,6 +92,17 @@
                                                         <li>
                                                             <hr class="dropdown-divider">
                                                         </li>
+
+                                                        <li>
+                                                            <a class="dropdown-item d-flex align-items-center" style="font-weight: 600;" href="{{ route('montar.edit', $treino->id) }}">
+                                                                <i class="bx bxs-download fs-4 text-success"></i>
+                                                                <span>Download Treinos</span>
+                                                            </a>
+                                                        </li>
+    
+                                                        <li>
+                                                            <hr class="dropdown-divider">
+                                                        </li>
     
                                                         <li>
                                                             <form id="form_{{ $treino->id }}" action="{{ route('montar.destroy', $treino->id) }}" method="post">

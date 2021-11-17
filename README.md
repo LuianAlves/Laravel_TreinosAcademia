@@ -57,6 +57,11 @@
 
 * Download de Treinos Montados
 * Pesquisar Alunos pelo Navbar com Ajax/JQuery
+* Pesquisar alunos/categorias/exercícios com Ajax/JQuery 
+
+* Avaliação Física - View para Cadastros de Dados, Perímetros, Dobras Cutaneas 
+* Avaliação Física - View para Formulario de Anamnese, Questinario de Prontidão
+
 
 
 

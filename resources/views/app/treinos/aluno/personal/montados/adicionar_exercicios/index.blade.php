@@ -60,11 +60,11 @@
                             <div class="col-6">
                                 <h5>Treino A</h5>
                             </div>
-                            @if($treinos == 'treino_a')
-                                <div class="col-1">
-                                    <a href="{{ route('download.personal', ['divisao' => 'treino_a', 'treino_id' => $treino->id]) }}">PDF</a> 
-                                </div>
-                            @endif
+                            
+                            <div class="col-1">
+                                <a href="{{ route('download.personal', ['divisao' => 'treino_a', 'treino_id' => $treino->id]) }}">PDF</a> 
+                            </div>
+
                         </div>
                     </div>
                     <div class="card-body">

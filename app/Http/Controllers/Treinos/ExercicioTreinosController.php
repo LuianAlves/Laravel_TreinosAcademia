@@ -20,7 +20,7 @@ class ExercicioTreinosController extends Controller
     public function index()
     {
         $categoriaTreinos = CategoriaTreinos::orderBy('nome_categoria_treino', 'ASC')->get();
-        $exercicioTreinos = ExercicioTreinos::orderBy('nome_exercicio', 'ASC')->paginate(10);
+        $exercicioTreinos = ExercicioTreinos::orderBy('nome_exercicio', 'ASC')->get();
 
         return view('app.treinos.exercicios.index', compact('categoriaTreinos', 'exercicioTreinos'));
     }

@@ -17,7 +17,7 @@ class CategoriaTreinosController extends Controller
      */
     public function index()
     {
-        $categoria_treino = CategoriaTreinos::orderBy('nome_categoria_treino', 'ASC')->paginate(6);
+        $categoria_treino = CategoriaTreinos::orderBy('nome_categoria_treino', 'ASC')->get();
 
         return view('app.treinos.categorias.index', compact('categoria_treino'));
     }

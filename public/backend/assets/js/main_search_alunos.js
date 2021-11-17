@@ -30,7 +30,13 @@ $('body').on("keyup", "#pesquisar", function() {
 });
 
 
-// ALUNOS INDEX - Pesquisar pelo nome do aluno
-$('body').on("keyup", "#pesquisarAluno", function() {
+// Pesquisar por alunos na Tabela pelo input
+$(document).ready(function() {
+    $("#inputPesquisarTabela").on("keyup", function() {
+        var tablelist = $(this).val().toLowerCase();
 
+        $("#pesquisarNaTabela tr").filter(function() {
+            $(this).toggle($(this).text().toLowerCase().indexOf(tablelist) > -1);
+        });
+    });
 });

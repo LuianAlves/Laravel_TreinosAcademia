@@ -87,29 +87,40 @@
 
         </div>
 
+
+        <div class="row">
+
+            @php
+                $prefix = Request::route()->getName();
+            @endphp
+
+            <div class="d-flex justify-content-end">
+                @if ($prefix != 'exercicio.index')
+                    <a href="{{ route('exercicio.index') }}" class="btn btn-sm btn-danger" style="font-weight: 700;">
+                        Limpar Filtro
+                    </a>
+                @endif
+            </div>
+        </div>
+
         {{-- Listagem de Categorias --}}
         <div class="row">
-            <div class="col-lg-12">
+            <div class="col-lg-12" style="max-height: 700px; overflow-y: auto;">
                 <div class="card mt-3">
                     <div class="card-body">
                         <div class="row">
                             <div class="d-flex justify-content-between">
                                 <h4 class="card-title">Lista de Exercícios</h4>
 
-                                @php
-                                    $prefix = Request::route()->getName();
-                                @endphp
-
-                                <div class="mt-3">
-                                    <a href="#" class="btn btn-sm text-white fs-5 pb-0 pt-0" data-bs-toggle="modal"
-                                        data-bs-target="#createExercicioTreino"
-                                        style="font-weight: 700; background: #4154f1;">+</a>
+                                <div class="d-flex align-items-center">
+                                    <input class="form-control form-control-sm" style="margin-right: 10px;" id="inputPesquisarTabela" type="text" placeholder="Pesquisar">
+                                    <a href="#" class="btn btn-sm text-white fs-5 pb-0 pt-0" data-bs-toggle="modal" data-bs-target="#createAluno" style="font-weight: 700; background: #4154f1;">+</a>
                                 </div>
                             </div>
                         </div>
 
                         <div class="table-responsive">
-                            <table class="table table-sm datatable">
+                            <table class="table table-sm">
                                 <thead style="color: #7b84d6;">
                                     <tr>
                                         <th scope="col">Categoria</th>
@@ -117,7 +128,7 @@
                                         <th class="text-center" scope="col">Serviços</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody id="pesquisarNaTabela">
                                     @foreach ($exercicioTreinos as $exercicio)
                                         <tr>
                                             <th class="text-muted">{{ $exercicio->categoriaTreino->nome_categoria_treino }}</th>
@@ -160,18 +171,6 @@
                                 </tbody>
                             </table>
                         </div>
-
-                        <div class="row">
-                            <div class="d-flex justify-content-end">
-                                @if ($prefix != 'exercicio.index')
-                                    <a href="{{ route('exercicio.index') }}"
-                                        style="font-weight: 700; color: #692222; padding-top: 3px; margin-right: 5px;">
-                                        Limpar Filtro
-                                    </a>
-                                @endif
-                            </div>
-                        </div>
-                        {{ $exercicioTreinos->links('app.geral.paginate') }}
 
                     </div>
                 </div>

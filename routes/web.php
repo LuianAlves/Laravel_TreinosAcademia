@@ -11,6 +11,11 @@ use App\Http\Controllers\User\UserController;
 // Aluno
 use App\Http\Controllers\Aluno\AlunoController;
 
+// Avaliação
+use App\Http\Controllers\Aluno\Avaliacao\AvaliacaoFisicaController;
+use App\Http\Controllers\Aluno\Avaliacao\AvaliacaoFisicaAlunosController;
+
+
 // Montar Treinos
 use App\Http\Controllers\Aluno\Treinos\MontarTreinoController;
 use App\Http\Controllers\Aluno\Treinos\TreinoMontadoController;
@@ -83,6 +88,18 @@ Route::middleware('auth')->group(function () {
         Route::get('adicionar/edit/{id}/{exercicio_id}', [AdicionarExercicioController::class, 'edit'])->name('adicionar.edit');
         Route::post('adicionar/update/{id}/{exercicio_id}', [AdicionarExercicioController::class, 'update'])->name('adicionar.update');
         Route::get('adicionar/destroy/{id}/{exercicio_id}', [AdicionarExercicioController::class, 'destroy'])->name('adicionar.destroy');
+    });
+
+    // Avaliação Física
+    Route::prefix('avaliacao')->group(function() {
+        // Lista de Alunos
+        Route::resource('avaliacoes', AvaliacaoFisicaAlunosController::class);
+
+        // Realizar Avaliação
+        Route::get('realizar/{aluno_id}', [AvaliacaoFisicaController::class, 'index'])->name('realizar.index');
+        Route::get('realizar/anamnese/{aluno_id}', [AvaliacaoFisicaController::class, 'indexAnamnese'])->name('realizar.index.anamnese');
+        Route::post('realizar/store_anamnese/{aluno_id}', [AvaliacaoFisicaController::class, 'storeAnamnese'])->name('realizar.store.anamnese');
+        Route::resource('realizar', AvaliacaoFisicaController::class)->except('index', 'create');
     });
 
     // Downloads

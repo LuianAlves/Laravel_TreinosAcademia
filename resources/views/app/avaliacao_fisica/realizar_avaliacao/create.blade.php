@@ -8,7 +8,7 @@
     <section class="section">
         <div class="row">
 
-            <div class="col-lg-12">
+            <div class="col-lg-12" style="overflow-y: auto;">
                 <div class="card mt-3">
                     <div class="card-body">
                         <div class="row">
@@ -57,15 +57,15 @@
                                                     <ul class="dropdown-menu" id="dropdown-menu-user">
 
                                                         <li>
-                                                            <a class="dropdown-item d-flex align-items-center" href="{{ route('montar.create', $aluno->id) }}">
-                                                                <i class="bx bx-edit"></i>
-                                                                <span>Montar Treino</span>
+                                                            <a class="dropdown-item d-flex align-items-center" href="{{ route('realizar.index', $aluno->id) }}">
+                                                                <i class="bx bx-heart"></i>
+                                                                <span>Realizar Avaliação Física</span>
                                                             </a>
                                                         </li>
                                                         <li>
                                                             <a class="dropdown-item d-flex align-items-center" href="{{ route('montado.index', $aluno->id) }}">
                                                                 <i class="bx bx-minus-front"></i>
-                                                                <span>Treinos Montados</span>
+                                                                <span>Avaliações Realizadas</span>
                                                             </a>
                                                         </li>
                                                          
@@ -77,8 +77,6 @@
                                 </tbody>
                             </table>
                         </div>
-                        
-                        {{ $alunos->links('app.geral.paginate') }}
 
                     </div>
                 </div>
