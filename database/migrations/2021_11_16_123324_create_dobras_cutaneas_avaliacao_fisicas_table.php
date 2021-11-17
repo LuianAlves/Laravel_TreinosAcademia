@@ -16,6 +16,7 @@ class CreateDobrasCutaneasAvaliacaoFisicasTable extends Migration
         Schema::create('dobras_cutaneas_avaliacao_fisicas', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('aluno_id')->unsigned();
+            $table->integer('codigo_avaliacao');
             $table->string('subscapular')->nullable();
             $table->string('axilar_media')->nullable();
             $table->string('supra_iliaca')->nullable();

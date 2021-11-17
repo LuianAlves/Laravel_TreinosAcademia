@@ -16,6 +16,7 @@ class CreatePerimetrosAvaliacaoFisicasTable extends Migration
         Schema::create('perimetros_avaliacao_fisicas', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('aluno_id')->unsigned();
+            $table->integer('codigo_avaliacao');
             $table->string('torax')->nullable();
             $table->string('cintura')->nullable();
             $table->string('abdomen')->nullable();

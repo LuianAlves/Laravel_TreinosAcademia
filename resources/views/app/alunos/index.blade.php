@@ -206,7 +206,20 @@
                                                                 <i class="bx bxs-heart fs-4 text-danger"></i>
                                                                 <span>Avaliação Física</span>
                                                             </a>
-                                                        </li>
+                                                        </li>  
+
+                                                        @php
+                                                            $avaliacoes = App\Models\Avaliacao\DadosAvaliacaoFisica::where('aluno_id', $aluno->id)->first();
+                                                        @endphp
+
+                                                        @if(!empty($avaliacoes))
+                                                            <li>
+                                                                <a class="dropdown-item d-flex align-items-center" style="font-weight: 600;" href="{{ route('montado.index', $aluno->id) }}">
+                                                                    <i class="bx bx-heart text-danger fs-4"></i>
+                                                                    <span>Avaliações Realizadas</span>
+                                                                </a>
+                                                            </li>
+                                                        @endif
 
                                                         <li>
                                                             <hr class="dropdown-divider">

@@ -61,6 +61,7 @@
 
 * Avaliação Física - View para Cadastros de Dados, Perímetros, Dobras Cutaneas 
 * Avaliação Física - View para Formulario de Anamnese, Questinario de Prontidão
+* Avaliação Física - View/Download do PDF com dados (Sem frontend ainda)
 
 
 

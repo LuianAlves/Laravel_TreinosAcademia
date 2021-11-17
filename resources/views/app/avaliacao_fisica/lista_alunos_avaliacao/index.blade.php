@@ -8,7 +8,7 @@
     <section class="section">
         <div class="row">
 
-            <div class="col-lg-12" style="overflow-y: auto;">
+            <div class="col-lg-12">
                 <div class="card mt-3">
                     <div class="card-body">
                         <div class="row">
@@ -57,13 +57,13 @@
                                                     <ul class="dropdown-menu" id="dropdown-menu-user">
 
                                                         <li>
-                                                            <a class="dropdown-item d-flex align-items-center" href="{{ route('realizar.index', $aluno->id) }}">
-                                                                <i class="bx bx-heart"></i>
+                                                            <a class="dropdown-item d-flex align-items-center" href="{{ route('avaliacoes.create', $aluno->id) }}">
+                                                                <i class="bx bx-edit"></i>
                                                                 <span>Realizar Avaliação Física</span>
                                                             </a>
                                                         </li>
                                                         <li>
-                                                            <a class="dropdown-item d-flex align-items-center" href="{{ route('montado.index', $aluno->id) }}">
+                                                            <a class="dropdown-item d-flex align-items-center" href="{{ route('avaliacoes.show', $aluno->id) }}">
                                                                 <i class="bx bx-minus-front"></i>
                                                                 <span>Avaliações Realizadas</span>
                                                             </a>

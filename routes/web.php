@@ -93,11 +93,13 @@ Route::middleware('auth')->group(function () {
     // Avaliação Física
     Route::prefix('avaliacao')->group(function() {
         // Lista de Alunos
-        Route::resource('avaliacoes', AvaliacaoFisicaAlunosController::class);
+        Route::get('avaliacoes/create/{aluno_id}', [AvaliacaoFisicaAlunosController::class, 'create'])->name('avaliacoes.create');
+        Route::get('avaliacoes/destroy/{aluno_id}/{codigo}', [AvaliacaoFisicaAlunosController::class, 'destroy'])->name('avaliacoes.destroy');
+        Route::resource('avaliacoes', AvaliacaoFisicaAlunosController::class)->except('create', 'edit', 'update', 'destroy');
 
         // Realizar Avaliação
         Route::get('realizar/{aluno_id}', [AvaliacaoFisicaController::class, 'index'])->name('realizar.index');
-        Route::get('realizar/anamnese/{aluno_id}', [AvaliacaoFisicaController::class, 'indexAnamnese'])->name('realizar.index.anamnese');
+        Route::get('realizar/anamnese/{aluno_id}/{codigo}', [AvaliacaoFisicaController::class, 'indexAnamnese'])->name('realizar.index.anamnese');
         Route::post('realizar/store_anamnese/{aluno_id}', [AvaliacaoFisicaController::class, 'storeAnamnese'])->name('realizar.store.anamnese');
         Route::resource('realizar', AvaliacaoFisicaController::class)->except('index', 'create');
     });
@@ -105,6 +107,7 @@ Route::middleware('auth')->group(function () {
     // Downloads
     Route::prefix('download')->group(function() {
         Route::get('/personal/treinos/{divisao}/{treino_id}', [DownloadController::class, 'DownloadPersonal'])->name('download.personal');
+        Route::get('/avaliacao/{codigo_ava}', [DownloadController::class, 'DownloadAvaliacaoFisica'])->name('download.avaliacao.fisica');
     });
 
 // ---------- Área Administrativa ---------- //

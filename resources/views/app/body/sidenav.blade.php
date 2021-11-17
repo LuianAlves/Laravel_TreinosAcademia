@@ -57,7 +57,7 @@
             <ul id="avaliacaoFisica" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                 <li>
                     <a href="{{ route('avaliacoes.index') }}">
-                        <i class="bi bi-circle"></i><span>Realizar Avaliação</span>
+                        <i class="bi bi-circle"></i><span>Listagem de Alunos</span>
                     </a>
                 </li>
             </ul>

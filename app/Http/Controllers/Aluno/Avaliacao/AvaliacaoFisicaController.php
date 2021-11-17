@@ -27,18 +27,21 @@ class AvaliacaoFisicaController extends Controller
         return view('app.avaliacao_fisica.index', compact('aluno', 'treino'));
     }
 
-    public function indexAnamnese($aluno_id) {
+    public function indexAnamnese($aluno_id, $codigo) {
 
         $aluno = Aluno::where('id', $aluno_id)->first();
         $treino = MontarTreino::where('aluno_id', $aluno_id)->first();
 
-        return view('app.avaliacao_fisica.index_anamnese', compact('aluno', 'treino'));
+        return view('app.avaliacao_fisica.index_anamnese', compact('aluno', 'treino', 'codigo'));
     }
 
     public function storeAnamnese(Request $request, $aluno_id) {
 
+        $codigo = $request->codigo_ava;
+
         AnamneseAvaliacaoFisica::insert([
             'aluno_id' => $aluno_id,
+            'codigo_avaliacao' => $codigo,
             'atividade_fisica' => $request->atividade_fisica,
             'medicamento' => $request->medicamento,
             'cirurgia' => $request->cirurgia,
@@ -54,7 +57,7 @@ class AvaliacaoFisicaController extends Controller
             'created_at' => Carbon::now()
         ]);
 
-        return redirect()->route('avaliacoes.index');
+        return redirect()->route('avaliacoes.show', $aluno_id);
     }
 
     /**
@@ -66,9 +69,11 @@ class AvaliacaoFisicaController extends Controller
     public function store(Request $request)
     {
         $aluno_id = $request->aluno_id;
-        
+        $codigo = mt_rand(1, 9999);
+
             DadosAvaliacaoFisica::insert([
                 'aluno_id' => $aluno_id,
+                'codigo_avaliacao' => $codigo,
                 'data_nasc' => $request->data_nasc,
                 'historico_familiar' => $request->historico_familiar,
                 'estatura' => $request->estatura,
@@ -78,6 +83,7 @@ class AvaliacaoFisicaController extends Controller
 
             PerimetrosAvaliacaoFisica::insert([
                 'aluno_id' => $aluno_id,
+                'codigo_avaliacao' => $codigo,
                 'torax' => $request->torax, 
                 'cintura' => $request->cintura, 
                 'abdomen' => $request->abdomen, 
@@ -95,6 +101,7 @@ class AvaliacaoFisicaController extends Controller
             
             DobrasCutaneasAvaliacaoFisica::insert([
                 'aluno_id' => $request->aluno_id,
+                'codigo_avaliacao' => $codigo,
                 'subscapular' => $request->subscapular, 
                 'axilar_media' => $request->axilar_media, 
                 'supra_iliaca' => $request->supra_iliaca, 
@@ -107,13 +114,14 @@ class AvaliacaoFisicaController extends Controller
             
             NeuromotoresAvaliacaoFisica::insert([
                 'aluno_id' => $request->aluno_id,
+                'codigo_avaliacao' => $codigo,
                 'flexoes' => $request->subscapular, 
                 'abdominais' => $request->axilar_media, 
                 'flexibilidade' => $request->supra_iliaca, 
                 'created_at' => Carbon::now()
             ]);
 
-        return redirect()->route('realizar.index.anamnese', $aluno_id);
+        return redirect()->route('realizar.index.anamnese', ['aluno_id' => $aluno_id, 'codigo' => $codigo]);
     }
 
 

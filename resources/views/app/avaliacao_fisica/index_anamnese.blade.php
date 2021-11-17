@@ -16,6 +16,7 @@
                     
                     <form action="{{ route('realizar.store.anamnese', $aluno->id) }}" method="post">
 
+                        <input type="hidden" name="codigo_ava" value="{{ $codigo }}">
                         <div class="row">
                             <ul>
                                 {{-- Atividade Física --}}

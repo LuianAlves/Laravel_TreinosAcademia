@@ -16,6 +16,7 @@ class CreateNeuromotoresAvaliacaoFisicasTable extends Migration
         Schema::create('neuromotores_avaliacao_fisicas', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('aluno_id')->unsigned();
+            $table->integer('codigo_avaliacao');
             $table->string('flexoes')->nullable();
             $table->string('abdominais')->nullable();
             $table->string('flexibilidade')->nullable();
