@@ -15,6 +15,8 @@ use App\Http\Controllers\Aluno\AlunoController;
 use App\Http\Controllers\Aluno\Avaliacao\AvaliacaoFisicaController;
 use App\Http\Controllers\Aluno\Avaliacao\AvaliacaoFisicaAlunosController;
 
+// Pagamentos
+use App\Http\Controllers\Aluno\Pagamentos\PagamentoController;
 
 // Montar Treinos
 use App\Http\Controllers\Aluno\Treinos\MontarTreinoController;
@@ -102,6 +104,22 @@ Route::middleware('auth')->group(function () {
         Route::get('realizar/anamnese/{aluno_id}/{codigo}', [AvaliacaoFisicaController::class, 'indexAnamnese'])->name('realizar.index.anamnese');
         Route::post('realizar/store_anamnese/{aluno_id}', [AvaliacaoFisicaController::class, 'storeAnamnese'])->name('realizar.store.anamnese');
         Route::resource('realizar', AvaliacaoFisicaController::class)->except('index', 'create');
+    });
+
+    // Pagamentos
+    Route::prefix('pagamentos')->group(function() {
+        // Geral
+        Route::get('geral/{aluno_id}', [PagamentoController::class, 'index'])->name('pagamentos.geral.index');
+        Route::post('geral/store', [PagamentoController::class, 'store'])->name('pagamentos.geral.store');
+        Route::get('geral/edit/{id}', [PagamentoController::class, 'edit'])->name('pagamentos.geral.edit');
+        Route::post('geral/update/{id}', [PagamentoController::class, 'update'])->name('pagamentos.geral.update');
+
+
+        // Personal
+
+
+        Route::get('geral/pagou/{pgt_id}', [GeralController::class, 'pagou'])->name('pagamentos.pagou');
+        Route::get('geral/naopagou/{pgt_id}', [GeralController::class, 'naoPagou'])->name('pagamentos.naopagou');
     });
 
     // Downloads

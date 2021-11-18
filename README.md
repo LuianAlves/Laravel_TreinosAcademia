@@ -63,6 +63,8 @@
 * Avaliação Física - View para Formulario de Anamnese, Questinario de Prontidão
 * Avaliação Física - View/Download do PDF com dados (Sem frontend ainda)
 
+* View para pagamentos gerais (Assessoria/Avaliação Física)
+* CRUD para pagamentos gerais
 
 
 

@@ -5,9 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Aluno;
+
 use App\Models\Treinos\CategoriaTreinos;
 use App\Models\Treinos\MontarExercicios;
 
+use App\Models\Pagamentos\Pagamento;
+
+use Carbon\Carbon;
 use Datetime;
 use Auth;
 
@@ -66,5 +70,27 @@ class GeralController extends Controller
         $alunos = Aluno::where('nome', 'LIKE', "%$pesquisar%")->select('id', 'nome', 'telefone')->orderBy('nome', 'ASC')->limit(6)->get();
 
         return view('app.geral.pesquisas.pesquisar_alunos_navbar', compact('alunos'));
+    }
+
+// Validação dos Pagamentos
+
+    public function pagou($pgt_id) {
+
+        Pagamento::findOrFail($pgt_id)->update([
+            'status' => 1,
+            'updated_at' => Carbon::now()
+        ]);
+
+        return redirect()->back();
+    }
+
+    public function naoPagou($pgt_id) {
+
+        Pagamento::findOrFail($pgt_id)->update([
+            'status' => 0,
+            'updated_at' => Carbon::now()
+        ]);
+
+        return redirect()->back();
     }
 }
