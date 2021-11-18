@@ -66,7 +66,7 @@
 * View para pagamentos gerais (Assessoria/Avaliação Física)
 * CRUD para pagamentos gerais
 
-
+* Configurado template para download das avaliações físicas
 
 
 

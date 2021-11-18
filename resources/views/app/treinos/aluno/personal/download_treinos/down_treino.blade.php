@@ -1,136 +1,123 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>{{ strtoupper(str_replace('_', ' ', $divisao)) }} - {{ $treino->aluno->nome}}</title>
 
-    <style>
-        body {
-            padding: 50px;
-        }
-
+    <style type="text/css">
         * {
-            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
         }
 
-        .receipt-main {
-            display: inline-block;
-            width: 40%;
-            padding: 15px;
-            font-size: 12px;
-            border: 1px solid #000;
+        body {
+            padding: 20px;
         }
 
-        .receipt-title {
-            text-align: center;
-            text-transform: uppercase;
-            font-size: 20px;
-            font-weight: 600;
-            margin: 0;
+        th {
+            text-align: left;
+        }
+        
+        tr {
+            line-height: 1.25;
         }
 
-        .receipt-label {
-            font-weight: 600;
+        ul {
+            list-style: none;
         }
 
-        .text-large {
+        ul li {
+            font-family: 'Poppins', sans-serif;
+            line-height: 2;
+        }
+
+        ul li b,
+        table tr,
+        table th {
             font-size: 16px;
+            font-weight: 550;
+            color: rgb(179, 158, 204);
         }
 
-        .receipt-section {
-            margin-top: 10px;
+        ul li span,
+        table span {
+            margin-left: 5px;
+            text-transform: capitalize;
+            font-weight: 400;
+            color: #45505b;
         }
 
-        .receipt-footer {
-            text-align: center;
-            background: #ff0000;
+        .borda-tabela {
+            border: 1px solid rgba(236, 236, 236, 0.5);
         }
 
-        .receipt-signature {
-            height: 80px;
-            margin: 50px 0;
-            padding: 0 50px;
-            background: #fff;
-
-            .receipt-line {
-                margin-bottom: 10px;
-                border-bottom: 1px solid #000;
-            }
-
-            p {
-                text-align: center;
-                margin: 0;
-            }
+        .borda-lista {
+            border-bottom: 1px solid rgba(236, 236, 236, 0.5);
         }
 
+        .borda-direita {
+            border-right: 1px solid rgba(236, 236, 236, 0.5);
+        }
     </style>
 </head>
 
 <body>
-    <div class="receipt-main">
 
-        <p class="receipt-title">TREINO A</p>
+    {{-- Dados --}}
+    <ul>
+        <h3 style="text-transform: uppercase;">Dados do Aluno</h3>
+        <li>    
+            <b>Aluno: </b>{{ strtoupper($treino->aluno->nome) }}
+        </li>
+        <li>    
+            <b>Telefone: </b>{{ strtoupper($treino->aluno->telefone) }}
+        </li>
+        <li>    
+            <b>E-mail: </b>{{ $treino->aluno->email }}
+        </li>
+    </ul>
 
-        <div class="receipt-section pull-left">
-            <span class="receipt-label text-large">PROFESSOR: </span>
-            <span class="text-large">PAULO</span>
-        </div>
-
-        <div class="pull-right receipt-section">
-            <span class="text-large receipt-label">ALUNO:</span>
-            <span class="text-large">LUIAN ALVES DE MORAIS</span>
-        </div>
-
-        <div class="clearfix"></div>
-
-        <div class="receipt-section">
-            <span class="receipt-label">SERVIÇO:</span>
-            <span>PERSONAL</span>
-        </div>
-
-        <div class="receipt-section">
-            <span class="receipt-label">DATA DE CRIAÇÃO DO TREINO:</span>
-            <span>12/11/2021</span>
-        </div>
-
-        <div class="receipt-section">
-            <p>Recebi de Tabata Ruiz a importância de cinquenta reais</p>
-            <p>Referente a meus serviços profissionais</p>
-        </div>
-
-        <div class="receipt-section">
-            <p class="pull-right text-large">São Paulo, DATA DO DIA - HORA DO DOWNLOAD</p>
-        </div>
-
-        <div class="clearfix"></div>
-
-        <div class="receipt-signature col-xs-6">
-            <p class="receipt-line"></p>
-
-            <table class="table table-sm">
-                <thead>
+    {{-- Treino --}}
+    <ul style="margin-top: 50px; padding-bottom: 50px;">
+        <h3>{{ strtoupper(str_replace('_', ' ', $divisao)) }}</h3>
+        <li>    
+            <b>Professor: </b>{{ strtoupper($treino->professor) }}
+        </li>
+        <li>    
+            <b>Tipo de Serviço Contratado: </b>{{ strtoupper($treino->aluno->tipo_treino) }}
+        </li>
+        <li>    
+            <b>Treino Criado em: </b>{{ $data_treino }}
+        </li>
+        <li style="padding-bottom: 10px;">    
+            <b>Baixado em: </b>{{ $data_download }}
+        </li>
+    
+        <table align="center" class="borda-tabela" width="75%" style="margin-top: 60px;">
+            <thead class="borda-lista">
+                <tr>
+                    <th class="borda-direita" style="text-align: center">Exercícios</th>
+                    <th class="borda-direita" style="text-align: center">Séries</th>
+                    <th style="text-align: center">Repetições</th>
+                </tr>
+            </thead>
+            <tbody id="exercicios">
+                @foreach($download_treino as $treino)
                     <tr>
-                        <th>Exercícios</th>
-                        <th>Séries</th>
-                        <th>Repetições</th>
+                        <td class="borda-direita borda-lista" align="center">
+                            <span class="borda-direita">{{ $treino->exercicio->nome_exercicio }}</span> 
+                        </td>
+                        <td class="borda-direita borda-lista" align="center">
+                            <span>{{ $treino->serie }} x</span> 
+                        </td>
+                        <td align="center" class="borda-lista">
+                            <span>{{ $treino->repeticao }}</span> 
+                        </td>
                     </tr>
-                </thead>
-                <tbody>
-                    @foreach ($download_treino as $treino)
-                      <tr>
-                        <td>{{ $treino->exercicio->nome_exercicio }}</td>
-                        <td>{{ $treino->serie }} x</td>
-                        <td>{{ $treino->repeticao }}</td>
-                      </tr>
-                    @endforeach
-                </tbody>
-            </table>
-
-        </div>
-    </div>
+                @endforeach
+            </tbody>
+        </table>
+    </ul>
 
 </body>
 
