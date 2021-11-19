@@ -153,6 +153,8 @@
                                                     </a>
                                                     
                                                     <ul class="dropdown-menu" id="dropdown-menu-user">
+
+                                                        {{-- Visualizar --}}
                                                         <li>
                                                             <a class="dropdown-item d-flex align-items-center" style="font-weight: 600;" href="#" data-bs-toggle="modal" data-bs-target="#showAluno" id="{{ $aluno->id }}" onclick="visualizarAluno(this.id)">
                                                                 <i class="bx bx-minus-front fs-4 text-primary"></i>
@@ -160,24 +162,25 @@
                                                             </a>
                                                         </li>
                                                         
+                                                        {{-- Editar --}}
                                                         <li>
                                                             <a class="dropdown-item d-flex align-items-center" style="font-weight: 600;" href="{{ route('alunos.edit', $aluno->id) }}">
                                                                 <i class="bx bx-edit fs-4 text-warning"></i>
                                                                 <span>Editar Informações</span>
                                                             </a>
                                                         </li>
-    
+                                                        
                                                         <li>
                                                             <hr class="dropdown-divider">
                                                         </li>
-    
+                                                        
+                                                        {{-- Treinos --}}
                                                         <li>
                                                             <a class="dropdown-item d-flex align-items-center" style="font-weight: 600;" href="{{ route('montar.create', $aluno->id) }}">
                                                                 <i class="bx bx-dumbbell fs-4 text-info"></i>
                                                                 <span>Montar Treino</span>
                                                             </a>
                                                         </li>
-
 
                                                         @php
                                                             $treinos = App\Models\TreinoAluno\MontarTreino::where('aluno_id', $aluno->id)->first();
@@ -192,15 +195,25 @@
                                                             </li>
                                                         @endif
 
+                                                        <li>
+                                                            <hr class="dropdown-divider">
+                                                        </li>
+
+                                                        {{-- Contratos --}}
                                                         @if($aluno->tipo_treino == 'personal' || $aluno->tipo_treino == 'Personal')
                                                             <li>
-                                                                <a class="dropdown-item d-flex align-items-center" style="font-weight: 600;" href="pages-faq.html">
+                                                                <a class="dropdown-item d-flex align-items-center" style="font-weight: 600;" href="{{ route('montar-contratos.create', $aluno->id) }}">
                                                                     <i class="bx bx-notepad fs-4" style="color: rgb(129, 86, 5);"></i>
                                                                     <span>Montar Contrato</span>
                                                                 </a>
                                                             </li>
                                                         @endif
 
+                                                        <li>
+                                                            <hr class="dropdown-divider">
+                                                        </li>
+
+                                                        {{-- Avaliações Físicas --}}
                                                         <li>
                                                             <a class="dropdown-item d-flex align-items-center" href="{{ route('realizar.index', $aluno->id) }}" style="font-weight: 600;">
                                                                 <i class="bx bxs-heart fs-4 text-danger"></i>
@@ -225,6 +238,7 @@
                                                             <hr class="dropdown-divider">
                                                         </li>
 
+                                                        {{-- Excluir --}}
                                                         <li>
                                                             @if($aluno->tipo_treino == 'personal')
                                                             @else

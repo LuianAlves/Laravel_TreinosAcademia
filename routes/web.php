@@ -18,6 +18,12 @@ use App\Http\Controllers\Aluno\Avaliacao\AvaliacaoFisicaAlunosController;
 // Pagamentos
 use App\Http\Controllers\Aluno\Pagamentos\PagamentoController;
 
+// Contrato
+use App\Http\Controllers\Aluno\Contratos\DadosAlunoContratoController;
+use App\Http\Controllers\Aluno\Contratos\DadosProfessorContratoController;
+use App\Http\Controllers\Aluno\Contratos\InfoAdicionalContratoController;
+use App\Http\Controllers\Aluno\Contratos\ContratosController;
+
 // Montar Treinos
 use App\Http\Controllers\Aluno\Treinos\MontarTreinoController;
 use App\Http\Controllers\Aluno\Treinos\TreinoMontadoController;
@@ -106,17 +112,29 @@ Route::middleware('auth')->group(function () {
         Route::resource('realizar', AvaliacaoFisicaController::class)->except('index', 'create');
     });
 
+    // Contratos
+    Route::prefix('contratos')->group(function() {
+        // Montar 
+        Route::get('montar-contrato/create/{aluno_id}', [ContratosController::class, 'create'])->name('montar-contratos.create');
+        Route::resource('montar-contrato', ContratosController::class)->except('create');
+
+        // Alunos
+        Route::get('dados/alunos/{aluno_id}/{professor_id}/{cod_contrato}', [DadosAlunoContratoController::class, 'index'])->name('contratos.dados.alunos.index');
+        Route::resource('dados-alunos', DadosAlunoContratoController::class)->except('index');
+
+        // Professores
+        Route::resource('dados-professores', DadosProfessorContratoController::class)->except('create');
+    });
+
     // Pagamentos
     Route::prefix('pagamentos')->group(function() {
-        // Geral
         Route::get('geral/{aluno_id}', [PagamentoController::class, 'index'])->name('pagamentos.geral.index');
         Route::post('geral/store', [PagamentoController::class, 'store'])->name('pagamentos.geral.store');
         Route::get('geral/edit/{id}', [PagamentoController::class, 'edit'])->name('pagamentos.geral.edit');
         Route::post('geral/update/{id}', [PagamentoController::class, 'update'])->name('pagamentos.geral.update');
-
-
-        // Personal
-
+        
+        Route::get('geral/todos/lista', [PagamentoController::class, 'Pagamentos'])->name('pagamentos.geral.todos');
+        Route::get('geral/todos/pendentes', [PagamentoController::class, 'PagamentosPendentes'])->name('pagamentos.todos.pendentes');
 
         Route::get('geral/pagou/{pgt_id}', [GeralController::class, 'pagou'])->name('pagamentos.pagou');
         Route::get('geral/naopagou/{pgt_id}', [GeralController::class, 'naoPagou'])->name('pagamentos.naopagou');

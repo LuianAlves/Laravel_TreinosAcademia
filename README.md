@@ -67,6 +67,11 @@
 * CRUD para pagamentos gerais
 
 * Configurado template para download das avaliações físicas
+* Configurado template para download dos treinos montados
+
+* Criado CRUD para Dados de Contrato para Professores
+* Criado CRUD para Dados de Contrato para Alunos
+* Configurado o modelo de contrato com as informações dos alunos/professores
 
 
 

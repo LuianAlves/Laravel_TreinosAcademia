@@ -13,6 +13,20 @@ use Carbon\Carbon;
 
 class PagamentoController extends Controller
 {
+    public function Pagamentos()
+    {
+        $pagamentos = Pagamento::orderBy('status', 'asc')->get();
+
+        return view('app.alunos.pagamentos.geral.todos', compact('pagamentos'));
+    }
+
+    public function PagamentosPendentes()
+    {
+        $pagamentos = Pagamento::where('status', 0)->orderBy('data_pagamento_geral', 'DESC')->get();
+
+        return view('app.alunos.pagamentos.geral.todos_pendentes', compact('pagamentos'));
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -70,17 +84,6 @@ class PagamentoController extends Controller
         ]);
 
         return redirect()->back();
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Pagamentos\Pagamento  $pagamento
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Pagamento $pagamento)
-    {
-        //
     }
 
     /**

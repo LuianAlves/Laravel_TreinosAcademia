@@ -138,21 +138,42 @@
             </ul>
         </li> --}}
 
-        {{-- <li class="nav-heading">Configurar Contrato</li> --}}
+        <li class="nav-heading">Configurar Contrato</li>
 
-        {{-- Categoria de Treino --}}
-        {{-- <li class="nav-item">
+        {{-- Contrato --}}
+        <li class="nav-item">
             <a class="nav-link collapsed" data-bs-target="#modeloContrato" data-bs-toggle="collapse" href="#">
-                <i class="bx bxs-file fs-5"></i><span>Modelo de Contrato</span><i class="bi bi-chevron-down ms-auto"></i>
+                <i class="bx bxs-file fs-5"></i><span>Contrato</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
             <ul id="modeloContrato" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                 <li>
-                    <a href="{{ route('categoria.index') }}">
-                        <i class="bi bi-circle"></i><span>Modelo de Contrato</span>
+                    <a href="{{ route('dados-professores.index') }}">
+                        <i class="bi bi-circle"></i><span>Dados dos Professores</span>
                     </a>
                 </li>
             </ul>
-        </li> --}}
+        </li>
+
+        <li class="nav-heading">Pagamentos</li>
+
+        {{-- Pagamentos --}}
+        <li class="nav-item">
+            <a class="nav-link collapsed" data-bs-target="#pgtGeral" data-bs-toggle="collapse" href="#">
+                <i class="bx bx-dollar fs-5"></i><span>Pagamentos</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="pgtGeral" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                <li>
+                    <a href="{{ route('pagamentos.geral.todos') }}">
+                        <i class="bi bi-circle"></i><span>Todos os Pagamentos</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('pagamentos.todos.pendentes') }}">
+                        <i class="bi bi-circle"></i><span>Pagamentos Pendentes</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
 
     {{-- <li class="nav-heading">Configurações da Conta</li> --}}
 
@@ -170,7 +191,7 @@
             </ul>
         </li>  --}}
 
-        {{-- <li class="nav-heading">EXTRA</li> --}}
+        <li class="nav-heading">EXTRA</li>
 
         {{-- <li class="nav-item">
             <a class="nav-link collapsed" href="{{ route('logout') }}">
@@ -179,12 +200,12 @@
             </a>
         </li> --}}
 
-        {{-- <li class="nav-item">
+        <li class="nav-item">
             <a class="nav-link collapsed" href="{{ route('logout') }}">
                 <i class="bi bi-box-arrow-right fs-5 text-danger"></i>
                 <span class="text-danger">Deslogar</span>
             </a>
-        </li> --}}
+        </li>
 
     </ul>
 
