@@ -11,90 +11,13 @@
             <div class="card mt-3">
                 <div class="card-body">
 
-                    <form action="{{ route('montar-contrato.store') }}" method="post">
+                    <form action="{{ route('info-adicional.store') }}" method="post">
 
-                        <input type="hidden" name="aluno_id" value="{{ $aluno->id }}">
-                        <input type="hidden" name="professor_id" value="{{ $d_professor->id }}">
+                        <input type="hidden" name="aluno_id" value="{{ $aluno->aluno_id }}">
+                        <input type="hidden" name="professor_id" value="{{ $professor->id }}">
+                        <input type="hidden" name="codigo_contrato" value="{{ $codigo_contrato->codigo_contrato }}">
 
-                        <h4 class="card-title text-center mb-5">Contrato de prestação de serviço de Personal Trainer</h4>
-
-                        {{-- Dados do Aluno --}}
-                        <p>
-                            <b class="text-uppercase mt-4">Contratante: </b>
-                            <input type="text" name="nome" class="input-contrato" required placeholder="Nome Completo"
-                                value="{{ $aluno->nome != '' ? $aluno->nome : '' }}">, Brasileira,
-                            <input type="text" name="estado_civil" class="input-contrato" placeholder="Estado Cívil"
-                                value="">,
-                            <input type="text" name="profissao" class="input-contrato" placeholder="Profissão" value="">,
-                            Carteira de Identidade nº <input type="text" name="rg" class="input-contrato" required
-                                placeholder="RG" value="">,
-                            C.P.F. nº <input type="text" name="cpf" class="input-contrato" required placeholder="CPF"
-                                value="">,
-                            residente e domiciliado na Rua <input type="text" name="endereco" class="input-contrato"
-                                required placeholder="Endereço" value="">,
-                            nº <input type="text" name="numero_casa" class="input-contrato" required
-                                placeholder="Número Casa" value="">,
-                            bairro <input type="text" name="bairro" class="input-contrato" required placeholder="Bairro"
-                                value="">,
-                            CEP <input type="text" name="cep" class="input-contrato" required placeholder="Cep" value="">,
-                            Cidade <input type="text" name="cidade" class="input-contrato" required placeholder="Cidade"
-                                value="">,
-                            no Estado <input type="text" name="estado" class="input-contrato" placeholder="Estado"
-                                value="">,
-                            Telefone: <input type="text" name="telefone_fixo" class="input-contrato"
-                                placeholder="Telefone Fixo" value="">
-                            cel./whatsApp: <input type="text" name="telefone_celular" class="input-contrato"
-                                placeholder="Celular" value="">,
-                            E-mail: <input type="text" name="email" class="input-contrato" placeholder="Email" value="{{$aluno->email != '' ? $aluno->email : ''}}">.
-                        </p>
-
-                        <br>
-
-                        {{-- Dados do Professor --}}
-                        <p>
-                            <b class="text-uppercase">Contratado: </b>
-                            <input type="text" name="nome_professor" class="input-contrato" required
-                                placeholder="Nome Completo"
-                                value="{{ $d_professor->nome_professor != '' ? $d_professor->nome_professor : '' }}">,
-                            Brasileira,
-                            <input type="text" name="estado_civil_professor" class="input-contrato"
-                                placeholder="Estado Cívil"
-                                value="{{ $d_professor->estado_civil_professor != '' ? $d_professor->estado_civil_professor : '' }}">,
-                            <input type="text" name="profissao_professor" class="input-contrato" placeholder="Profissão"
-                                value="{{ $d_professor->profissao_professor != '' ? $d_professor->profissao_professor : '' }}">,
-                            Carteira de Identidade nº <input type="text" name="rg_professor" class="input-contrato" required
-                                placeholder="RG"
-                                value="{{ $d_professor->rg_professor != '' ? $d_professor->rg_professor : '' }}">,
-                            C.P.F. nº <input type="text" name="cpf_professor" class="input-contrato" required
-                                placeholder="CPF"
-                                value="{{ $d_professor->cpf_professor != '' ? $d_professor->cpf_professor : '' }}">,
-                            residente e domiciliado na Rua <input type="text" name="endereco_professor"
-                                class="input-contrato" required placeholder="Endereço"
-                                value="{{ $d_professor->endereco_professor != '' ? $d_professor->endereco_professor : '' }}">,
-                            nº <input type="text" name="numero_casa_professor" class="input-contrato" required
-                                placeholder="Número Casa"
-                                value="{{ $d_professor->numero_casa_professor != '' ? $d_professor->numero_casa_professor : '' }}">,
-                            bairro <input type="text" name="bairro_professor" class="input-contrato" required
-                                placeholder="Bairro"
-                                value="{{ $d_professor->bairro_professor != '' ? $d_professor->bairro_professor : '' }}">,
-                            CEP <input type="text" name="cep_professor" class="input-contrato" required placeholder="Cep"
-                                value="{{ $d_professor->cep_professor != '' ? $d_professor->cep_professor : '' }}">,
-                            Cidade <input type="text" name="cidade_professor" class="input-contrato" required
-                                placeholder="Cidade"
-                                value="{{ $d_professor->cidade_professor != '' ? $d_professor->cidade_professor : '' }}">,
-                            no Estado <input type="text" name="estado_professor" class="input-contrato" placeholder="Estado"
-                                value="{{ $d_professor->estado_professor != '' ? $d_professor->estado_professor : '' }}">,
-                            Telefone: <input type="text" name="telefone_fixo_professor" class="input-contrato"
-                                placeholder="Telefone Fixo"
-                                value="{{ $d_professor->telefone_fixo_professor != '' ? $d_professor->telefone_fixo_professor : '' }}">
-                            cel./whatsApp: <input type="text" name="telefone_celular_professor" class="input-contrato"
-                                placeholder="Celular"
-                                value="{{ $d_professor->telefone_celular_professor != '' ? $d_professor->telefone_celular_professor : '' }}">,
-                            E-mail: <input type="text" name="email_professor" class="input-contrato" placeholder="Email"
-                                value="{{ $d_professor->email_professor != '' ? $d_professor->email_professor : '' }}">.
-                        </p>
-
-                        <br>
+                        <h4 class="card-title text-center mb-5">Informações Adicionais do Contrato</h4>
 
                         {{-- Informações Adicionais --}}
                         <p>
@@ -261,7 +184,7 @@
                         </p>
                         <p>
                             <b>Contratado: </b> <input type="text" name="nome_professor" class="input-contrato w-100" style="text-align: center;" placeholder="Nome Completo do Contratado" 
-                            value="{{ $d_professor->nome_professor != '' ? $d_professor->nome_professor : '' }}">
+                            value="{{ $professor->nome_professor != '' ? $professor->nome_professor : '' }}">
                         </p>
 
                         <br>

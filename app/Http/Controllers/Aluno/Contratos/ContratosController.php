@@ -7,7 +7,9 @@ use Illuminate\Http\Request;
 
 use App\Models\Aluno;
 use App\Models\Contratos\Contratos;
-use App\Models\Contratos\DadosProfessorContrato;
+// use App\Models\Contratos\DadosProfessorContrato;
+use App\Models\Contratos\InfoAdicionalContrato;
+
 
 use Carbon\Carbon;
 
@@ -18,55 +20,12 @@ class ContratosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create($aluno_id)
+    public function index($aluno_id)
     {
         $aluno = Aluno::where('id', $aluno_id)->first();
-        $professores = DadosProfessorContrato::get();
+        $contratos = Contratos::where('aluno_id', $aluno_id)->get();
 
-        return view('app.alunos.contratos.create', compact('aluno', 'professores'));
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        $aluno_id = $request->aluno_id;
-        $professor_id = $request->professor_id;
-        $cod_contrato = mt_rand(0, 9999);
-
-        Contratos::insert([
-            'professor_id' => $professor_id,
-            'aluno_id' => $aluno_id,
-            'codigo_contrato' => $cod_contrato,
-            'created_at' => Carbon::now()
-        ]);
-
-        return redirect()->route('contratos.dados.alunos.index', ['aluno_id' => $aluno_id, 'cod_contrato' => $cod_contrato, 'professor_id' => $professor_id]);
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+        return view('app.alunos.contratos.montados.index', compact('contratos', 'aluno'));
     }
 
     /**
@@ -92,14 +51,13 @@ class ContratosController extends Controller
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+    // =====================================
+    
+    public function destroy($contrato_id, $codigo_contrato)
     {
-        //
+        Contratos::where('id', $contrato_id)->delete();
+        InfoAdicionalContrato::where('codigo_contrato', $codigo_contrato)->delete();
+
+        return redirect()->back();
     }
 }

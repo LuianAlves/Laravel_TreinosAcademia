@@ -30,8 +30,20 @@
                             @endforeach
                         </div>
 
+                        <div class="row mt-5">
+                            
+                        </div>
+
                         <div class="row justify-content-end mt-5">
-                            <div class="col-2">
+                            <div class="col-6">
+                                <div class="input-group mb-3">
+                                    <input type="text" name="nome_contrato" class="form-control form-control-sm" placeholder="Nome do Contrato">
+                                </div>
+                                @error('nome_contrato')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                            <div class="col-2 offset-4">
                                 <button class="btn btn-sm btn-success">Próximo</button>
                             </div>
                         </div>

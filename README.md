@@ -72,6 +72,11 @@
 * Criado CRUD para Dados de Contrato para Professores
 * Criado CRUD para Dados de Contrato para Alunos
 * Configurado o modelo de contrato com as informações dos alunos/professores
+* Nova rota pra atualizar dados dos professores de acordo com o contrato
+* Configurado o modelo de contrato com as cláusulas e finalizando os dados do contrato
+
+
+* Próxima etapa é configurar o modelo do contrato em PDF
 
 
 

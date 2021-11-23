@@ -17,6 +17,7 @@ class CreateContratosTable extends Migration
             $table->id();
             $table->unsignedBigInteger('professor_id')->unsigned();
             $table->unsignedBigInteger('aluno_id')->unsigned();
+            $table->string('nome_contrato');
             $table->string('codigo_contrato');
             $table->timestamps();
 

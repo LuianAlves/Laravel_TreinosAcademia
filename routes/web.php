@@ -19,10 +19,11 @@ use App\Http\Controllers\Aluno\Avaliacao\AvaliacaoFisicaAlunosController;
 use App\Http\Controllers\Aluno\Pagamentos\PagamentoController;
 
 // Contrato
+use App\Http\Controllers\Aluno\Contratos\ContratosController;
+use App\Http\Controllers\Aluno\Contratos\MontarContratoController;
 use App\Http\Controllers\Aluno\Contratos\DadosAlunoContratoController;
 use App\Http\Controllers\Aluno\Contratos\DadosProfessorContratoController;
 use App\Http\Controllers\Aluno\Contratos\InfoAdicionalContratoController;
-use App\Http\Controllers\Aluno\Contratos\ContratosController;
 
 // Montar Treinos
 use App\Http\Controllers\Aluno\Treinos\MontarTreinoController;
@@ -114,16 +115,29 @@ Route::middleware('auth')->group(function () {
 
     // Contratos
     Route::prefix('contratos')->group(function() {
-        // Montar 
-        Route::get('montar-contrato/create/{aluno_id}', [ContratosController::class, 'create'])->name('montar-contratos.create');
-        Route::resource('montar-contrato', ContratosController::class)->except('create');
-
-        // Alunos
-        Route::get('dados/alunos/{aluno_id}/{professor_id}/{cod_contrato}', [DadosAlunoContratoController::class, 'index'])->name('contratos.dados.alunos.index');
-        Route::resource('dados-alunos', DadosAlunoContratoController::class)->except('index');
 
         // Professores
-        Route::resource('dados-professores', DadosProfessorContratoController::class)->except('create');
+        Route::resource('dados-professores', DadosProfessorContratoController::class)->except('create', 'show');
+
+        // Montar 
+        Route::post('montar-contrato/dados-professor/store', [DadosProfessorContratoController::class, 'store'])->name('montar-contrato.etapa-professor.store');
+        
+        Route::get('montar-contrato/create/{aluno_id}', [MontarContratoController::class, 'create'])->name('montar-contrato.create');
+        Route::get('montar-contrato/dados-professor/create/{aluno_id}/{professor_id}/{codigo_contrato}', [MontarContratoController::class, 'etapaProfessor'])->name('montar-contrato.etapa-professor.create');
+        Route::resource('montar-contrato', MontarContratoController::class)->except('create');
+        
+        // Alunos
+        Route::get('dados-aluno/create/{aluno_id}/{professor_id}/{codigo_contrato}', [DadosAlunoContratoController::class, 'create'])->name('contratos.dados-aluno.create');
+        Route::resource('dados-alunos', DadosAlunoContratoController::class)->except('create');
+        
+        // Informações Adicionais
+        Route::get('info-adicional/create/{aluno_id}/{professor_id}/{codigo_contrato}', [InfoAdicionalContratoController::class, 'create'])->name('contratos.info-adicionais.create');
+        Route::resource('info-adicional', InfoAdicionalContratoController::class)->except('create');
+        
+        // Montados
+        Route::get('contratos-montados/index/{aluno_id}', [ContratosController::class, 'index'])->name('contratos-montados.index');
+        Route::get('montar-contrato/destroy/{contrato_id}/{codigo_contrato}', [ContratosController::class, 'destroy'])->name('montar-contrato.destroy');
+        Route::resource('contratos-montados', ContratosController::class)->except('index', 'create', 'show', 'destroy');
     });
 
     // Pagamentos

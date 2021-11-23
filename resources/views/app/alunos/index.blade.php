@@ -202,9 +202,22 @@
                                                         {{-- Contratos --}}
                                                         @if($aluno->tipo_treino == 'personal' || $aluno->tipo_treino == 'Personal')
                                                             <li>
-                                                                <a class="dropdown-item d-flex align-items-center" style="font-weight: 600;" href="{{ route('montar-contratos.create', $aluno->id) }}">
+                                                                <a class="dropdown-item d-flex align-items-center" style="font-weight: 600;" href="{{ route('montar-contrato.create', $aluno->id) }}">
                                                                     <i class="bx bx-notepad fs-4" style="color: rgb(129, 86, 5);"></i>
                                                                     <span>Montar Contrato</span>
+                                                                </a>
+                                                            </li>
+                                                        @endif  
+
+                                                        @php
+                                                            $contratos = App\Models\Contratos\Contratos::where('aluno_id', $aluno->id)->first();
+                                                        @endphp
+
+                                                        @if(!empty($contratos))
+                                                            <li>
+                                                                <a class="dropdown-item d-flex align-items-center" style="font-weight: 600;" href="{{ route('contratos-montados.index', $aluno->id) }}">
+                                                                    <i class="bx bx-notepad fs-4" style="color: rgb(129, 86, 5);"></i>
+                                                                    <span>Contratos Montados</span>
                                                                 </a>
                                                             </li>
                                                         @endif
