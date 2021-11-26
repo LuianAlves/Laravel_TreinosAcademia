@@ -104,6 +104,7 @@ Route::middleware('auth')->group(function () {
         // Lista de Alunos
         Route::get('avaliacoes/create/{aluno_id}', [AvaliacaoFisicaAlunosController::class, 'create'])->name('avaliacoes.create');
         Route::get('avaliacoes/edit/{aluno_id}/{codigo}', [AvaliacaoFisicaAlunosController::class, 'edit'])->name('avaliacoes.edit');
+        Route::post('avaliacoes/update/{aluno_id}', [AvaliacaoFisicaAlunosController::class, 'update'])->name('avaliacoes.update');
         Route::get('avaliacoes/destroy/{aluno_id}/{codigo}', [AvaliacaoFisicaAlunosController::class, 'destroy'])->name('avaliacoes.destroy');
         Route::resource('avaliacoes', AvaliacaoFisicaAlunosController::class)->except('create', 'edit', 'update', 'destroy');
 
@@ -160,7 +161,7 @@ Route::middleware('auth')->group(function () {
 
     // Downloads
     Route::prefix('download')->group(function() {
-        Route::get('/personal/treinos/{divisao}/{treino_id}', [DownloadController::class, 'DownloadPersonal'])->name('download.personal');
+        Route::get('/personal/treinos/{divisao}/{treino_id}/{codigo_treino}', [DownloadController::class, 'DownloadPersonal'])->name('download.personal');
         Route::get('/avaliacao/{codigo_ava}', [DownloadController::class, 'DownloadAvaliacaoFisica'])->name('download.avaliacao.fisica');
         Route::get('contratos/download/{codigo_contrato}/{aluno_id}/{professor_id}', [DownloadController::class, 'DownloadContrato'])->name('contratos.download');
 

@@ -158,14 +158,14 @@
             </tr>
             <tr>
                 <th>Abdomê:</th>
-                <th class="borda-direita"><span>{{ $perimetros->cintura }}</span></th>
+                <th class="borda-direita"><span>{{ $perimetros->abdomen }}</span></th>
                 <th>Coxa: </th>
                 <th><span> {{ $perimetros->coxa_direita }}</span></th>
                 <th><span>{{ $perimetros->coxa_esquerda }}</span></th>
             </tr>
             <tr>
                 <th>Quadril:</th>
-                <th class="borda-direita"><span>{{ $perimetros->cintura }}</span></th>
+                <th class="borda-direita"><span>{{ $perimetros->quadril }}</span></th>
                 <th>Panturrilha: </th>
                 <th><span> {{ $perimetros->panturrilha_direita }}</span></th>
                 <th><span>{{ $perimetros->panturrilha_esquerda }}</span></th>

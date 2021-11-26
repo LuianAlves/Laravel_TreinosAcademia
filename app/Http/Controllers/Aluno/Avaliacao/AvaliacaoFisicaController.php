@@ -77,7 +77,7 @@ class AvaliacaoFisicaController extends Controller
                 'data_nasc' => $request->data_nasc,
                 'historico_familiar' => $request->historico_familiar,
                 'estatura' => $request->estatura,
-                'peso' => $request->peso . ' KG',
+                'peso' => $request->peso,
                 'created_at' => Carbon::now()
             ]);
 
@@ -115,9 +115,9 @@ class AvaliacaoFisicaController extends Controller
             NeuromotoresAvaliacaoFisica::insert([
                 'aluno_id' => $request->aluno_id,
                 'codigo_avaliacao' => $codigo,
-                'flexoes' => $request->subscapular, 
-                'abdominais' => $request->axilar_media, 
-                'flexibilidade' => $request->supra_iliaca, 
+                'flexoes' => $request->flexoes, 
+                'abdominais' => $request->abdominais, 
+                'flexibilidade' => $request->flexibilidade, 
                 'created_at' => Carbon::now()
             ]);
 

@@ -17,6 +17,7 @@
 
                                 <div class="mt-3">
                                     <a href="{{ route('alunos.index') }}" class="btn btn-sm text-white" style="font-weight: 700; background: #4154f1;">Voltar</a>
+                                    <a href="{{ route('montar-contrato.create', $aluno->id) }}" class="btn btn-sm text-white" style="font-weight: 700; background: #4154f1;">Novo Contrato</a>
                                 </div>
                             </div>
                         </div>

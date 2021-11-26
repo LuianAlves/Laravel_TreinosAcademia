@@ -18,13 +18,13 @@
             </a>
             <ul id="alunos" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                 <li>
-                    <a href="{{ route('alunos.index') }}">
-                        <i class="bi bi-circle"></i><span>Listagem de Alunos</span>
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#createAluno">
+                        <i class="bi bi-circle"></i><span>Novo Aluno</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#" data-bs-toggle="modal" data-bs-target="#createAluno">
-                        <i class="bi bi-circle"></i><span>Novo Aluno</span>
+                    <a href="{{ route('alunos.index') }}">
+                        <i class="bi bi-circle"></i><span>Listagem de Alunos</span>
                     </a>
                 </li>
             </ul>
@@ -82,6 +82,7 @@
             </ul>
         </li>  
 
+        <hr style="color: rgba(204, 204, 204, 0.39);">
         <li class="nav-heading">Configurar Treinos</li>
 
         {{-- Categoria de Treino --}}
@@ -91,13 +92,13 @@
             </a>
             <ul id="categoriaTreino" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                 <li>
-                    <a href="{{ route('categoria.index') }}">
-                        <i class="bi bi-circle"></i><span>Listagem de Categorias</span>
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#createCategoriaTreino">
+                        <i class="bi bi-circle"></i><span>Adicionar Categoria</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#" data-bs-toggle="modal" data-bs-target="#createCategoriaTreino">
-                        <i class="bi bi-circle"></i><span>Adicionar Categoria</span>
+                    <a href="{{ route('categoria.index') }}">
+                        <i class="bi bi-circle"></i><span>Listagem de Categorias</span>
                     </a>
                 </li>
             </ul>
@@ -110,22 +111,23 @@
             </a>
             <ul id="exercicioTreino" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                 <li>
-                    <a href="{{ route('exercicio.index') }}">
-                        <i class="bi bi-circle"></i><span>Listagem de Exercícios</span>
-                    </a>
-                </li>
-                <li>
                     <a href="#" data-bs-toggle="modal" data-bs-target="#createExercicioTreino">
                         <i class="bi bi-circle"></i><span>Adicionar Exercício</span>
                     </a>
                 </li>
+                <li>
+                    <a href="{{ route('exercicio.index') }}">
+                        <i class="bi bi-circle"></i><span>Listagem de Exercícios</span>
+                    </a>
+                </li>
             </ul>
         </li>
-
-        {{-- <li class="nav-heading">Configurar Avaliação Física</li> --}}
+        
+        <hr style="color: rgba(204, 204, 204, 0.39);">
+        <li class="nav-heading">Configurar Avaliação Física</li>
 
         {{-- Categoria de Treino --}}
-        {{-- <li class="nav-item">
+        <li class="nav-item">
             <a class="nav-link collapsed" data-bs-target="#calculosAvaliacao" data-bs-toggle="collapse" href="#">
                 <i class="bx bx-category-alt fs-5"></i><span>Cálculos</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
@@ -136,14 +138,15 @@
                     </a>
                 </li>
             </ul>
-        </li> --}}
+        </li>
 
-        <li class="nav-heading">Configurar Contrato</li>
+        <hr style="color: rgba(204, 204, 204, 0.39);">
+        <li class="nav-heading">Configurar Professores</li>
 
         {{-- Contrato --}}
         <li class="nav-item">
             <a class="nav-link collapsed" data-bs-target="#modeloContrato" data-bs-toggle="collapse" href="#">
-                <i class="bx bxs-file fs-5"></i><span>Contrato</span><i class="bi bi-chevron-down ms-auto"></i>
+                <i class="bx bxs-file fs-5"></i><span>Professores</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
             <ul id="modeloContrato" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                 <li>
@@ -154,6 +157,7 @@
             </ul>
         </li>
 
+        <hr style="color: rgba(204, 204, 204, 0.39);">
         <li class="nav-heading">Pagamentos</li>
 
         {{-- Pagamentos --}}
@@ -191,6 +195,7 @@
             </ul>
         </li>  --}}
 
+        <hr style="color: rgba(204, 204, 204, 0.39);">
         <li class="nav-heading">EXTRA</li>
 
         {{-- <li class="nav-item">

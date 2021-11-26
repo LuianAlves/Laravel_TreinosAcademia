@@ -77,8 +77,8 @@
 * PDF do contrato configurado
 * Finalizado o CRUD dos dados de alunos do Contrato (Edit/Delete)
 * View para editar contratos montados
-
-
+* View para editar Avaliações Físicas
+* Finalizado o CRUD para Avaliações Físicas (Edit)
 
 
 </p>

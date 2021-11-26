@@ -16,7 +16,12 @@
                                 <h4 class="card-title">Avaliações do Aluno <b class="fs-5" style="color: #7b84d6;">{{ $aluno->nome }}</b></h4>
 
                                 <div class="mt-3">
-                                    <a href="{{ route('avaliacoes.index') }}" class="btn btn-sm text-white" style="font-weight: 700; background: #4154f1;">Voltar</a>
+                                    @if($aluno->tipo_treino != 'avaliação física')
+                                        <a href="{{ route('alunos.index') }}" class="btn btn-sm text-white" style="font-weight: 700; background: #4154f1;">Voltar</a>
+                                    @else
+                                        <a href="{{ route('avaliacoes.index') }}" class="btn btn-sm text-white" style="font-weight: 700; background: #4154f1;">Voltar</a>
+                                    @endif
+                                    <a href="{{ route('realizar.index', $aluno->id) }}" class="btn btn-sm text-white" style="font-weight: 700; background: #4154f1;">Nova Avaliação</a>
                                 </div>
                             </div>
                         </div>
@@ -39,7 +44,7 @@
                                                 {{ $avaliacao->codigo_avaliacao }}
                                             </th>
                                             <td class="text-center">{{ $avaliacao->estatura }} CM</td>
-                                            <td class="text-center">{{ $avaliacao->peso }}</td>
+                                            <td class="text-center">{{ $avaliacao->peso }} KG</td>
                                             
                                             <th class="text-muted text-center">
                                                 {{ 

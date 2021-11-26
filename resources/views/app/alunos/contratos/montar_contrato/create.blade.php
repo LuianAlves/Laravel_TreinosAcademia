@@ -15,7 +15,7 @@
             {{-- Escolher Professor --}}
             <div class="row">
                 <div class="card mt-3">
-                    <h5 class="card-title">Montar Treino para <b class="fs-5" style="color: #7b84d6;">{{ $aluno->nome }}</b></h5>
+                    <h5 class="card-title">Montar Contrato para <b class="fs-5" style="color: #7b84d6;">{{ $aluno->nome }}</b></h5>
                     <div class="card-body">
                         <h5 class="card-title text-center">Professor</h5>
 

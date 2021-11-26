@@ -82,7 +82,7 @@ class InfoAdicionalContratoController extends Controller
             'created_at' => Carbon::now()
         ]);
 
-        return redirect()->route('contratos-montados.index',[$aluno, $codigo]);
+        return redirect()->route('contratos-montados.index', $aluno);
     }
 
     /**
