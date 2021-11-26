@@ -92,7 +92,7 @@
                         <h4 class="card-title">Remuneração</h4>
 
                         <p>
-                            <b style="margin-right: 10px;">Cláusula 8ª.</b> Pela prestação dos serviços contratados, o
+                            <b style="margin-right: 10px;">Cláusula 9ª.</b> Pela prestação dos serviços contratados, o
                             <b>CONTRATANTE</b> pagará ao <b>CONTRATADO</b> a quantia
                             mensal de R$ <input type="text" name="pagamento_mensal" class="input-contrato"
                                 placeholder="Pagamento Mensal" value=""> (<input type="text"
@@ -103,7 +103,7 @@
                         </p>
 
                         <p>
-                            <b style="margin-right: 10px;">Cláusula 9ª.</b>Será permitida a tolerância de <input type="text"
+                            <b style="margin-right: 10px;">Cláusula 10ª.</b>Será permitida a tolerância de <input type="text"
                                 name="dia_de_tolerancia" class="input-contrato" placeholder="Quantidade de Dias" value="">
                             dias para o pagamento da mensalidade, sendo cobrada,
                             no caso de desrespeito a esse prazo, multa de <input type="text" name="multa_atraso"
@@ -111,23 +111,23 @@
                         </p>
 
                         <p>
-                            <b style="margin-right: 10px;">Cláusula 10ª.</b> Este contrato tem a duração de <input
+                            <b style="margin-right: 10px;">Cláusula 11ª.</b> Este contrato tem a duração de <input
                                 type="text" name="duracao_contrato" class="input-contrato" placeholder="Total de Dias"
-                                value=""> dias, com início em <input type="text" name="inicio_contrato"
+                                value=""> dias, com início em <input type="date" name="inicio_contrato"
                                 class="input-contrato" placeholder="Data de Início" value=""> e término em
-                            <input type="text" name="final_contrato" class="input-contrato" placeholder="Data de Término"
+                            <input type="date" name="final_contrato" class="input-contrato" placeholder="Data de Término"
                                 value="">.
                         </p>
 
                         <p>
-                            <b style="margin-right: 10px;">Cláusula 11ª.</b>Aos Domingos e Feriados os valores são cobrados
+                            <b style="margin-right: 10px;">Cláusula 12ª.</b>Aos Domingos e Feriados os valores são cobrados
                             a parte.
                         </p>
 
                         <h4 class="card-title">Rescisão e Férias</h4>
 
                         <p>
-                            <b style="margin-right: 10px;">Cláusula 12ª.</b>Caso o <b>CONTRATANTE</b> venha a desistir da
+                            <b style="margin-right: 10px;">Cláusula 13ª.</b>Caso o <b>CONTRATANTE</b> venha a desistir da
                             prestação de serviço, pagará ao <b>CONTRATADO</b> o
                             percentual de 100% sobre o valor total da prestação de serviço e deverá comunicar com
                             antecedência
@@ -135,7 +135,7 @@
                         </p>
 
                         <p>
-                            <b style="margin-right: 10px;">Cláusula 13ª.</b>Em períodos de viagens/férias, o
+                            <b style="margin-right: 10px;">Cláusula 14ª.</b>Em períodos de viagens/férias, o
                             <b>CONTRATANTE</b> deverá pagar integralmente o período que
                             ficar ausente, garantindo o horário acordado no item 3 acima, no planejamento de trabalho do
                             <b>CONTRATADO</b>.
@@ -144,7 +144,7 @@
                         <h4 class="card-title">Exames</h4>
 
                         <p>
-                            <b style="margin-right: 10px;">Cláusula 14ª.</b>Qualquer exame ou avaliação médica necessária
+                            <b style="margin-right: 10px;">Cláusula 15ª.</b>Qualquer exame ou avaliação médica necessária
                             que o <b>CONTRATANTE</b> deverá se submeter,
                             não estará inclusa na remuneração acordada no item 4 acima.
                         </p>
@@ -152,7 +152,7 @@
                         <h4 class="card-title">Vestimentas</h4>
 
                         <p>
-                            <b style="margin-right: 10px;">Cláusula 15ª.</b>Deverá o <b>CONTRATADO</b> e o
+                            <b style="margin-right: 10px;">Cláusula 16ª.</b>Deverá o <b>CONTRATADO</b> e o
                             <b>CONTRATANTE</b>, durante a sessão de treinamento, permanecer com
                             vestimentas e acessórios adequados para a atividade que irá exercer, observando sempre o aspecto
                             higiene na sua apresentação. Roupas leves, tênis, meia, garrafa de água, medidor de frequência
@@ -162,7 +162,7 @@
                         <h4 class="card-title">Foro</h4>
 
                         <p>
-                            <b style="margin-right: 10px;">Cláusula 16ª.</b>Com as condições de trabalho assim ajustadas,
+                            <b style="margin-right: 10px;">Cláusula 17ª.</b>Com as condições de trabalho assim ajustadas,
                             lidas e achadas conformes, o presente
                             contrato é firmado pelas partes em duas vias de igual teor e forma. As partes elegem o foro de
                             <input type="text" name="nome_foro" class="input-contrato" placeholder="Nome do Foro"
@@ -216,8 +216,7 @@
                                 <p>
                                     RG: <input type="text" name="testemunha_dois_rg" class="input-contrato" placeholder="RG da Testemunha 2">
                                 </p>
-                            </div>
-                            
+                            </div>         
                         </div>
 
 

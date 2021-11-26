@@ -8,7 +8,7 @@
     <section class="section">
         <div class="row">
 
-            <div class="col-lg-12">
+            <div class="col-lg-12" style="max-height: 700px; overflow-y: auto;">
                 <div class="card mt-3">
                     <div class="card-body">
                         <div class="row">
@@ -125,8 +125,6 @@
                                 </tbody>
                             </table>
                         </div>
-                        
-                        {{ $treinos->links('app.geral.paginate') }}
 
                     </div>
                 </div>

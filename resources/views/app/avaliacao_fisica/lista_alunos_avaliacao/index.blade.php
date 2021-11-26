@@ -13,7 +13,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="d-flex justify-content-between">
-                                <h4 class="card-title">Lista de Alunos PERSONAL</h4>
+                                <h4 class="card-title">Lista de Alunos AVALIAÇÃO FÍSICA</h4>
 
                                 @php
                                     $prefix = Request::route()->getName();

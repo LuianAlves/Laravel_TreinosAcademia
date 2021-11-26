@@ -38,7 +38,7 @@
                                             <th class="text-muted">
                                                 {{ $avaliacao->codigo_avaliacao }}
                                             </th>
-                                            <td class="text-center">{{ $avaliacao->estatura }}</td>
+                                            <td class="text-center">{{ $avaliacao->estatura }} CM</td>
                                             <td class="text-center">{{ $avaliacao->peso }}</td>
                                             
                                             <th class="text-muted text-center">
@@ -54,18 +54,17 @@
                                                     </a>
                                                     
                                                     <ul class="dropdown-menu" id="dropdown-menu-user">
-    
                                                         <li>
                                                             <a class="dropdown-item d-flex align-items-center" style="font-weight: 600;" href="{{ route('download.avaliacao.fisica', $avaliacao->codigo_avaliacao) }}">
-                                                                <i class="bx bx-minus-front fs-4 text-primary"></i>
-                                                               <span>Visualizar Avaliação Física</span>
+                                                                <i class="bx bx-download fs-4 text-success"></i>
+                                                                <span>Baixar Avaliação Física</span>
                                                             </a>
                                                         </li>
 
                                                         <li>
-                                                            <a class="dropdown-item d-flex align-items-center" style="font-weight: 600;" href="#">
-                                                                <i class="bx bx-download fs-4 text-success"></i>
-                                                               <span>Baixar Avaliação Física</span>
+                                                            <a class="dropdown-item d-flex align-items-center" style="font-weight: 600;" href="{{ route('avaliacoes.edit', ['aluno_id' => $avaliacao->aluno_id, 'codigo' =>  $avaliacao->codigo_avaliacao])}}">
+                                                                <i class="bx bx-edit fs-4 text-primary"></i>
+                                                                <span>Editar Avaliação</span>
                                                             </a>
                                                         </li>
 

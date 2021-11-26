@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use App\Models\Aluno;
 use App\Models\TreinoAluno\MontarTreino;
 
+use App\Models\Contratos\DadosProfessorContrato;
+
 use Carbon\Carbon;
 
 class MontarTreinoController extends Controller
@@ -33,7 +35,9 @@ class MontarTreinoController extends Controller
     public function create($aluno_id)
     {
         $aluno = Aluno::findOrFail($aluno_id);
-        return view('app.treinos.aluno.personal.create', compact('aluno'));
+        $professores = DadosProfessorContrato::orderBy('nome_professor', 'ASC')->get();
+
+        return view('app.treinos.aluno.personal.create', compact('aluno', 'professores'));
     }
 
     /**
@@ -79,8 +83,9 @@ class MontarTreinoController extends Controller
     public function edit($id)
     {
         $treino = MontarTreino::with('aluno')->where('id', $id)->first();
+        $professores = DadosProfessorContrato::orderBy('nome_professor', 'ASC')->get();
 
-        return view('app.treinos.aluno.personal.montados.edit', compact('treino'));
+        return view('app.treinos.aluno.personal.montados.edit', compact('treino', 'professores'));
     }
 
     /**

@@ -240,7 +240,7 @@
 
                                                         @if(!empty($avaliacoes))
                                                             <li>
-                                                                <a class="dropdown-item d-flex align-items-center" style="font-weight: 600;" href="{{ route('montado.index', $aluno->id) }}">
+                                                                <a class="dropdown-item d-flex align-items-center" style="font-weight: 600;" href="{{ route('avaliacoes.show', $aluno->id) }}">
                                                                     <i class="bx bx-heart text-danger fs-4"></i>
                                                                     <span>Avaliações Realizadas</span>
                                                                 </a>

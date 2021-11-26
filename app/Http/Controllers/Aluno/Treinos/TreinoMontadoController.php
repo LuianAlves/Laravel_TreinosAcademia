@@ -17,7 +17,7 @@ class TreinoMontadoController extends Controller
     {
         $id = Aluno::where('id', $aluno_id)->first();
 
-        $treinos = MontarTreino::where('aluno_id', $aluno_id)->paginate(10);
+        $treinos = MontarTreino::where('aluno_id', $aluno_id)->get();
 
         // Deixando A Data em Português 
         date_default_timezone_set('America/Sao_paulo');
@@ -28,6 +28,6 @@ class TreinoMontadoController extends Controller
 
         // dd($dt->formatLocalized('%A %d %B %Y'));
 
-        return view('app.treinos.aluno.personal.montados.index', compact('treinos', 'id'));
+        return view('app.treinos.aluno.personal.montados.index', compact('treinos','id'));
     }
 }

@@ -74,9 +74,9 @@
 * Configurado o modelo de contrato com as informações dos alunos/professores
 * Nova rota pra atualizar dados dos professores de acordo com o contrato
 * Configurado o modelo de contrato com as cláusulas e finalizando os dados do contrato
-
-
-* Próxima etapa é configurar o modelo do contrato em PDF
+* PDF do contrato configurado
+* Finalizado o CRUD dos dados de alunos do Contrato (Edit/Delete)
+* View para editar contratos montados
 
 
 

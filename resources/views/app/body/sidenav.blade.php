@@ -61,26 +61,26 @@
                     </a>
                 </li>
             </ul>
-        </li>  
+        </li> 
 
-        {{-- Montar Contrato de Alunos --}}
-        {{-- <li class="nav-item">
-            <a class="nav-link collapsed" data-bs-target="#montarContrato" data-bs-toggle="collapse" href="#">
+        {{-- Contratos --}}
+        <li class="nav-item">
+            <a class="nav-link collapsed" data-bs-target="#montarContratos" data-bs-toggle="collapse" href="#">
                 <i class="bx bx-file fs-5"></i><span>Contratos</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
-            <ul id="montarContrato" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+            <ul id="montarContratos" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                 <li>
-                    <a href="{{ route('montar.index') }}">
-                        <i class="bi bi-circle"></i><span>Montar Contrato</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ route('montar.index') }}">
+                    <a href="{{ route('contratos-montados.index.todos') }}">
                         <i class="bi bi-circle"></i><span>Contratos Montados</span>
                     </a>
                 </li>
+                <li>
+                    <a href="{{ route('dados-alunos.index') }}">
+                        <i class="bi bi-circle"></i><span>Dados dos Alunos</span>
+                    </a>
+                </li>
             </ul>
-        </li>   --}}
+        </li>  
 
         <li class="nav-heading">Configurar Treinos</li>
 

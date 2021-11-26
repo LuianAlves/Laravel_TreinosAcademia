@@ -20,15 +20,12 @@ class DadosAlunoContratoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    // public function index($aluno_id, $professor_id, $cod_contrato)
-    // {
-    //     $aluno = Aluno::where('id', $aluno_id)->first();
-    //     $d_aluno = DadosAlunoContrato::where('aluno_id', $aluno_id)->first();
-    //     $d_professor = DadosProfessorContrato::where('id', $professor_id)->first();
-    //     // $infos_adicionais = InfoAdicionalContrato::where('codigo_contrato', $cod_contrato)->first();
-
-    //     return view('app.alunos.contratos.dados.alunos.index', compact('aluno', 'd_aluno', 'd_professor'));
-    // }
+    public function index()
+    {
+        $alunos = DadosAlunoContrato::orderBy('nome', 'ASC')->get();
+        
+        return view('app.alunos.contratos.dados.alunos.index', compact('alunos'));
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -95,9 +92,11 @@ class DadosAlunoContratoController extends Controller
      * @param  \App\Models\Contratos\DadosContrato  $dadosContrato
      * @return \Illuminate\Http\Response
      */
-    public function edit(DadosContrato $dadosContrato)
+    public function edit($aluno_id)
     {
-        //
+        $aluno = DadosAlunoContrato::where('id', $aluno_id)->first();
+
+        return view('app.alunos.contratos.dados.alunos.edit', compact('aluno'));
     }
 
     /**
@@ -107,9 +106,28 @@ class DadosAlunoContratoController extends Controller
      * @param  \App\Models\Contratos\DadosContrato  $dadosContrato
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, DadosContrato $dadosContrato)
+    public function update(Request $request, $id)
     {
-        //
+        DadosAlunoContrato::findOrFail($id)->update([
+            'aluno_id' => $id,
+            'nome' => $request->nome,
+            'estado_civil' => $request->estado_civil,
+            'profissao' => $request->profissao,
+            'rg' => $request->rg,
+            'cpf' => $request->cpf,
+            'endereco' => $request->endereco,
+            'numero_casa' => $request->numero_casa,
+            'bairro' => $request->bairro,
+            'cep' => $request->cep,
+            'cidade' => $request->cidade,
+            'estado' => $request->estado,
+            'telefone_fixo' => $request->telefone_fixo,
+            'telefone_celular' => $request->telefone_celular,
+            'email' => $request->email,
+            'updated_at' => Carbon::now()
+        ]);
+
+        return redirect()->route('dados-alunos.index');
     }
 
     /**
@@ -118,8 +136,10 @@ class DadosAlunoContratoController extends Controller
      * @param  \App\Models\Contratos\DadosContrato  $dadosContrato
      * @return \Illuminate\Http\Response
      */
-    public function destroy(DadosContrato $dadosContrato)
+    public function destroy($id)
     {
-        //
+        DadosAlunoContrato::where('id', $id)->delete();
+
+        return redirect()->back();
     }
 }

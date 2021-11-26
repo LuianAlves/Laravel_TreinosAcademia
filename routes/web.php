@@ -103,6 +103,7 @@ Route::middleware('auth')->group(function () {
     Route::prefix('avaliacao')->group(function() {
         // Lista de Alunos
         Route::get('avaliacoes/create/{aluno_id}', [AvaliacaoFisicaAlunosController::class, 'create'])->name('avaliacoes.create');
+        Route::get('avaliacoes/edit/{aluno_id}/{codigo}', [AvaliacaoFisicaAlunosController::class, 'edit'])->name('avaliacoes.edit');
         Route::get('avaliacoes/destroy/{aluno_id}/{codigo}', [AvaliacaoFisicaAlunosController::class, 'destroy'])->name('avaliacoes.destroy');
         Route::resource('avaliacoes', AvaliacaoFisicaAlunosController::class)->except('create', 'edit', 'update', 'destroy');
 
@@ -136,8 +137,11 @@ Route::middleware('auth')->group(function () {
         
         // Montados
         Route::get('contratos-montados/index/{aluno_id}', [ContratosController::class, 'index'])->name('contratos-montados.index');
-        Route::get('montar-contrato/destroy/{contrato_id}/{codigo_contrato}', [ContratosController::class, 'destroy'])->name('montar-contrato.destroy');
-        Route::resource('contratos-montados', ContratosController::class)->except('index', 'create', 'show', 'destroy');
+        Route::get('contratos-montados/todos', [ContratosController::class, 'indexTodos'])->name('contratos-montados.index.todos');
+        Route::get('contratos-montados/edit/{codigo_contrato}/{aluno_id}/{professor_id}', [ContratosController::class, 'edit'])->name('contratos-montados.edit');
+        Route::post('contratos-montados/update/{codigo_contrato}/{aluno_id}', [ContratosController::class, 'update'])->name('contratos-montados.update');
+        Route::get('contratos-montados/destroy/{contrato_id}/{codigo_contrato}', [ContratosController::class, 'destroy'])->name('montar-contrato.destroy');
+        
     });
 
     // Pagamentos
@@ -158,6 +162,8 @@ Route::middleware('auth')->group(function () {
     Route::prefix('download')->group(function() {
         Route::get('/personal/treinos/{divisao}/{treino_id}', [DownloadController::class, 'DownloadPersonal'])->name('download.personal');
         Route::get('/avaliacao/{codigo_ava}', [DownloadController::class, 'DownloadAvaliacaoFisica'])->name('download.avaliacao.fisica');
+        Route::get('contratos/download/{codigo_contrato}/{aluno_id}/{professor_id}', [DownloadController::class, 'DownloadContrato'])->name('contratos.download');
+
     });
 
 // ---------- Área Administrativa ---------- //

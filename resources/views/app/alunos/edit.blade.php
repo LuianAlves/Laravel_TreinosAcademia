@@ -74,6 +74,14 @@
                                         </label>
                                     </div>
                                 </div>
+                                <div class="col-3">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="tipo_treino" id="avaliacao_fisica" value="avaliação física"  @if($aluno->tipo_treino == 'avaliação física') checked="" @endif>
+                                        <label class="form-check-label" for="avaliacao_fisica">
+                                            Avaliação Física
+                                        </label>
+                                    </div>
+                                </div>
                             </div>
                             
                             {{-- Forma de Pagamento --}}

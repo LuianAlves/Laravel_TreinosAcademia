@@ -77,7 +77,7 @@ class AvaliacaoFisicaController extends Controller
                 'data_nasc' => $request->data_nasc,
                 'historico_familiar' => $request->historico_familiar,
                 'estatura' => $request->estatura,
-                'peso' => $request->peso . 'KG',
+                'peso' => $request->peso . ' KG',
                 'created_at' => Carbon::now()
             ]);
 
@@ -136,16 +136,7 @@ class AvaliacaoFisicaController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Avaliacao\AvaliacaoFisica  $avaliacaoFisica
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(AvaliacaoFisica $avaliacaoFisica)
-    {
-        //
-    }
+
 
     /**
      * Update the specified resource in storage.

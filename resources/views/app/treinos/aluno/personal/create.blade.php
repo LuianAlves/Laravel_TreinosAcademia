@@ -19,24 +19,19 @@
                     <div class="card-body">
                         <h5 class="card-title text-center">Professor</h5>
                         <div class="row justify-content-center">
-                            <div class="col-3 offset-2">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="professor"
-                                        id="jessica" value="jessica" checked="">
-                                    <label class="form-check-label" for="jessica">
-                                        Jessica
-                                    </label>
+
+                            @foreach ($professores as $professor) 
+                                <div class="col-5">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="professor"
+                                        id="{{ $professor->id }}" value="{{ $professor->nome_professor }}" checked="">
+                                        <label class="form-check-label" for="{{ $professor->id }}">
+                                            {{ $professor->nome_professor }}
+                                        </label>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="professor"
-                                        id="paulo" value="paulo" checked="">
-                                    <label class="form-check-label" for="paulo">
-                                        Paulo
-                                    </label>
-                                </div>
-                            </div>                             
+                            @endforeach
+
                         </div>
                     </div>
                 </div>

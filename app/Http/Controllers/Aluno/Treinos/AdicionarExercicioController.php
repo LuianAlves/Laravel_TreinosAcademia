@@ -17,7 +17,7 @@ class AdicionarExercicioController extends Controller
 {
     public function index($treino_id)
     {
-        $treinos = AdicionarExercicio::where('treino_id', $treino_id)->pluck('divisao_treino')->first();
+        // $treinos = AdicionarExercicio::where('treino_id', $treino_id)->pluck('divisao_treino')->first();
         $treino_a = AdicionarExercicio::where('treino_id', $treino_id)->where('divisao_treino', 'treino_a')->get();
         $treino_b = AdicionarExercicio::where('treino_id', $treino_id)->where('divisao_treino', 'treino_b')->get();
         $treino_c = AdicionarExercicio::where('treino_id', $treino_id)->where('divisao_treino', 'treino_c')->get();
@@ -25,7 +25,7 @@ class AdicionarExercicioController extends Controller
 
         $treino = MontarTreino::where('id', $treino_id)->orderBy('id', 'DESC')->first();
 
-        return view('app.treinos.aluno.personal.montados.adicionar_exercicios.index', compact('treinos', 'treino', 'treino_a', 'treino_b', 'treino_c', 'treino_d'));
+        return view('app.treinos.aluno.personal.montados.adicionar_exercicios.index', compact('treino', 'treino_a', 'treino_b', 'treino_c', 'treino_d'));
     }
 
     /**

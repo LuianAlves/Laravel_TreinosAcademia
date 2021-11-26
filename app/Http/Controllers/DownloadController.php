@@ -15,6 +15,13 @@ use App\Models\Avaliacao\PerimetrosAvaliacaoFisica;
 use App\Models\Avaliacao\DobrasCutaneasAvaliacaoFisica;
 use App\Models\Avaliacao\NeuromotoresAvaliacaoFisica;
 
+// Contratos
+use App\Models\Contratos\Contratos;
+use App\Models\Contratos\DadosProfessorContrato;
+use App\Models\Contratos\DadosAlunoContrato;
+use App\Models\Contratos\InfoAdicionalContrato;
+
+
 use PDF;
 use Carbon\Carbon;
 
@@ -47,6 +54,26 @@ class DownloadController extends Controller
         $pdf = PDF::loadView('app.avaliacao_fisica.realizadas.down_avaliacao', compact('dados', 'perimetros', 'dobras', 'neuro', 'anamnese'));
 
         return $pdf->download('cod_'.$codigo_ava.'_data_'.$data_down.'.pdf');    
+    }
+
+    public function DownloadContrato($codigo_contrato, $aluno_id, $professor_id) {
+
+        $aluno = DadosAlunoContrato::where('aluno_id', $aluno_id)->first();
+        $professor = DadosProfessorContrato::where('id', $professor_id)->first();
+
+        $contrato = Contratos::where('codigo_contrato', $codigo_contrato)->first();
+        $info_adicional = InfoAdicionalContrato::where('codigo_contrato', $codigo_contrato)->first();
+
+        $data_down = Carbon::now()->format('d_m_Y');
+
+        // View
+        // return view('app.alunos.contratos.montados.download.down_contrato', compact('contrato', 'aluno', 'professor', 'info_adicional'));
+
+
+        // Download
+        $pdf = PDF::loadView('app.alunos.contratos.montados.download.down_contrato', compact('contrato', 'aluno', 'professor', 'info_adicional'));
+
+        return $pdf->download('Contrato Personal_' . $contrato->codigo_contrato . '_' . $data_down.'.pdf');    
     }
 }
 

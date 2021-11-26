@@ -20,22 +20,19 @@
                     <div class="card-body">
                         <h5 class="card-title text-center">Professor</h5>
                         <div class="row justify-content-center">
-                            <div class="col-3 offset-2">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="professor" id="jessica" value="jessica" {{ $treino->professor == 'jessica' ? 'checked' : '' }}>
-                                    <label class="form-check-label" for="jessica">
-                                        Jessica
-                                    </label>
+                            
+                            @foreach ($professores as $professor) 
+                                <div class="col-5">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="professor"
+                                        id="{{ $professor->id }}" value="{{ $professor->nome_professor }}" {{ $professor->id == $contrato->professor_id ? 'checked' : '' }}>
+                                        <label class="form-check-label" for="{{ $professor->id }}">
+                                            {{ $professor->nome_professor }}
+                                        </label>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="professor" id="paulo" value="paulo" {{ $treino->professor == 'paulo' ? 'checked' : '' }}>
-                                    <label class="form-check-label" for="paulo">
-                                        Paulo
-                                    </label>
-                                </div>
-                            </div>                             
+                            @endforeach
+                            
                         </div>
                     </div>
                 </div>
@@ -84,11 +81,11 @@
                     <div class="card-body">
                         <div class="mt-3 mb-5">
                             <div class="text-center">
-                                <input type="range" class="form-range" id="frequencia" name="frequencia" min="1" max="5" value="{{ $treino->frequencia != '0' ? $treino->frequencia : '0' }}" step="1">
+                                <input type="range" class="form-range" id="frequencia" name="frequencia" min="0" max="4" value="{{ $treino->frequencia != '0' ? $treino->frequencia : '0' }}" step="1">
                                 <div class="num-fixed">
-                                    <div class="indicator text-center">{{ $treino->frequencia != '0' ? $treino->frequencia : '1' }}</div>
+                                    <div class="indicator text-center">{{ $treino->frequencia + 1 }}</div>
                                     <span class="indicator-fixed-bar">/</span>
-                                    <span class="indicator-fixed">5 +</span>
+                                    <span class="indicator-fixed">5</span>
                                 </div>
                             </div>
                         </div>
@@ -139,7 +136,7 @@
                     <div class="card-footer mt-5">
                         <div class="row justify-content-end">
                             <div class="col-2">
-                                <button type="submit" class="btn btn-sm btn-success">Próximo</button>
+                                <button type="submit" class="btn btn-sm btn-success">Atualizar</button>
                             </div>
                         </div>
                     </div>
@@ -192,3 +189,6 @@
     }
 
 </style>
+
+{{-- Controlando o Input Range de Frequencia no Modal de Treinos para Alunos --}}
+<script src="{{ asset('backend/assets/js/range_input.js') }}" async></script>
