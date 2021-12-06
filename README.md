@@ -80,6 +80,12 @@
 * View para editar Avaliações Físicas
 * Finalizado o CRUD para Avaliações Físicas (Edit)
 
+* Criada view para informações da Conta
+* Modificando a view para atualizar informações
+
+* Modificando Alunos. Ao remover um aluno apagará todos os treinos/avaliações/contratos realizados do mesmo.
+
+* Modificando imagem do usuário
 
 </p>
      

@@ -25,7 +25,7 @@
                                 <div class="col-5">
                                     <div class="form-check">
                                         <input class="form-check-input" type="radio" name="professor"
-                                        id="{{ $professor->id }}" value="{{ $professor->nome_professor }}" {{ $professor->id == $contrato->professor_id ? 'checked' : '' }}>
+                                        id="{{ $professor->id }}" value="{{ $professor->nome_professor }}" {{ $professor->nome_professor == $treino->professor ? 'checked' : '' }}>
                                         <label class="form-check-label" for="{{ $professor->id }}">
                                             {{ $professor->nome_professor }}
                                         </label>

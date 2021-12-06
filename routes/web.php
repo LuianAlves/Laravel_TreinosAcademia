@@ -60,7 +60,10 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 Route::middleware('auth')->group(function () {
 
 /* ---------------------------------- Login ---------------------------------- */
-    // Logout
+    // Profile
+    Route::get('/user/profile', [UserController::class, 'profile'])->name('user.profile');
+    Route::post('/user/profile/update/{user_id}', [UserController::class, 'profileUpdate'])->name('user.profile.update');
+    Route::post('/user/password/update/{user_id}', [UserController::class, 'passwordUpdate'])->name('user.profile.update_password');
     Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 
 /* ---------------------------------- BACKEND ---------------------------------- */
@@ -161,7 +164,7 @@ Route::middleware('auth')->group(function () {
 
     // Downloads
     Route::prefix('download')->group(function() {
-        Route::get('/personal/treinos/{divisao}/{treino_id}/{codigo_treino}', [DownloadController::class, 'DownloadPersonal'])->name('download.personal');
+        Route::get('/personal/treinos/{divisao}/{treino_id}', [DownloadController::class, 'DownloadPersonal'])->name('download.personal');
         Route::get('/avaliacao/{codigo_ava}', [DownloadController::class, 'DownloadAvaliacaoFisica'])->name('download.avaliacao.fisica');
         Route::get('contratos/download/{codigo_contrato}/{aluno_id}/{professor_id}', [DownloadController::class, 'DownloadContrato'])->name('contratos.download');
 

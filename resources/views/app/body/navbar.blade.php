@@ -186,44 +186,26 @@
                 <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                     <li class="dropdown-header">
                         <h6>{{ Auth::user()->email }}</h6>
-                        <span>{{ Carbon\Carbon::now()->format('d m Y') }}</span>
+                        <span class="text-muted"><small>{{ Carbon\Carbon::now()->format('d/m/Y H:m:s') }}</small></span>
                     </li>
+
                     <li>
                         <hr class="dropdown-divider">
                     </li>
 
                     <li>
-                        <a class="dropdown-item d-flex align-items-center" href="{{ url('user/profile') }}">
-                            <i class="bi bi-person"></i>
+                        <a class="dropdown-item" href="{{ route('user.profile') }}">
+                            <i class="bx bx-user"></i>
                             <span>Minha Conta</span>
                         </a>
                     </li>
+
                     <li>
                         <hr class="dropdown-divider">
                     </li>
 
                     <li>
-                        <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
-                            <i class="bi bi-gear"></i>
-                            <span>Account Settings</span>
-                        </a>
-                    </li>
-                    <li>
-                        <hr class="dropdown-divider">
-                    </li>
-
-                    <li>
-                        <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
-                            <i class="bi bi-question-circle"></i>
-                            <span>Need Help?</span>
-                        </a>
-                    </li>
-                    <li>
-                        <hr class="dropdown-divider">
-                    </li>
-
-                    <li>
-                        <a class="dropdown-item d-flex align-items-center" href="{{ route('logout') }}">
+                        <a class="dropdown-item" href="{{ route('logout') }}">
                             <i class="bi bi-box-arrow-right text-danger"></i>
                             <span>Deslogar</span>
                         </a>

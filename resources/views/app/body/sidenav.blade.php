@@ -181,23 +181,24 @@
 
     {{-- <li class="nav-heading">Configurações da Conta</li> --}}
 
+        <hr style="color: rgba(204, 204, 204, 0.39);">
+        <li class="nav-heading">EXTRA</li>
+
         {{-- Configurações da Conta --}}
-        {{-- <li class="nav-item">
+        <li class="nav-item">
             <a class="nav-link collapsed" data-bs-target="#profile" data-bs-toggle="collapse" href="#">
                 <i class="bi bi-bar-chart"></i><span>Minha Conta</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
             <ul id="profile" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                 <li>
-                    <a href="charts-apexcharts.html">
+                    <a href="{{ route('user.profile') }}">
                         <i class="bi bi-circle"></i><span>Atualizar Informações</span>
                     </a>
                 </li>
             </ul>
-        </li>  --}}
+        </li> 
 
-        <hr style="color: rgba(204, 204, 204, 0.39);">
-        <li class="nav-heading">EXTRA</li>
-
+        
         {{-- <li class="nav-item">
             <a class="nav-link collapsed" href="{{ route('logout') }}">
                 <i class="bx bx-voicemail fs-4 text-success"></i>
