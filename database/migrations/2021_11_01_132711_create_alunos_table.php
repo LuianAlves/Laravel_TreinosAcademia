@@ -16,7 +16,7 @@ class CreateAlunosTable extends Migration
         Schema::create('alunos', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('professor_id')->unsigned();
-            $table->foreign('professor_id')->references('id')->on('users')->onDelete('cascade');
+            // $table->foreign('professor_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('nome');
             $table->string('email')->nullable();
             $table->string('telefone');
