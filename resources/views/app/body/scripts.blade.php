@@ -1,5 +1,5 @@
-    <script src="//code.jquery.com/jquery-1.9.1.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
     {{-- Pesquisar Alunos com JQuery --}}
     <script src="{{ asset('backend/assets/js/main_search_alunos.js') }}"></script>

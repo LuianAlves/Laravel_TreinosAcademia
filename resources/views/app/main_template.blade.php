@@ -2,13 +2,11 @@
 <html lang="en">
 
 <head>
-    
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    
+
     <title>Dashboard - NiceAdmin Bootstrap Template</title>
     <meta content="" name="description">
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <meta name="csrf-content" content="{{ csrf_token() }}">
     <meta content="" name="keywords">
 
@@ -17,9 +15,9 @@
     <link href="{{ asset('backend/assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
-    <link href="//fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.gstatic.com" rel="preconnect">
     <link
-        href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
         rel="stylesheet">
 
     <!-- Vendor CSS Files -->
@@ -35,7 +33,7 @@
     <link href="{{ asset('backend/assets/css/style.css') }}" rel="stylesheet">
 
     {{-- Selicionar categorias do modal quando for montar treino --}}
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     
     {{-- TREINOS ADICIONAR EXERCICO AO LADO DIREITO --}}
     <script src="{{ asset('backend/assets/js/arraylist_direita.js') }}" async></script>
