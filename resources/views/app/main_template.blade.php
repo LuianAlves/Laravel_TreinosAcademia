@@ -10,6 +10,9 @@
     <meta name="csrf-content" content="{{ csrf_token() }}">
     <meta content="" name="keywords">
 
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+
+    
     <!-- Favicons -->
     <link href="{{ asset('backend/assets/img/favicon.png') }}" rel="icon">
     <link href="{{ asset('backend/assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">

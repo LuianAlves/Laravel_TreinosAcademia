@@ -22,7 +22,7 @@
 
                             <div class="image-upload row justify-content-center">
                                 <label for="profile_photo">
-                                    <img src="{{ (!empty($user->profile_photo_path)) ? asset('upload/imagem_usuario/'.$user->profile_photo_path) : url('backend/assets/img/no_image.jpg') }}" style="width: 50%; height: 70%;">                            
+                                    <img src="{{ (!empty($user->profile_photo_path)) ? asset('upload/imagem_usuario/'.$user->profile_photo_path) : url('backend/assets/img/no_image.jpg') }}" class="rounded-circle" style="width: 50%; height: 70%;">                            
                                 </label>
                                 
                                 <input type="file" id="profile_photo" name="profile_photo_path">

@@ -52,9 +52,9 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+Route::middleware(['auth:sanctum', 'verified'])->get('/Home', function () {
     return view('app.index');
-})->name('dashboard');
+})->name('home');
 
 
 Route::middleware('auth')->group(function () {
