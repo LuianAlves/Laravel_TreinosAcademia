@@ -34,6 +34,9 @@ use App\Http\Controllers\Aluno\Treinos\AdicionarExercicioController;
 use App\Http\Controllers\Treinos\CategoriaTreinosController;
 use App\Http\Controllers\Treinos\ExercicioTreinosController;
 
+// Emails
+use App\Http\Controllers\User\EmailController;
+
 // Downloads
 use App\Http\Controllers\DownloadController;
 
@@ -160,6 +163,12 @@ Route::middleware('auth')->group(function () {
 
         Route::get('geral/pagou/{pgt_id}', [GeralController::class, 'pagou'])->name('pagamentos.pagou');
         Route::get('geral/naopagou/{pgt_id}', [GeralController::class, 'naoPagou'])->name('pagamentos.naopagou');
+        Route::post('geral/notificacoes/{pgt_id}', [GeralController::class, 'validarNotificacoes'])->name('pagamentos.validar.notificacoes');
+    });
+
+    // Emails
+    Route::prefix('email')->group(function() {
+        Route::get('/enviar', [EmailController::class, 'index'])->name('email.index');   
     });
 
     // Downloads
@@ -167,7 +176,6 @@ Route::middleware('auth')->group(function () {
         Route::get('/personal/treinos/{divisao}/{treino_id}', [DownloadController::class, 'DownloadPersonal'])->name('download.personal');
         Route::get('/avaliacao/{codigo_ava}', [DownloadController::class, 'DownloadAvaliacaoFisica'])->name('download.avaliacao.fisica');
         Route::get('contratos/download/{codigo_contrato}/{aluno_id}/{professor_id}', [DownloadController::class, 'DownloadContrato'])->name('contratos.download');
-
     });
 
 // ---------- Área Administrativa ---------- //

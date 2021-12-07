@@ -182,7 +182,7 @@
     {{-- <li class="nav-heading">Configurações da Conta</li> --}}
 
         <hr style="color: rgba(204, 204, 204, 0.39);">
-        <li class="nav-heading">EXTRA</li>
+        <li class="nav-heading">CONTA</li>
 
         {{-- Configurações da Conta --}}
         <li class="nav-item">
@@ -197,14 +197,16 @@
                 </li>
             </ul>
         </li> 
-
         
-        {{-- <li class="nav-item">
-            <a class="nav-link collapsed" href="{{ route('logout') }}">
+        <hr style="color: rgba(204, 204, 204, 0.39);">
+        <li class="nav-heading">EXTRA</li>
+        
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="{{ route('email.index') }}">
                 <i class="bx bx-voicemail fs-4 text-success"></i>
                 <span class="text-success">Enviar Email</span>
             </a>
-        </li> --}}
+        </li>      
 
         <li class="nav-item">
             <a class="nav-link collapsed" href="{{ route('logout') }}">

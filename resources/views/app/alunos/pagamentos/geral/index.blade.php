@@ -35,7 +35,7 @@
                                     <label class="text-muted mb-3">Data de Vencimento <span class="text-danger">*</span></label>
                                     <div class="input-group">
                                         <span class="input-group-text"><i class="bx bx-calendar fs-3"></i></span>
-                                        <input type="date" name="data_pagamento_geral" id="data_pagamento_geral" class="form-control" placeholder="Nome do Aluno">
+                                        <input type="date" name="data_pagamento_geral" id="data_pagamento_geral" class="form-control">
                                     </div>
                                     @error('data_pagamento_geral')
                                         <span class="text-danger m-3">{{ $message }}</span>
@@ -54,7 +54,7 @@
                 </div>
             </div>
         </div>
-    
+
         <div class="row">
             <div class="col-lg-12" style="max-height: 700px; overflow-y: auto;">
                 <div class="card mt-3">
@@ -88,7 +88,13 @@
                                             <td style="font-weight: 550;">{{ ucfirst($pgt->tipo_servico) }}</td>
                                             <td><b class="text-success">R$ </b>{{ $pgt->valor_pagamento_geral }}</td>
                                             <td>
-                                                {{  strftime('%d %B %Y', strtotime($pgt->data_pagamento_geral)) }}
+                                                @if(Carbon\Carbon::now()->format('Y-m-d') > $pgt->data_pagamento_geral)
+                                                    <b>{{  strftime('%d %B %Y', strtotime($pgt->data_pagamento_geral)) }}</b>
+                                                @elseif(Carbon\Carbon::now()->format('Y-m-d') == $pgt->data_pagamento_geral)
+                                                    <b>{{  strftime('%d %B %Y', strtotime($pgt->data_pagamento_geral)) }}</b> 
+                                                @else
+                                                    <b>{{  strftime('%d %B %Y', strtotime($pgt->data_pagamento_geral)) }}</b>
+                                                @endif
                                             </td>
                                             <td>
                                                 @if($pgt->status == 0)
@@ -116,6 +122,7 @@
                 </div>
             </div>
         </div>
+
     </section>
 @endsection
 

@@ -20,6 +20,7 @@ class CreatePagamentosTable extends Migration
             $table->string('data_pagamento_geral');
             $table->string('tipo_servico');
             $table->integer('status');
+            $table->integer('status_noti');
             $table->timestamps();
 
             $table->foreign('aluno_id')->references('id')->on('alunos')->onDelete('cascade');

@@ -61,23 +61,24 @@ class GeralController extends Controller
         return view('app.treinos.categorias.index', compact('categoria_treino'));
     }
 
-// NavBar Persquisar Alunos com JQuery
-    public function pesquisarAlunos(Request $request) {
-        $request->validate(['pesquisar' => 'required']);
+    // NavBar Persquisar Alunos com JQuery
+        public function pesquisarAlunos(Request $request) {
+            $request->validate(['pesquisar' => 'required']);
 
-        $pesquisar = $request->pesquisar;
+            $pesquisar = $request->pesquisar;
 
-        $alunos = Aluno::where('nome', 'LIKE', "%$pesquisar%")->select('id', 'nome', 'telefone')->orderBy('nome', 'ASC')->limit(6)->get();
+            $alunos = Aluno::where('nome', 'LIKE', "%$pesquisar%")->select('id', 'nome', 'telefone')->orderBy('nome', 'ASC')->limit(6)->get();
 
-        return view('app.geral.pesquisas.pesquisar_alunos_navbar', compact('alunos'));
-    }
-
-// Validação dos Pagamentos
+            return view('app.geral.pesquisas.pesquisar_alunos_navbar', compact('alunos'));
+        }
+    
+    // Validação dos Pagamentos
 
     public function pagou($pgt_id) {
 
         Pagamento::findOrFail($pgt_id)->update([
             'status' => 1,
+            'status_noti' => 1,
             'updated_at' => Carbon::now()
         ]);
 
@@ -88,9 +89,26 @@ class GeralController extends Controller
 
         Pagamento::findOrFail($pgt_id)->update([
             'status' => 0,
+            'status_noti' => 0,
             'updated_at' => Carbon::now()
         ]);
 
         return redirect()->back();
+    }
+
+    public function validarNotificacoes($pgt_id) {
+        date_default_timezone_set('America/Sao_paulo');
+        setlocale(LC_ALL, 'pt_BR.utf-8', 'ptb', 'pt_BR', 'portuguese_brazil', 'portuguese_brazilian', 'bra', 'brazil', 'br');
+        setlocale(LC_TIME, 'pt_BR.utf-8', 'ptb', 'pt_BR', 'portuguese_brazil', 'portuguese_brazilian', 'bra', 'brazil', 'br');
+
+
+        $pagamento = Pagamento::where('id', $pgt_id)->first();
+
+        Pagamento::findOrFail($pgt_id)->update([
+            'status_noti' => 1,
+            'updated_at' => Carbon::now()
+        ]);
+
+        return view('app.alunos.pagamentos.geral.pgt_pendente', compact('pagamento'));
     }
 }

@@ -80,6 +80,7 @@ class PagamentoController extends Controller
             'data_pagamento_geral' => $request->data_pagamento_geral,
             'tipo_servico' => $servico,
             'status' => 0,
+            'status_noti' => 0,
             'created_at' => Carbon::now()
         ]);
 
@@ -130,4 +131,6 @@ class PagamentoController extends Controller
     {
         //
     }
+
+
 }

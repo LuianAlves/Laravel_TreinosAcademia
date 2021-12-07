@@ -87,6 +87,12 @@
 
 * Modificando imagem do usuário
 
+* Criando view para envio de emails
+
+* Configurado dropdown no ícone de notificações no navbar
+* Listando Notificações de Pagamentos Pendentes
+* Redirecionamento de rota após clicar na notificação
+
 </p>
      
 <hr>
