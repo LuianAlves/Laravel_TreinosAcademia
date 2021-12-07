@@ -2,6 +2,8 @@
 <html lang="en">
 
 <head>
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
@@ -10,9 +12,6 @@
     <meta name="csrf-content" content="{{ csrf_token() }}">
     <meta content="" name="keywords">
 
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-
-    
     <!-- Favicons -->
     <link href="{{ asset('backend/assets/img/favicon.png') }}" rel="icon">
     <link href="{{ asset('backend/assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
