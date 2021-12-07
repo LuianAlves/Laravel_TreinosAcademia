@@ -2,13 +2,13 @@
 <html lang="en">
 
 <head>
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-
+    
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
+    
     <title>Dashboard - NiceAdmin Bootstrap Template</title>
     <meta content="" name="description">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <meta name="csrf-content" content="{{ csrf_token() }}">
     <meta content="" name="keywords">
 
