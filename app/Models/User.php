@@ -10,6 +10,9 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 
+use App\Models\Pagamentos\Pagamento;
+use Carbon\Carbon;
+
 class User extends Authenticatable
 {
     use HasApiTokens;
@@ -58,4 +61,41 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public static function pagamentosChart() {
+        $mes = Carbon::now()->format('m');
+
+        $pago = Pagamento::select('mes_pagamento_geral', 'valor_pagamento_geral', 'mes_pagamento_geral')
+                         ->groupBy('mes_pagamento_geral')
+                         ->where('status', 1)
+                        //  ->where('mes_pagamento_geral', $mes)
+                         ->get()
+                         ->toArray();
+
+        $dataPago = array_map(function($item) {
+            return ['x' => $item['mes_pagamento_geral'], 'y' => $item['valor_pagamento_geral']];
+        }, $pago);
+
+        return $dataPago;
+    }
+    
+    public static function pagamentosPendenteChart() {
+
+        $mes = Carbon::now()->format('m');
+        
+
+        $pendente = Pagamento::select('mes_pagamento_geral', 'valor_pagamento_geral', 'mes_pagamento_geral')
+                         ->groupBy('mes_pagamento_geral')
+                         ->where('status', 0)
+                        //  ->where('mes_pagamento_geral', $mes)
+                         ->get()
+                         ->toArray();
+
+        $dataPendente = array_map(function($item) {
+            return ['x' => $item['mes_pagamento_geral'], 'y' => $item['valor_pagamento_geral']];
+        }, $pendente);
+
+        return $dataPendente;
+    }
+    
 }

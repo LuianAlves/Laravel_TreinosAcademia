@@ -4,6 +4,8 @@
     {{-- Pesquisar Alunos com JQuery --}}
     <script src="{{ asset('backend/assets/js/main_search_alunos.js') }}"></script>
 
+    
+
     <script src="{{ asset('backend/assets/vendor/bootstrap/js/bootstrap.bundle.js') }}"></script>
     <script src="{{ asset('backend/assets/vendor/php-email-form/validate.js') }}"></script>
     <script src="{{ asset('backend/assets/vendor/quill/quill.min.js') }}"></script>

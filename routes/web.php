@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 // Geral
 use App\Http\Controllers\GeralController;
+use App\Http\Controllers\IndexController;
 
 // User
 use App\Http\Controllers\User\UserController;
@@ -55,9 +56,7 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/Home', function () {
-    return view('app.index');
-})->name('home');
+Route::middleware(['auth:sanctum', 'verified'])->get('/Home', [IndexController::class, 'index'])->name('home');
 
 
 Route::middleware('auth')->group(function () {

@@ -74,10 +74,19 @@ class PagamentoController extends Controller
         $aluno_id = $request->aluno_id;
         $servico = $request->servico;
 
+        $dataPagamento = $request->data_pagamento_geral;
+
+        $diaPagamento = substr($dataPagamento, 8);
+        $mesPagamento = substr($dataPagamento, 5, -3);
+        $anoPagamento = substr($dataPagamento, 0, -6);
+
         Pagamento::insert([
             'aluno_id' => $aluno_id,
             'valor_pagamento_geral' => $request->valor_pagamento_geral,
-            'data_pagamento_geral' => $request->data_pagamento_geral,
+            'data_pagamento_geral' => $dataPagamento,
+            'dia_pagamento_geral' => $diaPagamento,
+            'mes_pagamento_geral' => $mesPagamento,
+            'ano_pagamento_geral' => $anoPagamento,
             'tipo_servico' => $servico,
             'status' => 0,
             'status_noti' => 0,

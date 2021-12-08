@@ -63,6 +63,13 @@
 
         <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
                 class="bi bi-arrow-up-short"></i></a>
+        
+        <!-- Charting library -->
+        <script src="https://unpkg.com/chart.js@^2.9.3/dist/Chart.min.js"></script>
+        <!-- Chartisan -->
+        <script src="https://unpkg.com/@chartisan/chartjs@^2.1.0/dist/chartisan_chartjs.umd.js"></script>
+
+        @stack('js')
 
         <!-- Scripts start-->
         @include('app.body.scripts')
