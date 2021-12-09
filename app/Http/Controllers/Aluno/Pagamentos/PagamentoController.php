@@ -45,16 +45,6 @@ class PagamentoController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -84,6 +74,7 @@ class PagamentoController extends Controller
             'aluno_id' => $aluno_id,
             'valor_pagamento_geral' => $request->valor_pagamento_geral,
             'data_pagamento_geral' => $dataPagamento,
+            'descricao' => $request->descricao,
             'dia_pagamento_geral' => $diaPagamento,
             'mes_pagamento_geral' => $mesPagamento,
             'ano_pagamento_geral' => $anoPagamento,
@@ -121,9 +112,19 @@ class PagamentoController extends Controller
     {
         $aluno_id = $request->aluno_id;
 
+        $dataPagamento = $request->data_pagamento_geral;
+
+        $diaPagamento = substr($dataPagamento, 8);
+        $mesPagamento = substr($dataPagamento, 5, -3);
+        $anoPagamento = substr($dataPagamento, 0, -6);
+        
         Pagamento::findOrFail($id)->update([
             'valor_pagamento_geral' => $request->valor_pagamento_geral,
-            'data_pagamento_geral' => $request->data_pagamento_geral,
+            'data_pagamento_geral' => $dataPagamento,
+            'descricao' => $request->descricao,
+            'dia_pagamento_geral' => $diaPagamento,
+            'mes_pagamento_geral' => $mesPagamento,
+            'ano_pagamento_geral' => $anoPagamento,
             'updated_at' => Carbon::now()
         ]); 
 

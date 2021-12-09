@@ -21,6 +21,7 @@ class CreateDadosAvaliacaoFisicasTable extends Migration
             $table->string('historico_familiar')->nullable();
             $table->string('estatura')->nullable();
             $table->string('peso')->nullable();
+            $table->string('data_mes_ava');
             $table->timestamps();
 
             $table->foreign('aluno_id')->references('id')->on('alunos')->onDelete('cascade');

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Aluno\Contratos;
+namespace App\Http\Controllers\Professor;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -84,17 +84,6 @@ class DadosProfessorContratoController extends Controller
             return redirect()->back();
         }
     }
-        
-        /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -145,9 +134,11 @@ class DadosProfessorContratoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($professor)
     {
-        //
+        DadosProfessorContrato::findOrFail($professor)->delete();
+
+        return redirect()->back();
     }
 }
     

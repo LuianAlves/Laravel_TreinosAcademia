@@ -24,9 +24,9 @@
                             <b class="text-uppercase mt-4">Contratante: </b>
                             <input type="text" name="nome" class="input-contrato" required placeholder="Nome Completo"
                                 value="{{ $aluno->nome != '' ? $aluno->nome : '' }}">, Brasileira,
-                            <input type="text" name="estado_civil" class="input-contrato" placeholder="Estado Cívil"
+                            <input type="text" name="estado_civil" class="input-contrato" placeholder="Estado Cívil (Opcional)"
                                 value="">,
-                            <input type="text" name="profissao" class="input-contrato" placeholder="Profissão" value="">,
+                            <input type="text" name="profissao" class="input-contrato" placeholder="Profissão (Opcional)" value="">,
                             Carteira de Identidade nº <input type="text" name="rg" class="input-contrato" required
                                 placeholder="RG" value="">,
                             C.P.F. nº <input type="text" name="cpf" class="input-contrato" required placeholder="CPF"
@@ -40,13 +40,13 @@
                             CEP <input type="text" name="cep" class="input-contrato" required placeholder="Cep" value="">,
                             Cidade <input type="text" name="cidade" class="input-contrato" required placeholder="Cidade"
                                 value="">,
-                            no Estado <input type="text" name="estado" class="input-contrato" placeholder="Estado"
+                            no Estado <input type="text" name="estado" class="input-contrato" placeholder="Estado (Opcional)"
                                 value="">,
                             Telefone: <input type="text" name="telefone_fixo" class="input-contrato"
-                                placeholder="Telefone Fixo" value="">
+                                placeholder="Telefone Fixo (Opcional)" value="">
                             cel./whatsApp: <input type="text" name="telefone_celular" class="input-contrato"
-                                placeholder="Celular" value="">,
-                            E-mail: <input type="text" name="email" class="input-contrato" placeholder="Email" value="{{$aluno->email != '' ? $aluno->email : ''}}">.
+                                placeholder="Celular (Opcional)" value="">,
+                            E-mail: <input type="text" name="email" class="input-contrato" placeholder="Email (Opcional)" value="{{$aluno->email != '' ? $aluno->email : ''}}">.
                         </p>
 
                         <div class="row justify-content-end mt-5">

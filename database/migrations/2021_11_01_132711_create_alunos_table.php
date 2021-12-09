@@ -16,7 +16,7 @@ class CreateAlunosTable extends Migration
         Schema::create('alunos', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('professor_id')->unsigned();
-            // $table->foreign('professor_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('professor_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('nome');
             $table->string('email')->nullable();
             $table->string('telefone');
@@ -27,6 +27,7 @@ class CreateAlunosTable extends Migration
             $table->string('codigo_aluno')->nullable();
             $table->string('genero')->nullable();
             $table->string('data_cadastro')->nullable();
+            $table->string('mes_cadastro');
             $table->timestamps();
         });
     }

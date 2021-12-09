@@ -12,6 +12,9 @@ use App\Http\Controllers\User\UserController;
 // Aluno
 use App\Http\Controllers\Aluno\AlunoController;
 
+// Professor
+use App\Http\Controllers\Professor\DadosProfessorContratoController;
+
 // Avaliação
 use App\Http\Controllers\Aluno\Avaliacao\AvaliacaoFisicaController;
 use App\Http\Controllers\Aluno\Avaliacao\AvaliacaoFisicaAlunosController;
@@ -23,7 +26,6 @@ use App\Http\Controllers\Aluno\Pagamentos\PagamentoController;
 use App\Http\Controllers\Aluno\Contratos\ContratosController;
 use App\Http\Controllers\Aluno\Contratos\MontarContratoController;
 use App\Http\Controllers\Aluno\Contratos\DadosAlunoContratoController;
-use App\Http\Controllers\Aluno\Contratos\DadosProfessorContratoController;
 use App\Http\Controllers\Aluno\Contratos\InfoAdicionalContratoController;
 
 // Montar Treinos

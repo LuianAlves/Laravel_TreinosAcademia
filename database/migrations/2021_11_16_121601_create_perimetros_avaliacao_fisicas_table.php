@@ -29,6 +29,7 @@ class CreatePerimetrosAvaliacaoFisicasTable extends Migration
             $table->string('coxa_esquerda')->nullable();
             $table->string('panturrilha_direita')->nullable();
             $table->string('panturrilha_esquerda')->nullable();
+            $table->string('data_mes_ava');
             $table->timestamps();
 
             $table->foreign('aluno_id')->references('id')->on('alunos')->onDelete('cascade');

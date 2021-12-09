@@ -20,6 +20,7 @@ class CreateNeuromotoresAvaliacaoFisicasTable extends Migration
             $table->string('flexoes')->nullable();
             $table->string('abdominais')->nullable();
             $table->string('flexibilidade')->nullable();
+            $table->string('data_mes_ava');
             $table->timestamps();
 
             $table->foreign('aluno_id')->references('id')->on('alunos')->onDelete('cascade');

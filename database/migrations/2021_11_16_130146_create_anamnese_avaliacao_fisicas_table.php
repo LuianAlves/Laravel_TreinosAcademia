@@ -29,7 +29,7 @@ class CreateAnamneseAvaliacaoFisicasTable extends Migration
             $table->string('problema_osseo')->nullable();
             $table->string('medicamento_pressao_arterial')->nullable();
             $table->string('atividade_sem_supervisao')->nullable();
-
+            $table->string('data_mes_ava');
             $table->timestamps();
 
             $table->foreign('aluno_id')->references('id')->on('alunos')->onDelete('cascade');

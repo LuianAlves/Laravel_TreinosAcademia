@@ -6,8 +6,8 @@
     @include('app.body.breadcrumb')
 
     <section class="section">
-        <div class="row">
 
+        <div class="row">
             {{-- Pesquisar por Categoria --}}
             <div class="col-6">
                 <div class="card mt-3">
@@ -84,97 +84,97 @@
                     </div>
                 </div>
             </div>
-
         </div>
 
+        @if(App\Models\Treinos\ExercicioTreinos::count() != 0)
+            <div class="row">
+                @php
+                    $prefix = Request::route()->getName();
+                @endphp
 
-        <div class="row">
-
-            @php
-                $prefix = Request::route()->getName();
-            @endphp
-
-            <div class="d-flex justify-content-end">
-                @if ($prefix != 'exercicio.index')
-                    <a href="{{ route('exercicio.index') }}" class="btn btn-sm btn-danger" style="font-weight: 700;">
-                        Limpar Filtro
-                    </a>
-                @endif
+                <div class="d-flex justify-content-end">
+                    @if ($prefix != 'exercicio.index')
+                        <a href="{{ route('exercicio.index') }}" class="btn btn-sm btn-danger" style="font-weight: 700;">
+                            Limpar Filtro
+                        </a>
+                    @endif
+                </div>
             </div>
-        </div>
 
-        {{-- Listagem de Categorias --}}
-        <div class="row">
-            <div class="col-lg-12" style="max-height: 700px; overflow-y: auto;">
-                <div class="card mt-3">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="d-flex justify-content-between">
-                                <h4 class="card-title">Lista de Exercícios</h4>
+            {{-- Listagem de Categorias --}}
+            <div class="row">
+                <div class="col-lg-12" style="max-height: 700px; overflow-y: auto;">
+                    <div class="card mt-3">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="d-flex justify-content-between">
+                                    <h4 class="card-title">Lista de Exercícios</h4>
 
-                                <div class="d-flex align-items-center">
-                                    <input class="form-control form-control-sm" style="margin-right: 10px;" id="inputPesquisarTabela" type="text" placeholder="Pesquisar">
-                                    <a href="#" class="btn btn-sm text-white fs-5 pb-0 pt-0" data-bs-toggle="modal" data-bs-target="#createAluno" style="font-weight: 700; background: #4154f1;">+</a>
+                                    <div class="d-flex align-items-center">
+                                        <input class="form-control form-control-sm" style="margin-right: 10px;" id="inputPesquisarTabela" type="text" placeholder="Pesquisar">
+                                        <a href="#" class="btn btn-sm text-white fs-5 pb-0 pt-0" data-bs-toggle="modal" data-bs-target="#createExercicioTreino" style="font-weight: 700; background: #4154f1;">+</a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="table-responsive">
-                            <table class="table table-sm">
-                                <thead style="color: #7b84d6;">
-                                    <tr>
-                                        <th scope="col">Categoria</th>
-                                        <th scope="col">Exercício</th>
-                                        <th class="text-center" scope="col">Serviços</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="pesquisarNaTabela">
-                                    @foreach ($exercicioTreinos as $exercicio)
+                            <div class="table-responsive">
+                                <table class="table table-sm">
+                                    <thead style="color: #7b84d6;">
                                         <tr>
-                                            <th class="text-muted">{{ $exercicio->categoriaTreino->nome_categoria_treino }}</th>
-                                            <th class="text-muted">{{ $exercicio->nome_exercicio }}</th>
-                                            <td class="text-center pt-1">
-                                                <li class="nav-item dropdown" style="list-style: none;">
-                                                    <a class="nav-link nav-profile text-success pe-0" href="#" data-bs-toggle="dropdown">
-                                                        <i class="bx bx-category fs-4"></i>
-                                                    </a>
-                                                    
-                                                    <ul class="dropdown-menu" id="dropdown-menu-user">
-                                                        
-                                                        <li>
-                                                            <a class="dropdown-item d-flex align-items-center" href="{{ route('exercicio.edit', $exercicio->id) }}">
-                                                                <i class="bx bx-edit"></i>
-                                                                <span>Editar Exercício</span>
-                                                            </a>
-                                                        </li>
-    
-                                                        <li>
-                                                            <hr class="dropdown-divider">
-                                                        </li>
-    
-                                                        <li>
-                                                            <form id="form_{{ $exercicio->id }}" action="{{ route('exercicio.destroy', $exercicio->id) }}" method="post">
-                                                            @method('DELETE')
-                                                            @csrf
-                                                                <a class="dropdown-item d-flex align-items-center" href="#" onclick="document.getElementById('form_{{ $exercicio->id }}').submit()">
-                                                                    <i class="bx bx-block text-danger"></i>
-                                                                    <span class="text-danger">Remover Exercício</span>
-                                                                </a>
-                                                            </form>
-                                                        </li>
-                                                        
-                                                    </ul>
-                                                </li>
-                                            </td>
+                                            <th scope="col">Categoria</th>
+                                            <th scope="col">Exercício</th>
+                                            <th class="text-center" scope="col">Serviços</th>
                                         </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
+                                    </thead>
+                                    <tbody id="pesquisarNaTabela">
+                                        @foreach ($exercicioTreinos as $exercicio)
+                                            <tr>
+                                                <th class="text-muted">{{ $exercicio->categoriaTreino->nome_categoria_treino }}</th>
+                                                <th class="text-muted">{{ $exercicio->nome_exercicio }}</th>
+                                                <td class="text-center pt-1">
+                                                    <li class="nav-item dropdown" style="list-style: none;">
+                                                        <a class="nav-link nav-profile text-success pe-0" href="#" data-bs-toggle="dropdown">
+                                                            <i class="bx bx-category fs-4"></i>
+                                                        </a>
+                                                        
+                                                        <ul class="dropdown-menu" id="dropdown-menu-user">
+                                                            
+                                                            <li>
+                                                                <a class="dropdown-item d-flex align-items-center" href="{{ route('exercicio.edit', $exercicio->id) }}">
+                                                                    <i class="bx bx-edit"></i>
+                                                                    <span>Editar Exercício</span>
+                                                                </a>
+                                                            </li>
+        
+                                                            <li>
+                                                                <hr class="dropdown-divider">
+                                                            </li>
+        
+                                                            <li>
+                                                                <form id="form_{{ $exercicio->id }}" action="{{ route('exercicio.destroy', $exercicio->id) }}" method="post">
+                                                                @method('DELETE')
+                                                                @csrf
+                                                                    <a class="dropdown-item d-flex align-items-center" href="#" onclick="document.getElementById('form_{{ $exercicio->id }}').submit()">
+                                                                        <i class="bx bx-block text-danger"></i>
+                                                                        <span class="text-danger">Remover Exercício</span>
+                                                                    </a>
+                                                                </form>
+                                                            </li>
+                                                            
+                                                        </ul>
+                                                    </li>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
 
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        @endif
+
     </section>
 @endsection

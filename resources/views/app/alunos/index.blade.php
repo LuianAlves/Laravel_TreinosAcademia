@@ -109,7 +109,6 @@
                         <div class="row">
                             <div class="d-flex justify-content-between">
                                 <h4 class="card-title">Lista de Alunos</h4>
-
                                 <div class="d-flex align-items-center">
                                     <input class="form-control form-control-sm" style="margin-right: 10px;" id="inputPesquisarTabela" type="text" placeholder="Pesquisar">
                                     <a href="#" class="btn btn-sm text-white fs-5 pb-0 pt-0" data-bs-toggle="modal" data-bs-target="#createAluno" style="font-weight: 700; background: #4154f1;">+</a>
@@ -130,6 +129,10 @@
                                     </tr>
                                 </thead>
                                 <tbody id="pesquisarNaTabela">
+                                    @if(App\Models\Contratos\DadosProfessorContrato::count() == 0)
+                                        <h6 class="text-danger text-center mb-4" style="font-family: 'Poppins', sans-serif; font-style: italic;">Adicione um Professor para criar/montar Treinos-Contratos-Avaliações!</h6>
+                                    @endif
+
                                     @foreach ($alunos as $aluno)
                         
                                         <tr>
@@ -174,84 +177,88 @@
                                                             <hr class="dropdown-divider">
                                                         </li>
                                                         
-                                                        {{-- Treinos --}}
-                                                        <li>
-                                                            <a class="dropdown-item d-flex align-items-center" style="font-weight: 600;" href="{{ route('montar.create', $aluno->id) }}">
-                                                                <i class="bx bx-dumbbell fs-4 text-info"></i>
-                                                                <span>Montar Treino</span>
-                                                            </a>
-                                                        </li>
+                                                        @if(App\Models\Contratos\DadosProfessorContrato::count() != 0)
 
-                                                        @php
-                                                            $treinos = App\Models\TreinoAluno\MontarTreino::where('aluno_id', $aluno->id)->first();
-                                                        @endphp
-
-                                                        @if(!empty($treinos))
+                                                            {{-- Treinos --}}
                                                             <li>
-                                                                <a class="dropdown-item d-flex align-items-center" style="font-weight: 600;" href="{{ route('montado.index', $aluno->id) }}">
-                                                                    <i class="bx bx-abacus fs-4" style="color: rgb(103, 17, 153);"></i>
-                                                                    <span>Treinos Montados</span>
+                                                                <a class="dropdown-item d-flex align-items-center" style="font-weight: 600;" href="{{ route('montar.create', $aluno->id) }}">
+                                                                    <i class="bx bx-dumbbell fs-4 text-info"></i>
+                                                                    <span>Montar Treino</span>
                                                                 </a>
                                                             </li>
+
+                                                            @php
+                                                                $treinos = App\Models\TreinoAluno\MontarTreino::where('aluno_id', $aluno->id)->first();
+                                                            @endphp
+
+                                                            @if(!empty($treinos))
+                                                                <li>
+                                                                    <a class="dropdown-item d-flex align-items-center" style="font-weight: 600;" href="{{ route('montado.index', $aluno->id) }}">
+                                                                        <i class="bx bx-abacus fs-4" style="color: rgb(103, 17, 153);"></i>
+                                                                        <span>Treinos Montados</span>
+                                                                    </a>
+                                                                </li>
+                                                            @endif
+
+                                                            <li>
+                                                                <hr class="dropdown-divider">
+                                                            </li>
+
+                                                            {{-- Contratos --}}
+                                                            @if($aluno->tipo_treino == 'personal' || $aluno->tipo_treino == 'Personal')
+                                                                <li>
+                                                                    <a class="dropdown-item d-flex align-items-center" style="font-weight: 600;" href="{{ route('montar-contrato.create', $aluno->id) }}">
+                                                                        <i class="bx bx-notepad fs-4" style="color: rgb(129, 86, 5);"></i>
+                                                                        <span>Montar Contrato</span>
+                                                                    </a>
+                                                                </li>
+                                                            @endif  
+
+                                                            @php
+                                                                $contratos = App\Models\Contratos\Contratos::where('aluno_id', $aluno->id)->first();
+                                                            @endphp
+
+                                                            @if(!empty($contratos))
+                                                                <li>
+                                                                    <a class="dropdown-item d-flex align-items-center" style="font-weight: 600;" href="{{ route('contratos-montados.index', $aluno->id) }}">
+                                                                        <i class="bx bx-notepad fs-4" style="color: rgb(129, 86, 5);"></i>
+                                                                        <span>Contratos Montados</span>
+                                                                    </a>
+                                                                </li>
+                                                            @endif
+
+                                                            <li>
+                                                                <hr class="dropdown-divider">
+                                                            </li>
+
+                                                            {{-- Avaliações Físicas --}}
+                                                            <li>
+                                                                <a class="dropdown-item d-flex align-items-center" href="{{ route('realizar.index', $aluno->id) }}" style="font-weight: 600;">
+                                                                    <i class="bx bxs-heart fs-4 text-danger"></i>
+                                                                    <span>Avaliação Física</span>
+                                                                </a>
+                                                            </li>  
+
+                                                            @php
+                                                                $avaliacoes = App\Models\Avaliacao\DadosAvaliacaoFisica::where('aluno_id', $aluno->id)->first();
+                                                            @endphp
+
+                                                            @if(!empty($avaliacoes))
+                                                                <li>
+                                                                    <a class="dropdown-item d-flex align-items-center" style="font-weight: 600;" href="{{ route('avaliacoes.show', $aluno->id) }}">
+                                                                        <i class="bx bx-heart text-danger fs-4"></i>
+                                                                        <span>Avaliações Realizadas</span>
+                                                                    </a>
+                                                                </li>
+                                                            @endif
+
+                                                            <li>
+                                                                <hr class="dropdown-divider">
+                                                            </li>
+                                                        
                                                         @endif
-
-                                                        <li>
-                                                            <hr class="dropdown-divider">
-                                                        </li>
-
-                                                        {{-- Contratos --}}
-                                                        @if($aluno->tipo_treino == 'personal' || $aluno->tipo_treino == 'Personal')
-                                                            <li>
-                                                                <a class="dropdown-item d-flex align-items-center" style="font-weight: 600;" href="{{ route('montar-contrato.create', $aluno->id) }}">
-                                                                    <i class="bx bx-notepad fs-4" style="color: rgb(129, 86, 5);"></i>
-                                                                    <span>Montar Contrato</span>
-                                                                </a>
-                                                            </li>
-                                                        @endif  
-
-                                                        @php
-                                                            $contratos = App\Models\Contratos\Contratos::where('aluno_id', $aluno->id)->first();
-                                                        @endphp
-
-                                                        @if(!empty($contratos))
-                                                            <li>
-                                                                <a class="dropdown-item d-flex align-items-center" style="font-weight: 600;" href="{{ route('contratos-montados.index', $aluno->id) }}">
-                                                                    <i class="bx bx-notepad fs-4" style="color: rgb(129, 86, 5);"></i>
-                                                                    <span>Contratos Montados</span>
-                                                                </a>
-                                                            </li>
-                                                        @endif
-
-                                                        <li>
-                                                            <hr class="dropdown-divider">
-                                                        </li>
-
-                                                        {{-- Avaliações Físicas --}}
-                                                        <li>
-                                                            <a class="dropdown-item d-flex align-items-center" href="{{ route('realizar.index', $aluno->id) }}" style="font-weight: 600;">
-                                                                <i class="bx bxs-heart fs-4 text-danger"></i>
-                                                                <span>Avaliação Física</span>
-                                                            </a>
-                                                        </li>  
-
-                                                        @php
-                                                            $avaliacoes = App\Models\Avaliacao\DadosAvaliacaoFisica::where('aluno_id', $aluno->id)->first();
-                                                        @endphp
-
-                                                        @if(!empty($avaliacoes))
-                                                            <li>
-                                                                <a class="dropdown-item d-flex align-items-center" style="font-weight: 600;" href="{{ route('avaliacoes.show', $aluno->id) }}">
-                                                                    <i class="bx bx-heart text-danger fs-4"></i>
-                                                                    <span>Avaliações Realizadas</span>
-                                                                </a>
-                                                            </li>
-                                                        @endif
-
-                                                        <li>
-                                                            <hr class="dropdown-divider">
-                                                        </li>
-
-                                                        {{-- Excluir --}}
+                                                        
+                                                        {{-- Pagamentos --}}
                                                         <li>
                                                             {{-- @if($aluno->tipo_treino == 'personal')
                                                             @else --}}

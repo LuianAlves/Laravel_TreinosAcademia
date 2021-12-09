@@ -70,9 +70,11 @@
                     residente e domiciliado na Rua
                     {{ ucwords($aluno->endereco) }}, nº {{ ucwords($aluno->numero_casa) }}, Bairro
                     {{ ucwords($aluno->bairro) }}, CEP {{ ucwords($aluno->cep) }}, Cidade de
-                    {{ ucwords($aluno->cidade) }}, no Estado de {{ ucwords($aluno->estado) }}, Telefone:
-                    {{ ucwords($aluno->telefone_fixo) }} cel./whatsApp:
-                    {{ ucwords($aluno->telefone_celular) }}, Email: {{ $aluno->email }}.
+                    {{ ucwords($aluno->cidade) }},
+                    {{ $aluno->estado != '' ? 'no Estado de '.ucwords($aluno->estado) : '' }}
+                    {{ $aluno->telefone_fixo != '' ? ', Telefone: '.ucwords($aluno->telefone_fixo) : '' }} 
+                    {{ $aluno->telefone_celular != '' ? ', cel./whatsApp: '.ucwords($aluno->telefone_celular) : '' }}
+                    {{ $aluno->email != '' ? 'Email: '.$aluno->email  : '' }}.
                 </span>
             </p>
         </li>

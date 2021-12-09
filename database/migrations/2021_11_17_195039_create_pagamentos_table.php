@@ -18,6 +18,7 @@ class CreatePagamentosTable extends Migration
             $table->unsignedBigInteger('aluno_id')->unsigned();
             $table->string('valor_pagamento_geral');
             $table->string('data_pagamento_geral');
+            $table->text('descricao')->nullable();
             $table->string('dia_pagamento_geral');
             $table->string('mes_pagamento_geral');
             $table->string('ano_pagamento_geral');

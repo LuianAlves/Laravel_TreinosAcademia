@@ -43,6 +43,15 @@
                                 </div>
                             </div>
 
+                            <div class="row" style="font-weight: bold;">
+                                <div class="col-6">
+                                    <label class="text-muted mt-3 mb-3">Descrição <span class="text-muted" style="font-size: 12px;">(Opcional)</span></label>
+                                    <div class="input-group">
+                                        <textarea name="descricao" class="form-control" rows="5"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+
                             <div class="row mt-5">
                                 <div class="d-flex justify-content-end">
                                     <button type="submit" class="btn btn-sm text-white float-right" style="font-weight: 700; background: #4154f1;">Adicionar</button>

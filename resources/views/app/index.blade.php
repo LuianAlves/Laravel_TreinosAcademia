@@ -109,7 +109,7 @@
                             <div class="card-body">
                                 <h5 class="card-title">Entrada de Caixa <span>/Mês</span></h5>
 
-                                <div id="chart" style="height: 300px;"></div>
+                                <div id="chart" style="min-height: 200px;"></div>
 
                                 @push('js')
                                     <script>

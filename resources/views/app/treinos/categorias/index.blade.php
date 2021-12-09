@@ -127,6 +127,9 @@
                             </tbody>
                         </table>
 
+                        <div class="text-muted text-center" style="font-family: 'Poppins', sans-serif; margin-top: 50px;">
+                            Total de <b>{{ count($categoria_treino) }} </b> Categorias Cadastradas.
+                        </div>
                     </div>
                 </div>
             </div>

@@ -24,6 +24,7 @@ class CreateDobrasCutaneasAvaliacaoFisicasTable extends Migration
             $table->string('triciptal')->nullable();
             $table->string('abdominal')->nullable();
             $table->string('coxa')->nullable();
+            $table->string('data_mes_ava');
             $table->timestamps();
 
             $table->foreign('aluno_id')->references('id')->on('alunos')->onDelete('cascade');

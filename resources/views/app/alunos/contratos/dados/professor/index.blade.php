@@ -30,12 +30,12 @@
                         <div class="row">
                             <div class="col-6">
                                 <div class="input-group mb-3">
-                                    <input type="text" name="estado_civil_professor" class="form-control" placeholder="Estado Cívil" value="">
+                                    <input type="text" name="estado_civil_professor" class="form-control" placeholder="Estado Cívil (Opcional)" value="">
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="input-group mb-3">
-                                    <input type="text" name="profissao_professor" class="form-control" placeholder="Profissão" value="">
+                                    <input type="text" name="profissao_professor" class="form-control" placeholder="Profissão (Opcional)" value="">
                                 </div>
                             </div>
                         </div>
@@ -60,7 +60,7 @@
                             </div>
                             <div class="col-4">
                                 <div class="input-group mb-3">
-                                    <input type="text" name="cref_professor" class="form-control" placeholder="CREF" value="">
+                                    <input type="text" name="cref_professor" class="form-control" placeholder="CREF (Opcional)" value="">
                                 </div>
                             </div>
                         </div>
@@ -113,7 +113,7 @@
                             </div>
                             <div class="col-3">
                                 <div class="input-group mb-3">
-                                    <input type="text" name="estado_professor" class="form-control" placeholder="Estado" value="">
+                                    <input type="text" name="estado_professor" class="form-control" placeholder="Estado (Opcional)" value="">
                                 </div>
                             </div>
                         </div>
@@ -122,12 +122,12 @@
                         <div class="row">
                             <div class="col-6">
                                 <div class="input-group mb-3">
-                                    <input type="text" name="telefone_fixo_professor" class="form-control" placeholder="Telefone Fixo" value="">
+                                    <input type="text" name="telefone_fixo_professor" class="form-control" placeholder="Telefone Fixo (Opcional)" value="">
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="input-group mb-3">
-                                    <input type="text" name="telefone_celular_professor" class="form-control" placeholder="Celular" value="">
+                                    <input type="text" name="telefone_celular_professor" class="form-control" placeholder="Celular (Opcional)" value="">
                                 </div>
                             </div>
                         </div>
@@ -136,7 +136,7 @@
                         <div class="row">
                             <div class="col-4">
                                 <div class="input-group mb-3">
-                                    <input type="text" name="email_professor" class="form-control" placeholder="E-mail" value="">
+                                    <input type="text" name="email_professor" class="form-control" placeholder="E-mail (Opcional)" value="">
                                 </div>
                             </div>
                         </div>
@@ -153,64 +153,78 @@
             </div>
         </div>
         
-        <div class="row">
-            <div class="col-lg-12" style="max-height: 700px; overflow-y: auto;">
-                <div class="card mt-3">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="d-flex justify-content-between">
-                                <h4 class="card-title">Lista de Professores</h4>
+        @if(App\Models\Contratos\DadosProfessorContrato::count())
+            <div class="row">
+                <div class="col-lg-12" style="max-height: 700px; overflow-y: auto;">
+                    <div class="card mt-3">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="d-flex justify-content-between">
+                                    <h4 class="card-title">Lista de Professores</h4>
 
-                                <div class="d-flex align-items-center">
-                                    <input class="form-control form-control-sm" style="margin-right: 10px;" id="inputPesquisarTabela" type="text" placeholder="Pesquisar">
-                                    <a href="#" class="btn btn-sm text-white fs-5 pb-0 pt-0" data-bs-toggle="modal" data-bs-target="#createAluno" style="font-weight: 700; background: #4154f1;">+</a>
+                                    <div class="d-flex align-items-center">
+                                        <input class="form-control form-control-sm" style="margin-right: 10px;" id="inputPesquisarTabela" type="text" placeholder="Pesquisar">
+                                        <a href="#" class="btn btn-sm text-white fs-5 pb-0 pt-0" data-bs-toggle="modal" data-bs-target="#createAluno" style="font-weight: 700; background: #4154f1;">+</a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="table-responsive">
-                            <table class="table table-sm">
-                                <thead style="color: #7b84d6;">
-                                    <tr>
-                                        <th scope="col">Professor</th>
-                                        <th class="text-center" scope="col">CREF</th>
-                                        <th class="text-center" scope="col">Celular</th>
-                                        <th class="text-center" scope="col">Ações</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="pesquisarNaTabela">
-                                    @foreach ($professores as $professor)
-                        
+                            <div class="table-responsive">
+                                <table class="table table-sm">
+                                    <thead style="color: #7b84d6;">
                                         <tr>
-                                            <th class="text-muted">{{ $professor->nome_professor }}</th>
-                                            <th class="text-center">{{ $professor->cref_professor }}</th>
-                                            <th class="text-center">{{ $professor->telefone_celular_professor }}</th>
-                                            <td class="text-center">
-                                                <li class="nav-item dropdown" style="list-style: none;">
-                                                    <a class="nav-link nav-profile text-success" href="#" data-bs-toggle="dropdown">
-                                                        <i class="bx bx-category fs-4"></i>
-                                                    </a>
-                                                    
-                                                    <ul class="dropdown-menu" id="dropdown-menu-user">
-                                                        {{-- Visualizar --}}
-                                                        <li>
-                                                            <a class="dropdown-item d-flex align-items-center" style="font-weight: 600;" href="{{ route('dados-professores.edit', $professor->id) }}">
-                                                                <i class="bx bx-minus-front fs-4 text-primary"></i>
-                                                                <span>Editar Informações</span>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-                                            </td>
+                                            <th scope="col">Professor</th>
+                                            <th class="text-center" scope="col">CREF</th>
+                                            <th class="text-center" scope="col">Celular</th>
+                                            <th class="text-center" scope="col">Ações</th>
                                         </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
+                                    </thead>
+                                    <tbody id="pesquisarNaTabela">
+                                        @foreach ($professores as $professor)
+                            
+                                            <tr>
+                                                <th class="text-muted">{{ $professor->nome_professor }}</th>
+                                                <th class="text-center">{{ $professor->cref_professor }}</th>
+                                                <th class="text-center">{{ $professor->telefone_celular_professor }}</th>
+                                                <td class="text-center">
+                                                    <li class="nav-item dropdown" style="list-style: none;">
+                                                        <a class="nav-link nav-profile text-success" href="#" data-bs-toggle="dropdown">
+                                                            <i class="bx bx-category fs-4"></i>
+                                                        </a>
+                                                        
+                                                        <ul class="dropdown-menu" id="dropdown-menu-user">
+                                                            {{-- Visualizar --}}
+                                                            <li>
+                                                                <a class="dropdown-item d-flex align-items-center" style="font-weight: 600;" href="{{ route('dados-professores.edit', $professor->id) }}">
+                                                                    <i class="bx bx-minus-front fs-4 text-primary"></i>
+                                                                    <span>Editar Informações</span>
+                                                                </a>
+                                                            </li>
+                                                            {{-- Excluir --}}
+                                                            <li>
+                                                                <form id="form_{{$professor->id}}" action="{{ route('dados-professores.destroy', $professor->id) }}" method="post">
+                                                                    @method('DELETE')
+                                                                    @csrf
+    
+                                                                    <a href="#" class="dropdown-item d-flex align-items-center" style="font-weight: 600;" onclick="document.getElementById('form_{{$professor->id}}').submit()">
+                                                                        <i class="bx bx-block text-danger fs-4"></i>
+                                                                        <span>Remover Dados</span>
+                                                                    </a>
+                                                                </form>
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        @endif
         
     </section>
 @endsection

@@ -27,9 +27,9 @@
                                 value="{{ $professor->nome_professor != '' ? $professor->nome_professor : '' }}">,
                             Brasileira,
                             <input type="text" name="estado_civil_professor" class="input-contrato"
-                                placeholder="Estado Cívil"
+                                placeholder="Estado Cívil (Opcional)"
                                 value="{{ $professor->estado_civil_professor != '' ? $professor->estado_civil_professor : '' }}">,
-                            <input type="text" name="profissao_professor" class="input-contrato" placeholder="Profissão"
+                            <input type="text" name="profissao_professor" class="input-contrato" placeholder="Profissão (Opcional)"
                                 value="{{ $professor->profissao_professor != '' ? $professor->profissao_professor : '' }}">,
                             Carteira de Identidade nº <input type="text" name="rg_professor" class="input-contrato" required
                                 placeholder="RG"
@@ -51,15 +51,15 @@
                             Cidade <input type="text" name="cidade_professor" class="input-contrato" required
                                 placeholder="Cidade"
                                 value="{{ $professor->cidade_professor != '' ? $professor->cidade_professor : '' }}">,
-                            no Estado <input type="text" name="estado_professor" class="input-contrato" placeholder="Estado"
+                            no Estado <input type="text" name="estado_professor" class="input-contrato" placeholder="Estado (Opcional)"
                                 value="{{ $professor->estado_professor != '' ? $professor->estado_professor : '' }}">,
                             Telefone: <input type="text" name="telefone_fixo_professor" class="input-contrato"
-                                placeholder="Telefone Fixo"
+                                placeholder="Telefone Fixo (Opcional)"
                                 value="{{ $professor->telefone_fixo_professor != '' ? $professor->telefone_fixo_professor : '' }}">
                             cel./whatsApp: <input type="text" name="telefone_celular_professor" class="input-contrato"
-                                placeholder="Celular"
+                                placeholder="Celular (Opcional)"
                                 value="{{ $professor->telefone_celular_professor != '' ? $professor->telefone_celular_professor : '' }}">,
-                            E-mail: <input type="text" name="email_professor" class="input-contrato" placeholder="Email"
+                            E-mail: <input type="text" name="email_professor" class="input-contrato" placeholder="Email (Opcional)"
                                 value="{{ $professor->email_professor != '' ? $professor->email_professor : '' }}">.
                         </p>
 
