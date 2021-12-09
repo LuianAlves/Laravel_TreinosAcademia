@@ -56,7 +56,7 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/Home', [IndexController::class, 'index'])->name('home');
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', [IndexController::class, 'index'])->name('home');
 
 
 Route::middleware('auth')->group(function () {

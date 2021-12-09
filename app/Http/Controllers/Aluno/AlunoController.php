@@ -72,6 +72,7 @@ class AlunoController extends Controller
             'codigo_aluno' => 'JP' . mt_rand(1000, 9999),
             'genero' => $request->genero,
             'data_cadastro' => Carbon::now()->format('d m Y'),
+            'mes_cadastro' => Carbon::now()->format('m'),
             'created_at' => Carbon::now()
         ]);
 

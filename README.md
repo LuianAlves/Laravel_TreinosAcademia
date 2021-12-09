@@ -93,6 +93,9 @@
 * Listando Notificações de Pagamentos Pendentes
 * Redirecionamento de rota após clicar na notificação
 
+* Configurando Chart JS para pagamentos
+
+* Dashboard configurado
 </p>
      
 <hr>

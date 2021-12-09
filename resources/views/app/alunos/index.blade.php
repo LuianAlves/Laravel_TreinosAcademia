@@ -253,13 +253,13 @@
 
                                                         {{-- Excluir --}}
                                                         <li>
-                                                            @if($aluno->tipo_treino == 'personal')
-                                                            @else
+                                                            {{-- @if($aluno->tipo_treino == 'personal')
+                                                            @else --}}
                                                                 <a class="dropdown-item d-flex align-items-center" href="{{ route('pagamentos.geral.index', $aluno->id) }}" style="font-weight: 600;">
                                                                     <i class="bx bx-dollar-circle fs-4 text-success"></i>
                                                                     <span>Pagamentos</span>
                                                                 </a>
-                                                            @endif
+                                                            {{-- @endif --}}
                                                         </li>
     
 

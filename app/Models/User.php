@@ -66,9 +66,10 @@ class User extends Authenticatable
         $mes = Carbon::now()->format('m');
 
         $pago = Pagamento::select('mes_pagamento_geral', 'valor_pagamento_geral', 'mes_pagamento_geral')
-                         ->groupBy('mes_pagamento_geral')
+                        //  ->groupBy('mes_pagamento_geral')
+                         ->orderBy('created_at', 'ASC')
                          ->where('status', 1)
-                        //  ->where('mes_pagamento_geral', $mes)
+                         ->where('mes_pagamento_geral', $mes)
                          ->get()
                          ->toArray();
 
@@ -85,9 +86,10 @@ class User extends Authenticatable
         
 
         $pendente = Pagamento::select('mes_pagamento_geral', 'valor_pagamento_geral', 'mes_pagamento_geral')
-                         ->groupBy('mes_pagamento_geral')
+                        //  ->groupBy('mes_pagamento_geral')
+                         ->orderBy('created_at', 'ASC')
                          ->where('status', 0)
-                        //  ->where('mes_pagamento_geral', $mes)
+                         ->where('mes_pagamento_geral', $mes)
                          ->get()
                          ->toArray();
 

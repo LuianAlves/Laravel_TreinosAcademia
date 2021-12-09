@@ -54,6 +54,7 @@ class AvaliacaoFisicaController extends Controller
             'problema_osseo' => $request->problema_osseo,
             'medicamento_pressao_arterial' => $request->medicamento_pressao_arterial,
             'atividade_sem_supervisao' => $request->atividade_sem_supervisao,
+            'data_mes_ava' => Carbon::now()->format('m'),
             'created_at' => Carbon::now()
         ]);
 
@@ -78,6 +79,7 @@ class AvaliacaoFisicaController extends Controller
                 'historico_familiar' => $request->historico_familiar,
                 'estatura' => $request->estatura,
                 'peso' => $request->peso,
+                'data_mes_ava' => Carbon::now()->format('m'),
                 'created_at' => Carbon::now()
             ]);
 
@@ -95,7 +97,8 @@ class AvaliacaoFisicaController extends Controller
                 'coxa_direita' => $request->coxa_direita, 
                 'coxa_esquerda' => $request->coxa_esquerda, 
                 'panturrilha_direita' => $request->panturrilha_direita, 
-                'panturrilha_esquerda' => $request->panturrilha_esquerda, 
+                'panturrilha_esquerda' => $request->panturrilha_esquerda,
+                'data_mes_ava' => Carbon::now()->format('m'), 
                 'created_at' => Carbon::now()
             ]);
             
@@ -108,7 +111,8 @@ class AvaliacaoFisicaController extends Controller
                 'peitoral' => $request->peitoral, 
                 'triciptal' => $request->triciptal, 
                 'abdominal' => $request->abdominal, 
-                'coxa' => $request->coxa, 
+                'coxa' => $request->coxa,
+                'data_mes_ava' => Carbon::now()->format('m'), 
                 'created_at' => Carbon::now()
             ]);
             
@@ -117,7 +121,8 @@ class AvaliacaoFisicaController extends Controller
                 'codigo_avaliacao' => $codigo,
                 'flexoes' => $request->flexoes, 
                 'abdominais' => $request->abdominais, 
-                'flexibilidade' => $request->flexibilidade, 
+                'flexibilidade' => $request->flexibilidade,
+                'data_mes_ava' => Carbon::now()->format('m'), 
                 'created_at' => Carbon::now()
             ]);
 
@@ -135,8 +140,6 @@ class AvaliacaoFisicaController extends Controller
     {
         //
     }
-
-
 
     /**
      * Update the specified resource in storage.
