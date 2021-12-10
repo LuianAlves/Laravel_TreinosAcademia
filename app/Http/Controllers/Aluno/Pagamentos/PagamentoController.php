@@ -64,6 +64,9 @@ class PagamentoController extends Controller
         $aluno_id = $request->aluno_id;
         $servico = $request->servico;
 
+        $valor = $request->valor_pagamento_geral;
+        $valorPagamento = str_replace(',', '.', $valor); 
+        
         $dataPagamento = $request->data_pagamento_geral;
 
         $diaPagamento = substr($dataPagamento, 8);
@@ -72,7 +75,7 @@ class PagamentoController extends Controller
 
         Pagamento::insert([
             'aluno_id' => $aluno_id,
-            'valor_pagamento_geral' => $request->valor_pagamento_geral,
+            'valor_pagamento_geral' => $valorPagamento,
             'data_pagamento_geral' => $dataPagamento,
             'descricao' => $request->descricao,
             'dia_pagamento_geral' => $diaPagamento,
@@ -112,6 +115,9 @@ class PagamentoController extends Controller
     {
         $aluno_id = $request->aluno_id;
 
+        $valor = $request->valor_pagamento_geral;
+        $valorPagamento = str_replace(',', '.', $valor); 
+
         $dataPagamento = $request->data_pagamento_geral;
 
         $diaPagamento = substr($dataPagamento, 8);
@@ -119,7 +125,7 @@ class PagamentoController extends Controller
         $anoPagamento = substr($dataPagamento, 0, -6);
         
         Pagamento::findOrFail($id)->update([
-            'valor_pagamento_geral' => $request->valor_pagamento_geral,
+            'valor_pagamento_geral' => $valorPagamento,
             'data_pagamento_geral' => $dataPagamento,
             'descricao' => $request->descricao,
             'dia_pagamento_geral' => $diaPagamento,

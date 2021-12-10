@@ -136,7 +136,7 @@ class AlunoController extends Controller
             'updated_at' => Carbon::now()
         ]);
 
-        return redirect()->route('alunos.index');
+        return redirect()->route('area-aluno.index', $id);
     }
 
     /**

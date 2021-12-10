@@ -34,7 +34,7 @@
 
     {{-- Selicionar categorias do modal quando for montar treino --}}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    
+
     {{-- TREINOS ADICIONAR EXERCICO AO LADO DIREITO --}}
     <script src="{{ asset('backend/assets/js/arraylist_direita.js') }}" async></script>
 
@@ -63,11 +63,37 @@
 
         <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
                 class="bi bi-arrow-up-short"></i></a>
-        
+
         <!-- Charting library -->
         <script src="https://unpkg.com/chart.js@^2.9.3/dist/Chart.min.js"></script>
         <!-- Chartisan -->
         <script src="https://unpkg.com/@chartisan/chartjs@^2.1.0/dist/chartisan_chartjs.umd.js"></script>
+
+        {{-- Sweet Alert --}}
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script>
+            $(function(){
+                $(document).on('click', '#delete', function(e) {
+                    e.preventDefault()
+                    var link = $(this).attr("href")
+
+                    Swal.fire({
+                        title: 'Tem certeza?',
+                        text: "Após remover este aluno todos os dados vinculados a ele serão apagados.",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Sim, remover!',
+                        cancelButtonText: 'Cancelar'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            window.location.href = link
+                        }
+                    })
+                })
+            })
+        </script>
 
         @stack('js')
 

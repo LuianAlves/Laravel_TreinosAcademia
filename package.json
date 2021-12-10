@@ -22,6 +22,7 @@
     },
     "dependencies": {
         "@chartisan/chartjs": "^2.1.0",
-        "chart.js": "^3.6.2"
+        "chart.js": "^3.6.2",
+        "sweetalert2": "^11.3.0"
     }
 }

@@ -11,6 +11,7 @@ use App\Http\Controllers\User\UserController;
 
 // Aluno
 use App\Http\Controllers\Aluno\AlunoController;
+use App\Http\Controllers\Aluno\AreaAlunoController;
 
 // Professor
 use App\Http\Controllers\Professor\DadosProfessorContratoController;
@@ -86,6 +87,10 @@ Route::middleware('auth')->group(function () {
 // ---------- Área do Aluno ---------- //
     // Alunos
     Route::resource('alunos', AlunoController::class)->except('create');
+    
+    // Area do Aluno
+    Route::get('area_aluno/{aluno_id}', [AreaAlunoController::class, 'index'])->name('area-aluno.index');
+    Route::get('area_aluno/delete/{aluno_id}', [AreaAlunoController::class, 'destroy'])->name('area-aluno.destroy');
 
     // Montar Treino
     Route::prefix('assessoria/treino')->group(function () {

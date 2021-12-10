@@ -14,8 +14,8 @@
                         <div class="row">
                             <div class="d-flex justify-content-between">
                                 <h4 class="card-title">Editar Informações do Aluno: <span style="color: #63699e; font-size: 18px;">{{ $aluno->nome }}</span></h4>
-                                <a href="{{ route('alunos.index') }}" class="btn btn-sm text-white"
-                                    style="font-weight: 700; background: #4154f1; padding-top: 3px;">Lista de Alunos</a>
+                                <a href="{{ route('area-aluno.index', $aluno->id) }}" class="btn btn-sm btn-success text-white"
+                                    style="font-weight: 700; padding-top: 3px;">Área do Aluno</a>
                             </div>
                         </div>
 
@@ -177,7 +177,7 @@
 
                             <div class="row mt-5">
                                 <div class="d-flex justify-content-end">
-                                    <button type="submit" class="btn btn-sm text-white float-right" style="font-weight: 700; background: #4154f1; padding-top: 3px;">Cadastrar</button>
+                                    <button type="submit" class="btn btn-sm text-white float-right" style="font-weight: 700; background: #4154f1; padding-top: 3px;">Alterar</button>
                                 </div>
                             </div>
 

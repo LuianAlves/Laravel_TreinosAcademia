@@ -96,6 +96,8 @@
 * Configurando Chart JS para pagamentos
 
 * Dashboard configurado
+* Criada área do aluno e reajuste em algumas views
+
 </p>
      
 <hr>

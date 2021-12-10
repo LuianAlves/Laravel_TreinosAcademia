@@ -6,7 +6,7 @@
     <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <span style="margin: auto 6px; font-size: 26px;">Professor: <span style="color: #63699e;">{{ $user->name }}</span></span>
+                <span style="margin: auto 6px; font-size: 26px;"><span style="color: #63699e;">{{ $user->name }}</span></span>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
 

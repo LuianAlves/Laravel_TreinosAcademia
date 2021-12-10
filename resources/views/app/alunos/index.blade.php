@@ -125,14 +125,10 @@
                                         <th class="text-center" scope="col">Aluno</th>
                                         <th class="text-center" scope="col">Telefone</th>
                                         <th class="text-center" scope="col">Treino</th>
-                                        <th class="text-center" scope="col">Serviços</th>
+                                        <th class="text-center" scope="col">Área do Aluno</th>
                                     </tr>
                                 </thead>
                                 <tbody id="pesquisarNaTabela">
-                                    @if(App\Models\Contratos\DadosProfessorContrato::count() == 0)
-                                        <h6 class="text-danger text-center mb-4" style="font-family: 'Poppins', sans-serif; font-style: italic;">Adicione um Professor para criar/montar Treinos-Contratos-Avaliações!</h6>
-                                    @endif
-
                                     @foreach ($alunos as $aluno)
                         
                                         <tr>
@@ -150,143 +146,9 @@
                                                 @endif
                                             </td>
                                             <td class="text-center pt-1">
-                                                <li class="nav-item dropdown" style="list-style: none;">
-                                                    <a class="nav-link nav-profile text-success pe-0" href="#" data-bs-toggle="dropdown">
-                                                        <i class="bx bx-category fs-4"></i>
-                                                    </a>
-                                                    
-                                                    <ul class="dropdown-menu" id="dropdown-menu-user">
-
-                                                        {{-- Visualizar --}}
-                                                        <li>
-                                                            <a class="dropdown-item d-flex align-items-center" style="font-weight: 600;" href="#" data-bs-toggle="modal" data-bs-target="#showAluno" id="{{ $aluno->id }}" onclick="visualizarAluno(this.id)">
-                                                                <i class="bx bx-minus-front fs-4 text-primary"></i>
-                                                                <span>Visualizar Informações</span>
-                                                            </a>
-                                                        </li>
-                                                        
-                                                        {{-- Editar --}}
-                                                        <li>
-                                                            <a class="dropdown-item d-flex align-items-center" style="font-weight: 600;" href="{{ route('alunos.edit', $aluno->id) }}">
-                                                                <i class="bx bx-edit fs-4 text-warning"></i>
-                                                                <span>Editar Informações</span>
-                                                            </a>
-                                                        </li>
-                                                        
-                                                        <li>
-                                                            <hr class="dropdown-divider">
-                                                        </li>
-                                                        
-                                                        @if(App\Models\Contratos\DadosProfessorContrato::count() != 0)
-
-                                                            {{-- Treinos --}}
-                                                            <li>
-                                                                <a class="dropdown-item d-flex align-items-center" style="font-weight: 600;" href="{{ route('montar.create', $aluno->id) }}">
-                                                                    <i class="bx bx-dumbbell fs-4 text-info"></i>
-                                                                    <span>Montar Treino</span>
-                                                                </a>
-                                                            </li>
-
-                                                            @php
-                                                                $treinos = App\Models\TreinoAluno\MontarTreino::where('aluno_id', $aluno->id)->first();
-                                                            @endphp
-
-                                                            @if(!empty($treinos))
-                                                                <li>
-                                                                    <a class="dropdown-item d-flex align-items-center" style="font-weight: 600;" href="{{ route('montado.index', $aluno->id) }}">
-                                                                        <i class="bx bx-abacus fs-4" style="color: rgb(103, 17, 153);"></i>
-                                                                        <span>Treinos Montados</span>
-                                                                    </a>
-                                                                </li>
-                                                            @endif
-
-                                                            <li>
-                                                                <hr class="dropdown-divider">
-                                                            </li>
-
-                                                            {{-- Contratos --}}
-                                                            @if($aluno->tipo_treino == 'personal' || $aluno->tipo_treino == 'Personal')
-                                                                <li>
-                                                                    <a class="dropdown-item d-flex align-items-center" style="font-weight: 600;" href="{{ route('montar-contrato.create', $aluno->id) }}">
-                                                                        <i class="bx bx-notepad fs-4" style="color: rgb(129, 86, 5);"></i>
-                                                                        <span>Montar Contrato</span>
-                                                                    </a>
-                                                                </li>
-                                                            @endif  
-
-                                                            @php
-                                                                $contratos = App\Models\Contratos\Contratos::where('aluno_id', $aluno->id)->first();
-                                                            @endphp
-
-                                                            @if(!empty($contratos))
-                                                                <li>
-                                                                    <a class="dropdown-item d-flex align-items-center" style="font-weight: 600;" href="{{ route('contratos-montados.index', $aluno->id) }}">
-                                                                        <i class="bx bx-notepad fs-4" style="color: rgb(129, 86, 5);"></i>
-                                                                        <span>Contratos Montados</span>
-                                                                    </a>
-                                                                </li>
-                                                            @endif
-
-                                                            <li>
-                                                                <hr class="dropdown-divider">
-                                                            </li>
-
-                                                            {{-- Avaliações Físicas --}}
-                                                            <li>
-                                                                <a class="dropdown-item d-flex align-items-center" href="{{ route('realizar.index', $aluno->id) }}" style="font-weight: 600;">
-                                                                    <i class="bx bxs-heart fs-4 text-danger"></i>
-                                                                    <span>Avaliação Física</span>
-                                                                </a>
-                                                            </li>  
-
-                                                            @php
-                                                                $avaliacoes = App\Models\Avaliacao\DadosAvaliacaoFisica::where('aluno_id', $aluno->id)->first();
-                                                            @endphp
-
-                                                            @if(!empty($avaliacoes))
-                                                                <li>
-                                                                    <a class="dropdown-item d-flex align-items-center" style="font-weight: 600;" href="{{ route('avaliacoes.show', $aluno->id) }}">
-                                                                        <i class="bx bx-heart text-danger fs-4"></i>
-                                                                        <span>Avaliações Realizadas</span>
-                                                                    </a>
-                                                                </li>
-                                                            @endif
-
-                                                            <li>
-                                                                <hr class="dropdown-divider">
-                                                            </li>
-                                                        
-                                                        @endif
-                                                        
-                                                        {{-- Pagamentos --}}
-                                                        <li>
-                                                            {{-- @if($aluno->tipo_treino == 'personal')
-                                                            @else --}}
-                                                                <a class="dropdown-item d-flex align-items-center" href="{{ route('pagamentos.geral.index', $aluno->id) }}" style="font-weight: 600;">
-                                                                    <i class="bx bx-dollar-circle fs-4 text-success"></i>
-                                                                    <span>Pagamentos</span>
-                                                                </a>
-                                                            {{-- @endif --}}
-                                                        </li>
-    
-
-                                                        <li>
-                                                            <hr class="dropdown-divider">
-                                                        </li>
-
-                                                        <li>
-                                                            <form id="form_{{ $aluno->id }}" action="{{ route('alunos.destroy', $aluno->id) }}" method="post">
-                                                            @method('DELETE')
-                                                            @csrf
-                                                                <a class="dropdown-item d-flex align-items-center" href="#" style="font-weight: 600;" onclick="document.getElementById('form_{{ $aluno->id }}').submit()">
-                                                                    <i class="bx bx-block fs-4 text-danger"></i>
-                                                                    <span class="text-danger">Remover Aluno</span>
-                                                                </a>
-                                                            </form>
-                                                        </li>
-                                                        
-                                                    </ul>
-                                                </li>
+                                                <a href="{{ route('area-aluno.index', $aluno->id) }}">
+                                                    <i class="bx bx-arrow-to-right text-info fs-3"></i>
+                                                </a>
                                             </td>
                                         </tr>
                                     @endforeach

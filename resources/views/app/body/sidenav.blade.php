@@ -41,12 +41,7 @@
                 <ul id="montarTreino" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                     <li>
                         <a href="{{ route('montar.index') }}">
-                            <i class="bi bi-circle"></i><span>Montar Treino Personal</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('montar.index') }}">
-                            <i class="bi bi-circle"></i><span>Montar Treino Assessoria</span>
+                            <i class="bi bi-circle"></i><span>Montar Treino</span>
                         </a>
                     </li>
                 </ul>

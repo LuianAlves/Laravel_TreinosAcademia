@@ -33,9 +33,9 @@ class IndexController extends Controller
 
         // Lado Direito Dashboard        
         $alunos = Aluno::orderBy('created_at', 'DESC')->limit(4)->get();
-        $exercicios = AdicionarExercicio::orderBy('created_at', 'DESC')->limit(4)->get();
+        $treinos = MontarTreino::orderBy('created_at', 'DESC')->limit(4)->get();
         $ava_recent = AnamneseAvaliacaoFisica::orderBy('created_at', 'DESC')->limit(4)->get();
         
-        return view('app.index', compact('pagamentos_pendentes', 'caixa_mes', 'caixa_pendente_mes', 'alunos_novos', 'avaliacoes', 'alunos', 'exercicios', 'ava_recent'));
+        return view('app.index', compact('pagamentos_pendentes', 'caixa_mes', 'caixa_pendente_mes', 'alunos_novos', 'avaliacoes', 'alunos', 'treinos', 'ava_recent'));
     }
 }

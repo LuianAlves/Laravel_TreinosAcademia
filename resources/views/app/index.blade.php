@@ -206,7 +206,7 @@
                                     <div class="activite-label col-5">{{ Carbon\Carbon::parse($aluno->created_at)->diffForHumans() }}</div>
                                     <i class='bi bi-circle-fill col-1 activity-badge align-self-start'></i>
                                     <div class="activity-content col-6">
-                                        Novo Aluno <a href="#" class="fw-bold" style="color: #11ac6c;">{{ $aluno->nome }}</a>
+                                        Novo Aluno <a href="{{ route('area-aluno.index', $aluno->id) }}" class="fw-bold" style="color: #11ac6c;">{{ $aluno->nome }}</a>
                                     </div>
                                 </div>
                             @endforeach
@@ -219,12 +219,13 @@
                     <div class="card-body">
                         <h5 class="card-title">Treinos Recentes</h5>
                         <div class="activity">
-                            @foreach($exercicios as $exe)
+                            @foreach($treinos as $treino)
                                     <div class="activity-item d-flex">
-                                        <div class="activite-label col-5">{{ Carbon\Carbon::parse($exe->created_at)->diffForHumans() }}</div>
+                                        <div class="activite-label col-5">{{ Carbon\Carbon::parse($treino->created_at)->diffForHumans() }}</div>
                                         <i class='bi bi-circle-fill col-1 activity-badge align-self-start'></i>
                                         <div class="activity-content col-6">
-                                            Treino <a href="#" class="fw-bold" style="color: #11ac6c;">*{{ $exe->codigo_treino }}</a> Modificado
+                                            Novo treino <a href="{{ route('adicionar.index', $treino->id) }}" class="fw-bold" style="color: #11ac6c;"> [{{ $treino->codigo_treino }}]</a> 
+                                            criado para <a href="{{ route('area-aluno.index', $treino->aluno_id) }}" class="fw-bold" style="color: #11ac6c;"> {{ $treino->aluno->nome }}.</a>
                                         </div>
                                     </div>
                             @endforeach
@@ -242,7 +243,7 @@
                                     <div class="activite-label col-5">{{ Carbon\Carbon::parse($ava->created_at)->diffForHumans() }}</div>
                                     <i class='bi bi-circle-fill col-1 activity-badge align-self-start'></i>
                                     <div class="activity-content col-6">
-                                        Avaliação #<a href="#" class="fw-bold" style="color: #11ac6c;">{{ $ava->codigo_avaliacao }}</a> realizada - <b>{{ $ava->aluno->nome }}</b>
+                                        Avaliação <a href="{{ route('download.avaliacao.fisica', $ava->codigo_avaliacao) }}" class="fw-bold" style="color: #11ac6c;">{{ $ava->codigo_avaliacao }}</a> realizada | <b>{{ $ava->aluno->nome }}</b>
                                     </div>
                                 </div>
                             @endforeach

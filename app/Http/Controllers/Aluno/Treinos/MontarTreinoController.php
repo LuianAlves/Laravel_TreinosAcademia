@@ -22,7 +22,7 @@ class MontarTreinoController extends Controller
      */
     public function index()
     {
-        $alunos = Aluno::where('tipo_treino', 'personal')->orderBy('id')->paginate(10);
+        $alunos = Aluno::orderBy('id')->paginate(10);
 
         return view('app.treinos.aluno.personal.index', compact('alunos'));
     }

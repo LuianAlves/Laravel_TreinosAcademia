@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Models\Treinos\CategoriaTreinos;
+use App\Models\Treinos\ExercicioTreinos;
 use Carbon\Carbon;
 
 class CategoriaTreinosController extends Controller
@@ -92,7 +93,8 @@ class CategoriaTreinosController extends Controller
     public function destroy($id)
     {
         CategoriaTreinos::findOrFail($id)->delete();
-        
+        ExercicioTreinos::where('categoria_treino_id', $id)->delete();
+
         return redirect()->route('categoria.index');
     }
 }
