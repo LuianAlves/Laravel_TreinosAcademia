@@ -27,17 +27,24 @@ use Carbon\Carbon;
 
 class DownloadController extends Controller
 {
-    public function DownloadPersonal($divisao, $treino_id) {
+    public function DownloadTreino($treino_id) {
 
-        $treino = MontarTreino::with('aluno')->where('id', $treino_id)->first();
-        $download_treino = AdicionarExercicio::with('exercicio')->where('treino_id', $treino_id)->where('divisao_treino', $divisao)->get();
+        $dados_treino = MontarTreino::with('aluno')->where('id', $treino_id)->first();
+        // $treinos = AdicionarExercicio::with('exercicio')->where('treino_id', $treino_id)->get();
 
-        $data_treino = Carbon::parse($treino->created_at)->format('d M Y, H:m:s');
-        $data_download = Carbon::now()->format('d M Y, H:m:s');
+        $treino_a = AdicionarExercicio::where('treino_id', $treino_id)->where('divisao_treino', 'treino_a')->get();
+        $treino_b = AdicionarExercicio::where('treino_id', $treino_id)->where('divisao_treino', 'treino_b')->get();
+        $treino_c = AdicionarExercicio::where('treino_id', $treino_id)->where('divisao_treino', 'treino_c')->get();
+        $treino_d = AdicionarExercicio::where('treino_id', $treino_id)->where('divisao_treino', 'treino_d')->get();
 
-        $pdf = PDF::loadView('app.treinos.aluno.personal.download_treinos.down_treino', compact('download_treino', 'divisao', 'treino', 'data_treino', 'data_download'));
+        $data_treino = Carbon::parse($dados_treino->created_at)->format('d/m/Y, H:m:s');
+        $data_download = Carbon::now()->format('d/m/Y, H:m:s');
 
-        return $pdf->download($treino->aluno->nome.'_'.$divisao.'.pdf');
+        $pdf = PDF::loadView('app.treinos.aluno.personal.download_treinos.down_treino', compact(
+            'dados_treino', 'treino_a', 'treino_b', 'treino_c', 'treino_d', 'data_treino', 'data_download'
+        ));
+
+        return $pdf->download('Treino_'.$dados_treino->aluno->nome.'.pdf');
     }
 
     public function DownloadAvaliacaoFisica($codigo_ava) {

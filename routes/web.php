@@ -179,7 +179,7 @@ Route::middleware('auth')->group(function () {
 
     // Downloads
     Route::prefix('download')->group(function() {
-        Route::get('/personal/treinos/{divisao}/{treino_id}', [DownloadController::class, 'DownloadPersonal'])->name('download.personal');
+        Route::get('/treinos/{treino_id}', [DownloadController::class, 'DownloadTreino'])->name('download.treino');
         Route::get('/avaliacao/{codigo_ava}', [DownloadController::class, 'DownloadAvaliacaoFisica'])->name('download.avaliacao.fisica');
         Route::get('contratos/download/{codigo_contrato}/{aluno_id}/{professor_id}', [DownloadController::class, 'DownloadContrato'])->name('contratos.download');
     });

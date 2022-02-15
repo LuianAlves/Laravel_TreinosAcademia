@@ -6,64 +6,8 @@
     @include('app.body.breadcrumb')
 
     <section class="section">
-
-        
         <div class="row">
-            @php
-                $prefix = Request::route()->getName();
-            @endphp
-
-            <div class="d-flex justify-content-end">
-                @if ($prefix != 'categoria.index')
-                    <a href="{{ route('categoria.index') }}" class="btn btn-sm btn-danger" style="font-weight: 700;">
-                        Limpar Filtro
-                    </a>
-                @endif
-            </div>
-        </div>
-
-        <div class="row">
-
-            {{-- Pesquisar pela categoria --}}
-            <div class="col-lg-5">
-                <div class="card mt-3">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="d-flex justify-content-between">
-                                <h4 class="card-title">Categoria</h4>
-                            </div>
-                        </div>
-
-                        <form action="{{ route('categoria.treinos.search') }}" method="post">
-                            @csrf
-
-                            <div class="row">
-                                <div class="col">
-                                    <div class="input-group">
-                                        <input type="text" name="search_categoria_treino" class="form-control form-control-sm"
-                                            placeholder="Insira a Categoria" required>
-                                    </div>
-                                    @error('search_categoria_treino')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                            </div>
-
-                            <div class="row mt-5">
-                                <div class="d-flex justify-content-end">
-                                    <button type="submit" class="btn btn-sm text-white float-right"
-                                        style="font-weight: 700; background: #4154f1; padding-top: 8px;"><i
-                                            class="bx bx-search"></i></button>
-                                </div>
-                            </div>
-                        </form>
-
-                    </div>
-                </div>
-            </div>
-
-            {{-- Listagem de Categorias --}}
-            <div class="col-lg-7" style="max-height: 500px; overflow-y: auto;">
+            <div class="col-12" style="max-height: 500px; overflow-y: auto;">
                 <div class="card mt-3">
                     <div class="card-body">
                         <div class="row">
@@ -76,64 +20,69 @@
                                 </div>
                             </div>
                         </div>
-
                         
-                        <table class="table table-sm">
-                            <thead style="color: #7b84d6;">
-                                <tr>
-                                    <th scope="col">Categorias</th>
-                                    <th class="text-center" scope="col">Serviços</th>
-                                </tr>
-                            </thead>
-                            <tbody id="pesquisarNaTabela">
-                                @foreach ($categoria_treino as $cat)
+                        @if(App\Models\Treinos\CategoriaTreinos::count() != 0)
+                            <table class="table table-sm">
+                                <thead style="color: #7b84d6;">
                                     <tr>
-                                        <th class="text-muted">{{ $cat->nome_categoria_treino }}</th>
-                                        <td class="text-center pt-1">
-                                            <li class="nav-item dropdown" style="list-style: none;">
-                                                <a class="nav-link nav-profile text-success pe-0" href="#" data-bs-toggle="dropdown">
-                                                    <i class="bx bx-category fs-4"></i>
-                                                </a>
-                                                
-                                                <ul class="dropdown-menu" id="dropdown-menu-user">
-                                                    
-                                                    <li>
-                                                        <a class="dropdown-item d-flex align-items-center" href="{{ route('categoria.edit', $cat->id) }}">
-                                                            <i class="bx bx-edit"></i>
-                                                            <span>Editar Categoria</span>
-                                                        </a>
-                                                    </li>
-
-                                                    <li>
-                                                        <hr class="dropdown-divider">
-                                                    </li>
-
-                                                    <li>
-                                                        <form id="form_{{ $cat->id }}" action="{{ route('categoria.destroy', $cat->id) }}" method="post">
-                                                        @method('DELETE')
-                                                        @csrf
-                                                            <a class="dropdown-item d-flex align-items-center" href="#" onclick="document.getElementById('form_{{ $cat->id }}').submit()">
-                                                                <i class="bx bx-block text-danger"></i>
-                                                                <span class="text-danger">Remover Categoria</span>
-                                                            </a>
-                                                        </form>
-                                                    </li>
-                                                    
-                                                </ul>
-                                            </li>
-                                        </td>
+                                        <th scope="col">Categorias</th>
+                                        <th class="text-center" scope="col">Serviços</th>
                                     </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody id="pesquisarNaTabela">
+                                    @foreach ($categoria_treino as $cat)
+                                        <tr>
+                                            <td class="col-10 text-muted fw-bold">{{ $cat->nome_categoria_treino }}</td>
+                                            <td class="text-center pt-1">
+                                                <li class="nav-item dropdown" style="list-style: none;">
+                                                    <a class="nav-link nav-profile text-success pe-0" href="#" data-bs-toggle="dropdown">
+                                                        <i class="bx bx-category fs-4"></i>
+                                                    </a>
+                                                    
+                                                    <ul class="dropdown-menu" id="dropdown-menu-user">
+                                                        
+                                                        <li>
+                                                            <a class="dropdown-item d-flex align-items-center" href="{{ route('categoria.edit', $cat->id) }}">
+                                                                <i class="bx bx-edit"></i>
+                                                                <span>Editar Categoria</span>
+                                                            </a>
+                                                        </li>
 
-                        <div class="text-muted text-center" style="font-family: 'Poppins', sans-serif; margin-top: 50px;">
-                            Total de <b>{{ count($categoria_treino) }} </b> Categorias Cadastradas.
-                        </div>
+                                                        <li>
+                                                            <hr class="dropdown-divider">
+                                                        </li>
+
+                                                        <li>
+                                                            <form id="form_{{ $cat->id }}" action="{{ route('categoria.destroy', $cat->id) }}" method="post">
+                                                            @method('DELETE')
+                                                            @csrf
+                                                                <a class="dropdown-item d-flex align-items-center" href="#" onclick="document.getElementById('form_{{ $cat->id }}').submit()">
+                                                                    <i class="bx bx-block text-danger"></i>
+                                                                    <span class="text-danger">Remover Categoria</span>
+                                                                </a>
+                                                            </form>
+                                                        </li>
+                                                        
+                                                    </ul>
+                                                </li>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        @else
+                            <div class="row justify-content-around mt-4">
+                                <h6 class="text-danger text-center mb-4" style="font-family: 'Poppins', sans-serif;">
+                                    Parece que nenhum exercício foi configurado.
+                                </h6>
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>
+            <div class="text-muted text-center" style="font-family: 'Poppins', sans-serif; margin-top: 20px;">   
+                Total de <b>{{ count($categoria_treino) }} </b> Categorias Cadastradas.
+            </div>
         </div>
-
     </section>
 @endsection

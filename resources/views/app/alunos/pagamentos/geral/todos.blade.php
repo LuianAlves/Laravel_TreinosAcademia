@@ -36,7 +36,7 @@
                                 <tbody id="pesquisarNaTabela">
                                     @foreach ($pagamentos as $pgt)
                                         <tr class="text-center">
-                                            <td style="font-weight: 550;">{{ ucfirst($pgt->aluno->nome) }}</td>
+                                            <td style="font-weight: 550;">{{ $pgt->descricao != null ? ucfirst($pgt->descricao) : ucfirst($pgt->tipo_servico) }}</td>
                                             <td style="font-weight: 550;">{{ ucfirst($pgt->tipo_servico) }}</td>
                                             <td><b class="text-success">R$ </b>{{ $pgt->valor_pagamento_geral }}</td>
                                             <td>

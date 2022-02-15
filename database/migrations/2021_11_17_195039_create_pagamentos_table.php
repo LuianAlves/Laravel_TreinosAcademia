@@ -16,7 +16,7 @@ class CreatePagamentosTable extends Migration
         Schema::create('pagamentos', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('aluno_id')->unsigned();
-            $table->string('valor_pagamento_geral');
+            $table->decimal('valor_pagamento_geral', 10, 2);
             $table->string('data_pagamento_geral');
             $table->text('descricao')->nullable();
             $table->string('dia_pagamento_geral');

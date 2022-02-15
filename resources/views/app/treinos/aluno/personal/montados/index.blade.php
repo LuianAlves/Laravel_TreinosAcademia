@@ -26,7 +26,7 @@
                                 <thead style="color: #7b84d6;">
                                     <tr>
                                         <th scope="col"># Código</th>
-                                        <th scope="col">Professor</th>
+                                        <th class="text-center" scope="col">Professor</th>
                                         <th class="text-center" scope="col">Nível do Treino</th>
                                         <th class="text-center" scope="col">Categorias</th>
                                         <th class="text-center" scope="col">Criado</th>
@@ -94,9 +94,9 @@
                                                         </li>
 
                                                         <li>
-                                                            <a class="dropdown-item d-flex align-items-center" style="font-weight: 600;" href="{{ route('montar.edit', $treino->id) }}">
+                                                            <a class="dropdown-item d-flex align-items-center" style="font-weight: 600;" href="{{ route('download.treino', $treino->id) }}">
                                                                 <i class="bx bxs-download fs-4 text-success"></i>
-                                                                <span>Download Treinos</span>
+                                                                <span>Baixar Treino</span>
                                                             </a>
                                                         </li>
     

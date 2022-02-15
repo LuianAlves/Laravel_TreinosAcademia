@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>{{ strtoupper(str_replace('_', ' ', $divisao)) }} - {{ $treino->aluno->nome}}</title>
+    <title>Treino - {{ $dados_treino->aluno->nome}}</title>
 
     <style type="text/css">
         * {
@@ -36,7 +36,7 @@
         table th {
             font-size: 16px;
             font-weight: 550;
-            color: rgb(179, 158, 204);
+            color: rgb(151, 141, 45);
         }
 
         ul li span,
@@ -58,33 +58,39 @@
         .borda-direita {
             border-right: 1px solid rgba(236, 236, 236, 0.5);
         }
+
+        .page-break {
+            page-break-after: always;
+        }
     </style>
 </head>
 
 <body>
 
-    {{-- Dados --}}
+    {{-- Dados Aluno --}}
     <ul>
-        <h3 style="text-transform: uppercase;">Dados do Aluno</h3>
+        <h4 style="text-transform: uppercase;">Dados do Aluno</h4>
         <li>    
-            <b>Aluno: </b>{{ strtoupper($treino->aluno->nome) }}
+            <b>Aluno: </b>{{ ucwords($dados_treino->aluno->nome) }}
         </li>
         <li>    
-            <b>Telefone: </b>{{ strtoupper($treino->aluno->telefone) }}
+            <b>Telefone: </b>{{ strtoupper($dados_treino->aluno->telefone) }}
         </li>
-        <li>    
-            <b>E-mail: </b>{{ $treino->aluno->email }}
-        </li>
+        @if($dados_treino->aluno->email)
+            <li>    
+                <b>E-mail: </b>{{ $dados_treino->aluno->email }}
+            </li>
+        @endif
     </ul>
-
+    
     {{-- Treino --}}
-    <ul style="margin-top: 50px; padding-bottom: 50px;">
-        <h3>{{ strtoupper(str_replace('_', ' ', $divisao)) }}</h3>
+    <ul style="margin-top: 15px; padding-bottom: 50px;">
+        <h4 style="text-transform: uppercase;">Dados do Professor</h4>
         <li>    
-            <b>Professor: </b>{{ strtoupper($treino->professor) }}
+            <b>Professor: </b>{{ ucwords($dados_treino->professor) }}
         </li>
         <li>    
-            <b>Tipo de Serviço Contratado: </b>{{ strtoupper($treino->aluno->tipo_treino) }}
+            <b>Tipo de Serviço Contratado: </b>{{ ucwords($dados_treino->aluno->tipo_treino) }}
         </li>
         <li>    
             <b>Treino Criado em: </b>{{ $data_treino }}
@@ -92,32 +98,136 @@
         <li style="padding-bottom: 10px;">    
             <b>Baixado em: </b>{{ $data_download }}
         </li>
-    
-        <table align="center" class="borda-tabela" width="75%" style="margin-top: 60px;">
-            <thead class="borda-lista">
-                <tr>
-                    <th class="borda-direita" style="text-align: center">Exercícios</th>
-                    <th class="borda-direita" style="text-align: center">Séries</th>
-                    <th style="text-align: center">Repetições</th>
-                </tr>
-            </thead>
-            <tbody id="exercicios">
-                @foreach($download_treino as $treino)
+    </ul> 
+
+        {{-- Treino A --}}
+        @if ($treino_a->isEmpty())
+        @else
+            <div class="page-break"></div>
+            <h4 align="center" style="color:rgb(151, 141, 45); margin-top: 60px;">Treino A</h4>
+
+            <table align="center" class="borda-tabela" width="50%">
+                <thead class="borda-lista">
                     <tr>
-                        <td class="borda-direita borda-lista" align="center">
-                            <span class="borda-direita">{{ $treino->exercicio->nome_exercicio }}</span> 
-                        </td>
-                        <td class="borda-direita borda-lista" align="center">
-                            <span>{{ $treino->serie }} x</span> 
-                        </td>
-                        <td align="center" class="borda-lista">
-                            <span>{{ $treino->repeticao }}</span> 
-                        </td>
+                        <th class="borda-direita" style="text-align: center">Exercícios</th>
+                        <th class="borda-direita" style="text-align: center">Séries</th>
+                        <th style="text-align: center">Repetições</th>
                     </tr>
-                @endforeach
-            </tbody>
-        </table>
-    </ul>
+                </thead>
+                <tbody id="exercicios">
+                    @foreach($treino_a as $treino)
+                        <tr>
+                            <td class="borda-direita borda-lista" align="center">
+                                <span class="borda-direita">{{ $treino->exercicio->nome_exercicio }}</span> 
+                            </td>
+                            <td class="borda-direita borda-lista" align="center">
+                                <span>{{ $treino->serie }} x</span> 
+                            </td>
+                            <td align="center" class="borda-lista">
+                                <span>{{ $treino->repeticao }}</span> 
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        @endif
+
+        {{-- Treino B --}}
+        @if ($treino_b->isEmpty())
+        @else
+            <div class="page-break"></div>
+            <h4 align="center" style="color:rgb(151, 141, 45); margin-top: 60px;">Treino B</h4>
+
+            <table align="center" class="borda-tabela" width="50%">
+                <thead class="borda-lista">
+                    <tr>
+                        <th class="borda-direita" style="text-align: center">Exercícios</th>
+                        <th class="borda-direita" style="text-align: center">Séries</th>
+                        <th style="text-align: center">Repetições</th>
+                    </tr>
+                </thead>
+                <tbody id="exercicios">
+                    @foreach($treino_b as $treino)
+                        <tr>
+                            <td class="borda-direita borda-lista" align="center">
+                                <span class="borda-direita">{{ $treino->exercicio->nome_exercicio }}</span> 
+                            </td>
+                            <td class="borda-direita borda-lista" align="center">
+                                <span>{{ $treino->serie }} x</span> 
+                            </td>
+                            <td align="center" class="borda-lista">
+                                <span>{{ $treino->repeticao }}</span> 
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        @endif
+
+        {{-- Treino C --}}
+        @if ($treino_c->isEmpty())
+        @else
+            <div class="page-break"></div>
+            <h4 align="center" style="color:rgb(151, 141, 45); margin-top: 60px;">Treino C</h4>
+
+            <table align="center" class="borda-tabela" width="50%">
+                <thead class="borda-lista">
+                    <tr>
+                        <th class="borda-direita" style="text-align: center">Exercícios</th>
+                        <th class="borda-direita" style="text-align: center">Séries</th>
+                        <th style="text-align: center">Repetições</th>
+                    </tr>
+                </thead>
+                <tbody id="exercicios">
+                    @foreach($treino_c as $treino)
+                        <tr>
+                            <td class="borda-direita borda-lista" align="center">
+                                <span class="borda-direita">{{ $treino->exercicio->nome_exercicio }}</span> 
+                            </td>
+                            <td class="borda-direita borda-lista" align="center">
+                                <span>{{ $treino->serie }} x</span> 
+                            </td>
+                            <td align="center" class="borda-lista">
+                                <span>{{ $treino->repeticao }}</span> 
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        @endif
+
+        {{-- Treino D --}}
+        @if ($treino_d->isEmpty())
+        @else
+            <div class="page-break"></div>
+            <h4 align="center" style="color:rgb(151, 141, 45); margin-top: 60px;">Treino D</h4>
+
+            <table align="center" class="borda-tabela" width="50%">
+                <thead class="borda-lista">
+                    <tr>
+                        <th class="borda-direita" style="text-align: center">Exercícios</th>
+                        <th class="borda-direita" style="text-align: center">Séries</th>
+                        <th style="text-align: center">Repetições</th>
+                    </tr>
+                </thead>
+                <tbody id="exercicios">
+                    @foreach($treino_d as $treino)
+                        <tr>
+                            <td class="borda-direita borda-lista" align="center">
+                                <span class="borda-direita">{{ $treino->exercicio->nome_exercicio }}</span> 
+                            </td>
+                            <td class="borda-direita borda-lista" align="center">
+                                <span>{{ $treino->serie }} x</span> 
+                            </td>
+                            <td align="center" class="borda-lista">
+                                <span>{{ $treino->repeticao }}</span> 
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        @endif
+
 
 </body>
 

@@ -17,7 +17,7 @@ class IndexController extends Controller
 {
     public function index(Request $request) {
         $mes = date('m');
-
+        
         // Lado Esquerdo Dashboard
         $caixa = Pagamento::where('mes_pagamento_geral', $mes)->where('status', 1)->sum('valor_pagamento_geral'); 
         $caixa_mes = round($caixa, 2);

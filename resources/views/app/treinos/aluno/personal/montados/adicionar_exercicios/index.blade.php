@@ -15,7 +15,8 @@
 
                             <div class="row">
                                 <div class="d-flex justify-content-between">
-                                    <h4 class="card-title">Adicione novo Exercícios para {{ strtoupper($treino->aluno->nome) }}</b>
+                                    <h4 class="card-title">Adicione novo Exercícios para
+                                        {{ strtoupper($treino->aluno->nome) }}</b>
                                     </h4>
 
                                     <div class="mt-3">
@@ -26,8 +27,10 @@
                             </div>
 
                             <div class="row justify-content-around mt-4">
-                                <h6 class="text-danger text-center mb-4" style="font-family: 'Poppins', sans-serif; font-style: italic;">
-                                    Nenhum exercício foi configurado. </h6>
+                                <h6 class="text-danger text-center mb-4" style="font-family: 'Poppins', sans-serif;">
+                                    Parece que nenhum exercício foi configurado. 
+                                    <a href="{{ route('exercicio.index') }}">Adicione Agora</a> 
+                                </h6>
                             </div>
                         </div>
                     </div>
@@ -46,6 +49,7 @@
                                     <div class="mt-3">
                                         <a href="{{ route('montar.index') }}" class="btn btn-sm text-white"
                                             style="font-weight: 700; background: #4154f1;">Voltar</a>
+                                        <a href="{{ route('download.treino', $treino->id) }}" class="btn btn-sm btn-success text-white" style="font-weight: 700;">Baixar Treino</a>
                                     </div>
                                 </div>
                             </div>
@@ -82,8 +86,8 @@
                         </div>
                     </div>
                 </div>
-                
-                @if($treino_a->isEmpty())
+
+                @if ($treino_a->isEmpty())
                 @else
                     {{-- LISTA DE EXERCICIOS - TREINO A --}}
                     <div class="col-12" style="margin-top: 15px; max-height: 500px; overflow-y: auto;">
@@ -94,30 +98,26 @@
                                     <div class="col-6">
                                         <h5>Treino A</h5>
                                     </div>
-
-                                    <div class="col-1">
-                                        <a
-                                            href="{{ route('download.personal', ['divisao' => 'treino_a', 'treino_id' => $treino->id]) }}">PDF</a>
-                                    </div>
-
                                 </div>
                             </div>
                             <div class="card-body">
-                                <table class="table table-sm">
+                                <table id="table" class="table table-sm">
                                     <thead>
                                         <tr>
                                             <th class="text-muted" width="40%">Exercícios</th>
                                             <th class="text-center" width="25%">Séries</th>
                                             <th class="text-center">Repetições</th>
-                                            <th class="text-center serie_a" style="display: none; width: 50px;">Editar Séries
+                                            <th class="text-center serie_a" style="display: none; width: 50px;">Editar
+                                                Séries
                                             </th>
-                                            <th class="text-center repeticao_a" style="display: none;">Editar Repetições</th>
+                                            <th class="text-center repeticao_a" style="display: none;">Editar Repetições
+                                            </th>
                                             <th class="text-center">Ações</th>
                                         </tr>
                                     </thead>
-                                    <tbody style="font-size: 18px; font-family: 'Poppins', sans-serif;">
+                                    <tbody id="tablecontents" style="font-size: 18px; font-family: 'Poppins', sans-serif;">
                                         @foreach ($treino_a as $treino)
-                                            <tr>
+                                            <tr class="row1" data-id="{{$treino->id}}">
                                                 <td>{{ $treino->exercicio->nome_exercicio }}</td>
 
                                                 {{-- Séries --}}
@@ -155,7 +155,8 @@
                                                             <div class="d-flex justify-content-center">
                                                                 <button type="submit" class="btn btn-sm btn-success"><i
                                                                         class="bx bx-check"></i></button>
-                                                                <input type="number" min="1" name="serie" class="text-center"
+                                                                <input type="number" min="1" name="serie"
+                                                                    class="text-center"
                                                                     style="width: 75px; height: 30px;"
                                                                     value="{{ $treino->serie }}">
                                                             </div>
@@ -163,13 +164,15 @@
                                                     </td>
 
                                                     {{-- Editar Repetições --}}
-                                                    <td class="repeticao_a text-center" style="font-size: 18px; display: none;">
+                                                    <td class="repeticao_a text-center"
+                                                        style="font-size: 18px; display: none;">
                                                         <div class="row">
                                                             <div class="d-flex justify-content-center">
                                                                 <button type="submit" class="btn btn-sm btn-success"><i
                                                                         class="bx bx-check"></i></button>
                                                                 <input type="number" min="1" name="repeticao"
-                                                                    class="text-center" style="width: 85px; height: 30px;"
+                                                                    class="text-center"
+                                                                    style="width: 85px; height: 30px;"
                                                                     value="{{ $treino->repeticao }}">
                                                             </div>
                                                         </div>
@@ -189,7 +192,7 @@
                     </div>
                 @endif
 
-                @if($treino_b->isEmpty())
+                @if ($treino_b->isEmpty())
                 @else
                     {{-- LISTA DE EXERCICIOS - TREINO B --}}
                     <div class="col-12" style="margin-top: 15px; max-height: 500px; overflow-y: auto;">
@@ -200,11 +203,6 @@
                                     <div class="col-6">
                                         <h5>Treino B</h5>
                                     </div>
-                                    <div class="col-1">
-                                        <a
-                                            href="{{ route('download.personal', ['divisao' => 'treino_b', 'treino_id' => $treino->id]) }}">PDF
-                                        </a>
-                                    </div>
                                 </div>
                             </div>
                             <div class="card-body">
@@ -214,9 +212,11 @@
                                             <th class="text-muted" width="40%">Exercícios</th>
                                             <th class="text-center" width="25%">Séries</th>
                                             <th class="text-center">Repetições</th>
-                                            <th class="text-center serie_a" style="display: none; width: 50px;">Editar Séries
+                                            <th class="text-center serie_a" style="display: none; width: 50px;">Editar
+                                                Séries
                                             </th>
-                                            <th class="text-center repeticao_a" style="display: none;">Editar Repetições</th>
+                                            <th class="text-center repeticao_a" style="display: none;">Editar Repetições
+                                            </th>
                                             <th class="text-center">Ações</th>
                                         </tr>
                                     </thead>
@@ -260,7 +260,8 @@
                                                             <div class="d-flex justify-content-center">
                                                                 <button type="submit" class="btn btn-sm btn-success"><i
                                                                         class="bx bx-check"></i></button>
-                                                                <input type="number" min="1" name="serie" class="text-center"
+                                                                <input type="number" min="1" name="serie"
+                                                                    class="text-center"
                                                                     style="width: 75px; height: 30px;"
                                                                     value="{{ $treino->serie }}">
                                                             </div>
@@ -268,13 +269,15 @@
                                                     </td>
 
                                                     {{-- Editar Repetições --}}
-                                                    <td class="repeticao_b text-center" style="font-size: 18px; display: none;">
+                                                    <td class="repeticao_b text-center"
+                                                        style="font-size: 18px; display: none;">
                                                         <div class="row">
                                                             <div class="d-flex justify-content-center">
                                                                 <button type="submit" class="btn btn-sm btn-success"><i
                                                                         class="bx bx-check"></i></button>
                                                                 <input type="number" min="1" name="repeticao"
-                                                                    class="text-center" style="width: 85px; height: 30px;"
+                                                                    class="text-center"
+                                                                    style="width: 85px; height: 30px;"
                                                                     value="{{ $treino->repeticao }}">
                                                             </div>
                                                         </div>
@@ -294,7 +297,7 @@
                     </div>
                 @endif
 
-                @if($treino_c->isEmpty())
+                @if ($treino_c->isEmpty())
                 @else
                     {{-- LISTA DE EXERCICIOS - TREINO C --}}
                     <div class="col-12" style="margin-top: 15px; max-height: 500px; overflow-y: auto;">
@@ -305,10 +308,6 @@
                                     <div class="col-6">
                                         <h5>Treino C</h5>
                                     </div>
-                                    <div class="col-1">
-                                        <a
-                                            href="{{ route('download.personal', ['divisao' => 'treino_c', 'treino_id' => $treino->id]) }}">PDF</a>
-                                    </div>
                                 </div>
                             </div>
                             <div class="card-body">
@@ -318,9 +317,11 @@
                                             <th class="text-muted" width="40%">Exercícios</th>
                                             <th class="text-center" width="25%">Séries</th>
                                             <th class="text-center">Repetições</th>
-                                            <th class="text-center serie_a" style="display: none; width: 50px;">Editar Séries
+                                            <th class="text-center serie_a" style="display: none; width: 50px;">Editar
+                                                Séries
                                             </th>
-                                            <th class="text-center repeticao_a" style="display: none;">Editar Repetições</th>
+                                            <th class="text-center repeticao_a" style="display: none;">Editar Repetições
+                                            </th>
                                             <th class="text-center">Ações</th>
                                         </tr>
                                     </thead>
@@ -359,13 +360,15 @@
                                                     @csrf
 
                                                     {{-- Editar Séries --}}
-                                                    <td class="serie_c text-center" style="font-size: 18px; display: none;">
+                                                    <td class="serie_c text-center"
+                                                        style="font-size: 18px; display: none;">
                                                         <div class="row">
                                                             <div class="d-flex justify-content-center">
                                                                 <button type="submit" class="btn btn-sm btn-success"><i
                                                                         class="bx bx-check"></i></button>
                                                                 <input type="number" min="1" name="serie"
-                                                                    class="text-center" style="width: 75px; height: 30px;"
+                                                                    class="text-center"
+                                                                    style="width: 75px; height: 30px;"
                                                                     value="{{ $treino->serie }}">
                                                             </div>
                                                         </div>
@@ -379,7 +382,8 @@
                                                                 <button type="submit" class="btn btn-sm btn-success"><i
                                                                         class="bx bx-check"></i></button>
                                                                 <input type="number" min="1" name="repeticao"
-                                                                    class="text-center" style="width: 85px; height: 30px;"
+                                                                    class="text-center"
+                                                                    style="width: 85px; height: 30px;"
                                                                     value="{{ $treino->repeticao }}">
                                                             </div>
                                                         </div>
@@ -399,7 +403,7 @@
                     </div>
                 @endif
 
-                @if($treino_d->isEmpty())
+                @if ($treino_d->isEmpty())
                 @else
                     {{-- LISTA DE EXERCICIOS - TREINO D --}}
                     <div class="col-12" style="margin-top: 15px; max-height: 500px; overflow-y: auto;">
@@ -410,10 +414,6 @@
                                     <div class="col-6">
                                         <h5>Treino D</h5>
                                     </div>
-                                    <div class="col-1">
-                                        <a
-                                            href="{{ route('download.personal', ['divisao' => 'treino_d', 'treino_id' => $treino->id]) }}">PDF</a>
-                                    </div>
                                 </div>
                             </div>
                             <div class="card-body">
@@ -423,9 +423,11 @@
                                             <th class="text-muted" width="40%">Exercícios</th>
                                             <th class="text-center" width="25%">Séries</th>
                                             <th class="text-center">Repetições</th>
-                                            <th class="text-center serie_a" style="display: none; width: 50px;">Editar Séries
+                                            <th class="text-center serie_a" style="display: none; width: 50px;">Editar
+                                                Séries
                                             </th>
-                                            <th class="text-center repeticao_a" style="display: none;">Editar Repetições</th>
+                                            <th class="text-center repeticao_a" style="display: none;">Editar Repetições
+                                            </th>
                                             <th class="text-center">Ações</th>
                                         </tr>
                                     </thead>
@@ -464,13 +466,15 @@
                                                     @csrf
 
                                                     {{-- Editar Séries --}}
-                                                    <td class="serie_d text-center" style="font-size: 18px; display: none;">
+                                                    <td class="serie_d text-center"
+                                                        style="font-size: 18px; display: none;">
                                                         <div class="row">
                                                             <div class="d-flex justify-content-center">
                                                                 <button type="submit" class="btn btn-sm btn-success"><i
                                                                         class="bx bx-check"></i></button>
                                                                 <input type="number" min="1" name="serie"
-                                                                    class="text-center" style="width: 75px; height: 30px;"
+                                                                    class="text-center"
+                                                                    style="width: 75px; height: 30px;"
                                                                     value="{{ $treino->serie }}">
                                                             </div>
                                                         </div>
@@ -484,7 +488,8 @@
                                                                 <button type="submit" class="btn btn-sm btn-success"><i
                                                                         class="bx bx-check"></i></button>
                                                                 <input type="number" min="1" name="repeticao"
-                                                                    class="text-center" style="width: 85px; height: 30px;"
+                                                                    class="text-center"
+                                                                    style="width: 85px; height: 30px;"
                                                                     value="{{ $treino->repeticao }}">
                                                             </div>
                                                         </div>

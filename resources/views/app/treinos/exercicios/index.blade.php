@@ -6,117 +6,25 @@
     @include('app.body.breadcrumb')
 
     <section class="section">
-
         <div class="row">
-            {{-- Pesquisar por Categoria --}}
-            <div class="col-6">
+            <div class="col-12" style="max-height: 500px; overflow-y: auto;">
                 <div class="card mt-3">
                     <div class="card-body">
                         <div class="row">
                             <div class="d-flex justify-content-between">
-                                <h4 class="card-title">Categoria</h4>
+                                <h4 class="card-title">Lista de Exercícios</h4>
+
+                                <div class="d-flex align-items-center">
+                                    <input class="form-control form-control-sm" style="margin-right: 10px;"
+                                        id="inputPesquisarTabela" type="text" placeholder="Pesquisar">
+                                    <a href="#" class="btn btn-sm text-white fs-5 pb-0 pt-0" data-bs-toggle="modal"
+                                        data-bs-target="#createExercicioTreino"
+                                        style="font-weight: 700; background: #4154f1;">+</a>
+                                </div>
                             </div>
                         </div>
 
-                        <form action="{{ route('categoria.treinos.search') }}" method="post">
-                            @csrf
-
-                            <div class="row">
-                                <div class="col">
-                                    <select class="form-select form-select-sm" name="search_categoria_treino">
-                                        <option selected="" disabled="" value="">Selecione a Categoria</option>
-                                        @foreach($categoriaTreinos as $cat)
-                                            <option value="{{ $cat->id }}">{{ $cat->nome_categoria_treino }}</option>
-                                        @endforeach
-                                    </select>
-                                    @error('search_categoria_treino')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                            </div>
-
-                            <div class="row mt-5">
-                                <div class="d-flex justify-content-end">
-                                    <button type="submit" class="btn btn-sm text-white float-right" style="font-weight: 700; background: #4154f1; padding-top: 8px;"><i class="bx bx-search"></i></button>
-                                </div>
-                            </div>
-                        </form>
-
-                    </div>
-                </div>
-            </div>
-
-            {{-- Pesquisar pela Exercício --}}
-            <div class="col-6">
-                <div class="card mt-3">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="d-flex justify-content-between">
-                                <h4 class="card-title">Exercício</h4>
-                            </div>
-                        </div>
-
-                        <form action="{{ route('categoria.treinos.search') }}" method="post">
-                            @csrf
-
-                            <div class="row">
-                                <div class="col">
-                                    <div class="input-group">
-                                        <span class="input-group-text"><i class="bx bx-dumbbell"></i></span>
-                                        <input type="text" name="search_exercicio_treino"
-                                            class="form-control form-control-sm" placeholder="Insira o Exercício" required>
-                                    </div>
-                                    @error('search_categoria_treino')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                            </div>
-
-                            <div class="row mt-5">
-                                <div class="d-flex justify-content-end">
-                                    <button type="submit" class="btn btn-sm text-white float-right"
-                                        style="font-weight: 700; background: #4154f1; padding-top: 8px;"><i
-                                            class="bx bx-search"></i></button>
-                                </div>
-                            </div>
-                        </form>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        @if(App\Models\Treinos\ExercicioTreinos::count() != 0)
-            <div class="row">
-                @php
-                    $prefix = Request::route()->getName();
-                @endphp
-
-                <div class="d-flex justify-content-end">
-                    @if ($prefix != 'exercicio.index')
-                        <a href="{{ route('exercicio.index') }}" class="btn btn-sm btn-danger" style="font-weight: 700;">
-                            Limpar Filtro
-                        </a>
-                    @endif
-                </div>
-            </div>
-
-            {{-- Listagem de Categorias --}}
-            <div class="row">
-                <div class="col-lg-12" style="max-height: 700px; overflow-y: auto;">
-                    <div class="card mt-3">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="d-flex justify-content-between">
-                                    <h4 class="card-title">Lista de Exercícios</h4>
-
-                                    <div class="d-flex align-items-center">
-                                        <input class="form-control form-control-sm" style="margin-right: 10px;" id="inputPesquisarTabela" type="text" placeholder="Pesquisar">
-                                        <a href="#" class="btn btn-sm text-white fs-5 pb-0 pt-0" data-bs-toggle="modal" data-bs-target="#createExercicioTreino" style="font-weight: 700; background: #4154f1;">+</a>
-                                    </div>
-                                </div>
-                            </div>
-
+                        @if (App\Models\Treinos\ExercicioTreinos::count() != 0)
                             <div class="table-responsive">
                                 <table class="table table-sm">
                                     <thead style="color: #7b84d6;">
@@ -129,38 +37,46 @@
                                     <tbody id="pesquisarNaTabela">
                                         @foreach ($exercicioTreinos as $exercicio)
                                             <tr>
-                                                <th class="text-muted">{{ $exercicio->categoriaTreino->nome_categoria_treino }}</th>
+                                                <th class="text-muted">
+                                                    {{ $exercicio->categoriaTreino->nome_categoria_treino }}</th>
                                                 <th class="text-muted">{{ $exercicio->nome_exercicio }}</th>
                                                 <td class="text-center pt-1">
                                                     <li class="nav-item dropdown" style="list-style: none;">
-                                                        <a class="nav-link nav-profile text-success pe-0" href="#" data-bs-toggle="dropdown">
+                                                        <a class="nav-link nav-profile text-success pe-0" href="#"
+                                                            data-bs-toggle="dropdown">
                                                             <i class="bx bx-category fs-4"></i>
                                                         </a>
-                                                        
+
                                                         <ul class="dropdown-menu" id="dropdown-menu-user">
-                                                            
+
                                                             <li>
-                                                                <a class="dropdown-item d-flex align-items-center" href="{{ route('exercicio.edit', $exercicio->id) }}">
+                                                                <a class="dropdown-item d-flex align-items-center"
+                                                                    href="{{ route('exercicio.edit', $exercicio->id) }}">
                                                                     <i class="bx bx-edit"></i>
                                                                     <span>Editar Exercício</span>
                                                                 </a>
                                                             </li>
-        
+
                                                             <li>
                                                                 <hr class="dropdown-divider">
                                                             </li>
-        
+
                                                             <li>
-                                                                <form id="form_{{ $exercicio->id }}" action="{{ route('exercicio.destroy', $exercicio->id) }}" method="post">
-                                                                @method('DELETE')
-                                                                @csrf
-                                                                    <a class="dropdown-item d-flex align-items-center" href="#" onclick="document.getElementById('form_{{ $exercicio->id }}').submit()">
+                                                                <form id="form_{{ $exercicio->id }}"
+                                                                    action="{{ route('exercicio.destroy', $exercicio->id) }}"
+                                                                    method="post">
+                                                                    @method('DELETE')
+                                                                    @csrf
+                                                                    <a class="dropdown-item d-flex align-items-center"
+                                                                        href="#"
+                                                                        onclick="document.getElementById('form_{{ $exercicio->id }}').submit()">
                                                                         <i class="bx bx-block text-danger"></i>
-                                                                        <span class="text-danger">Remover Exercício</span>
+                                                                        <span class="text-danger">Remover
+                                                                            Exercício</span>
                                                                     </a>
                                                                 </form>
                                                             </li>
-                                                            
+
                                                         </ul>
                                                     </li>
                                                 </td>
@@ -169,12 +85,20 @@
                                     </tbody>
                                 </table>
                             </div>
-
-                        </div>
+                        @else
+                            <div class="row justify-content-around mt-4">
+                                <h6 class="text-danger text-center mb-4" style="font-family: 'Poppins', sans-serif;">
+                                    Parece que nenhum exercício foi configurado.
+                                </h6>
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>
-        @endif
-
+            <div class="text-muted text-center" style="font-family: 'Poppins', sans-serif; margin-top: 20px;">   
+                Total de <b>{{ count($exercicioTreinos) }} </b> Exercícios Cadastrados.
+            </div>
+        </div>
     </section>
 @endsection
+

@@ -70,7 +70,7 @@ $pgt = App\Models\Pagamentos\Pagamento::where('data_pagamento_geral', '<', Carbo
                                 <button class="ver-todas-notificacoes">
                                     <div>
                                         <h4>{{ $pg->aluno->nome }}</h4>
-                                        <p>{{ ucwords($pg->tipo_servico) }}</p>
+                                        <p>{{ $pg->descricao != null ? ucfirst($pg->descricao) : ucfirst($pg->tipo_servico) }}</p>
 
                                         <p>Valor: <b class="text-success">R$ {{ $pg->valor_pagamento_geral }}</b>
                                         </p>

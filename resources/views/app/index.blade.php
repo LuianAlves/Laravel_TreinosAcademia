@@ -13,7 +13,7 @@
                 <div class="row">
 
                     <!-- Dinheiro do Mês -->
-                    <div class="col-xxl-3 col-md-6">
+                    <div class="col-md-6">
                         <div class="card info-card revenue-card">
 
                             <div class="card-body">
@@ -35,7 +35,7 @@
                     </div>
 
                     <!-- Pendentes -->
-                    <div class="col-xxl-3 col-md-6">
+                    <div class="col-md-6">
                         <div class="card info-card customers-card ">
 
                             <div class="card-body">
@@ -57,7 +57,7 @@
                     </div>
 
                     <!-- Novos Alunos -->
-                    <div class="col-xxl-3 col-xl-5">
+                    <div class="col-xl-5">
 
                         <div class="card info-card sales-card">
 
@@ -80,7 +80,7 @@
                     </div>
                     
                     <!-- Avaliações Realizadas -->
-                    <div class="col-xxl-3 col-xl-7">
+                    <div class="col-xl-7">
 
                         <div class="card info-card">
 
@@ -206,7 +206,7 @@
                                     <div class="activite-label col-5">{{ Carbon\Carbon::parse($aluno->created_at)->diffForHumans() }}</div>
                                     <i class='bi bi-circle-fill col-1 activity-badge align-self-start'></i>
                                     <div class="activity-content col-6">
-                                        Novo Aluno <a href="{{ route('area-aluno.index', $aluno->id) }}" class="fw-bold" style="color: #11ac6c;">{{ $aluno->nome }}</a>
+                                        Novo Aluno <a href="#" class="fw-bold" style="color: #11ac6c;">{{ $aluno->nome }}</a>
                                     </div>
                                 </div>
                             @endforeach
@@ -219,15 +219,14 @@
                     <div class="card-body">
                         <h5 class="card-title">Treinos Recentes</h5>
                         <div class="activity">
-                            @foreach($treinos as $treino)
-                                    <div class="activity-item d-flex">
-                                        <div class="activite-label col-5">{{ Carbon\Carbon::parse($treino->created_at)->diffForHumans() }}</div>
-                                        <i class='bi bi-circle-fill col-1 activity-badge align-self-start'></i>
-                                        <div class="activity-content col-6">
-                                            Novo treino <a href="{{ route('adicionar.index', $treino->id) }}" class="fw-bold" style="color: #11ac6c;"> [{{ $treino->codigo_treino }}]</a> 
-                                            criado para <a href="{{ route('area-aluno.index', $treino->aluno_id) }}" class="fw-bold" style="color: #11ac6c;"> {{ $treino->aluno->nome }}.</a>
-                                        </div>
+                            @foreach($treinos as $exe)
+                                <div class="activity-item d-flex">
+                                    <div class="activite-label col-5">{{ Carbon\Carbon::parse($exe->created_at)->diffForHumans() }}</div>
+                                    <i class='bi bi-circle-fill col-1 activity-badge align-self-start'></i>
+                                    <div class="activity-content col-6">
+                                        Treino <a href="{{ route('adicionar.index', $exe->id) }}" class="fw-bold" style="color: #11ac6c;">[{{ $exe->codigo_treino }}]</a> criado para o aluno <b>{{ $exe->aluno->nome }}</b>
                                     </div>
+                                </div>
                             @endforeach
                         </div>
                     </div>
@@ -243,7 +242,7 @@
                                     <div class="activite-label col-5">{{ Carbon\Carbon::parse($ava->created_at)->diffForHumans() }}</div>
                                     <i class='bi bi-circle-fill col-1 activity-badge align-self-start'></i>
                                     <div class="activity-content col-6">
-                                        Avaliação <a href="{{ route('download.avaliacao.fisica', $ava->codigo_avaliacao) }}" class="fw-bold" style="color: #11ac6c;">{{ $ava->codigo_avaliacao }}</a> realizada | <b>{{ $ava->aluno->nome }}</b>
+                                        Avaliação <a href="{{ route('download.avaliacao.fisica', $ava->codigo_avaliacao) }}" class="fw-bold" style="color: #11ac6c;">[{{ $ava->codigo_avaliacao }}]</a> realizada para o aluno <b>{{ $ava->aluno->nome }}</b>
                                     </div>
                                 </div>
                             @endforeach

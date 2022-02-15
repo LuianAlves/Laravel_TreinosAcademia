@@ -47,7 +47,7 @@
                                 <div class="col-6">
                                     <div class="input-group mb-3">
                                         <span class="input-group-text"><i class="bx bx-phone"></i></span>
-                                        <input type="number" name="telefone" value="{{ $aluno->telefone }}" class="form-control" placeholder="Telefone">
+                                        <input type="text" name="telefone" value="{{ $aluno->telefone }}" class="form-control" placeholder="Telefone">
                                     </div>
                                     @error('telefone')
                                         <span class="text-danger">{{ $message }}</span>

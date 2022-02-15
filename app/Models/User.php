@@ -65,8 +65,7 @@ class User extends Authenticatable
     public static function pagamentosChart() {
         $mes = Carbon::now()->format('m');
 
-        $pago = Pagamento::select('mes_pagamento_geral', 'valor_pagamento_geral', 'mes_pagamento_geral')
-                        //  ->groupBy('mes_pagamento_geral')
+        $pago = Pagamento::select('mes_pagamento_geral', 'valor_pagamento_geral')
                          ->orderBy('created_at', 'ASC')
                          ->where('status', 1)
                          ->where('mes_pagamento_geral', $mes)
@@ -83,10 +82,8 @@ class User extends Authenticatable
     public static function pagamentosPendenteChart() {
 
         $mes = Carbon::now()->format('m');
-        
 
-        $pendente = Pagamento::select('mes_pagamento_geral', 'valor_pagamento_geral', 'mes_pagamento_geral')
-                        //  ->groupBy('mes_pagamento_geral')
+        $pendente = Pagamento::select('mes_pagamento_geral', 'valor_pagamento_geral')
                          ->orderBy('created_at', 'ASC')
                          ->where('status', 0)
                          ->where('mes_pagamento_geral', $mes)

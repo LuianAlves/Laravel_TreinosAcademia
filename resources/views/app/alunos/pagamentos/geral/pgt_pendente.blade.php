@@ -32,7 +32,7 @@
                                         {{ $pagamento->aluno->nome }}
                                     </li>
                                     <li class="list-group-item">
-                                        {{ $pagamento->tipo_servico }}
+                                        {{$pagamento->descricao != null ? ucfirst($pagamento->descricao) : ucfirst($pagamento->tipo_servico) }}
                                     </li>
                                     <li class="list-group-item text-success">
                                         R$ {{ $pagamento->valor_pagamento_geral }}
