@@ -32,10 +32,10 @@ class DownloadController extends Controller
         $dados_treino = MontarTreino::with('aluno')->where('id', $treino_id)->first();
         // $treinos = AdicionarExercicio::with('exercicio')->where('treino_id', $treino_id)->get();
 
-        $treino_a = AdicionarExercicio::where('treino_id', $treino_id)->where('divisao_treino', 'treino_a')->get();
-        $treino_b = AdicionarExercicio::where('treino_id', $treino_id)->where('divisao_treino', 'treino_b')->get();
-        $treino_c = AdicionarExercicio::where('treino_id', $treino_id)->where('divisao_treino', 'treino_c')->get();
-        $treino_d = AdicionarExercicio::where('treino_id', $treino_id)->where('divisao_treino', 'treino_d')->get();
+        $treino_a = AdicionarExercicio::where('treino_id', $treino_id)->where('divisao_treino', 'treino_a')->orderBy('order')->get();
+        $treino_b = AdicionarExercicio::where('treino_id', $treino_id)->where('divisao_treino', 'treino_b')->orderBy('order')->get();
+        $treino_c = AdicionarExercicio::where('treino_id', $treino_id)->where('divisao_treino', 'treino_c')->orderBy('order')->get();
+        $treino_d = AdicionarExercicio::where('treino_id', $treino_id)->where('divisao_treino', 'treino_d')->orderBy('order')->get();
 
         $data_treino = Carbon::parse($dados_treino->created_at)->format('d/m/Y, H:m:s');
         $data_download = Carbon::now()->format('d/m/Y, H:m:s');

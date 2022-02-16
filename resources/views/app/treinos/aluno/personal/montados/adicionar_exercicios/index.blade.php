@@ -1,10 +1,7 @@
-@extends('app.main_template')
+@extends('layouts.dragg_template')
 
-@section('content')
-
-    {{-- Breadcrumb --}}
-    @include('app.body.breadcrumb')
-
+@section('content_dragg')
+    
     <section class="section">
         <div class="row">
 
@@ -28,14 +25,14 @@
 
                             <div class="row justify-content-around mt-4">
                                 <h6 class="text-danger text-center mb-4" style="font-family: 'Poppins', sans-serif;">
-                                    Parece que nenhum exercício foi configurado. 
-                                    <a href="{{ route('exercicio.index') }}">Adicione Agora</a> 
+                                    Parece que nenhum exercício foi configurado.
+                                    <a href="{{ route('exercicio.index') }}">Adicione Agora</a>
                                 </h6>
                             </div>
                         </div>
                     </div>
                 </div>
-            @else
+            @else 
                 {{-- BUTTONS --}}
                 <div class="col-lg-12">
                     <div class="card mt-3">
@@ -49,7 +46,9 @@
                                     <div class="mt-3">
                                         <a href="{{ route('montar.index') }}" class="btn btn-sm text-white"
                                             style="font-weight: 700; background: #4154f1;">Voltar</a>
-                                        <a href="{{ route('download.treino', $treino->id) }}" class="btn btn-sm btn-success text-white" style="font-weight: 700;">Baixar Treino</a>
+                                        <a href="{{ route('download.treino', $treino->id) }}"
+                                            class="btn btn-sm btn-success text-white" style="font-weight: 700;">Baixar
+                                            Treino</a>
                                     </div>
                                 </div>
                             </div>
@@ -115,9 +114,9 @@
                                             <th class="text-center">Ações</th>
                                         </tr>
                                     </thead>
-                                    <tbody id="tablecontents" style="font-size: 18px; font-family: 'Poppins', sans-serif;">
+                                    <tbody id="listaTreinoA" class="connectedSortable" style="font-size: 18px; font-family: 'Poppins', sans-serif;">
                                         @foreach ($treino_a as $treino)
-                                            <tr class="row1" data-id="{{$treino->id}}">
+                                            <tr class="row1" data-id="{{ $treino->id }}">
                                                 <td>{{ $treino->exercicio->nome_exercicio }}</td>
 
                                                 {{-- Séries --}}
@@ -220,9 +219,9 @@
                                             <th class="text-center">Ações</th>
                                         </tr>
                                     </thead>
-                                    <tbody style="font-size: 18px; font-family: 'Poppins', sans-serif;">
+                                    <tbody id="listaTreinoB" class="connectedSortable" style="font-size: 18px; font-family: 'Poppins', sans-serif;">
                                         @foreach ($treino_b as $treino)
-                                            <tr>
+                                            <tr class="row1" data-id="{{ $treino->id }}">
                                                 <td>{{ $treino->exercicio->nome_exercicio }}</td>
 
                                                 {{-- Séries --}}
@@ -325,9 +324,9 @@
                                             <th class="text-center">Ações</th>
                                         </tr>
                                     </thead>
-                                    <tbody style="font-size: 18px; font-family: 'Poppins', sans-serif;">
+                                    <tbody id="listaTreinoC" class="connectedSortable" style="font-size: 18px; font-family: 'Poppins', sans-serif;">
                                         @foreach ($treino_c as $treino)
-                                            <tr>
+                                            <tr class="row1" data-id="{{ $treino->id }}">
                                                 <td>{{ $treino->exercicio->nome_exercicio }}</td>
 
                                                 {{-- Séries --}}
@@ -431,9 +430,9 @@
                                             <th class="text-center">Ações</th>
                                         </tr>
                                     </thead>
-                                    <tbody style="font-size: 18px; font-family: 'Poppins', sans-serif;">
+                                    <tbody id="listaTreinoD" class="connectedSortable" style="font-size: 18px; font-family: 'Poppins', sans-serif;">
                                         @foreach ($treino_d as $treino)
-                                            <tr>
+                                            <tr class="row1" data-id="{{ $treino->id }}">
                                                 <td>{{ $treino->exercicio->nome_exercicio }}</td>
 
                                                 {{-- Séries --}}
@@ -508,9 +507,9 @@
                         </div>
                     </div>
                 @endif
-
             @endif
 
         </div>
     </section>
+    
 @endsection

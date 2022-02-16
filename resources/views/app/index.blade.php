@@ -206,7 +206,7 @@
                                     <div class="activite-label col-5">{{ Carbon\Carbon::parse($aluno->created_at)->diffForHumans() }}</div>
                                     <i class='bi bi-circle-fill col-1 activity-badge align-self-start'></i>
                                     <div class="activity-content col-6">
-                                        Novo Aluno <a href="#" class="fw-bold" style="color: #11ac6c;">{{ $aluno->nome }}</a>
+                                        Novo Aluno <a href="{{route('area-aluno.index', $aluno->id)}}" class="fw-bold" style="color: #11ac6c;">{{ $aluno->nome }}</a>
                                     </div>
                                 </div>
                             @endforeach

@@ -106,7 +106,7 @@
             <div class="page-break"></div>
             <h4 align="center" style="color:rgb(151, 141, 45); margin-top: 60px;">Treino A</h4>
 
-            <table align="center" class="borda-tabela" width="50%">
+            <table align="center" class="borda-tabela" width="80%">
                 <thead class="borda-lista">
                     <tr>
                         <th class="borda-direita" style="text-align: center">Exercícios</th>
@@ -138,7 +138,7 @@
             <div class="page-break"></div>
             <h4 align="center" style="color:rgb(151, 141, 45); margin-top: 60px;">Treino B</h4>
 
-            <table align="center" class="borda-tabela" width="50%">
+            <table align="center" class="borda-tabela" width="80%">
                 <thead class="borda-lista">
                     <tr>
                         <th class="borda-direita" style="text-align: center">Exercícios</th>
@@ -170,7 +170,7 @@
             <div class="page-break"></div>
             <h4 align="center" style="color:rgb(151, 141, 45); margin-top: 60px;">Treino C</h4>
 
-            <table align="center" class="borda-tabela" width="50%">
+            <table align="center" class="borda-tabela" width="80%">
                 <thead class="borda-lista">
                     <tr>
                         <th class="borda-direita" style="text-align: center">Exercícios</th>
@@ -202,7 +202,7 @@
             <div class="page-break"></div>
             <h4 align="center" style="color:rgb(151, 141, 45); margin-top: 60px;">Treino D</h4>
 
-            <table align="center" class="borda-tabela" width="50%">
+            <table align="center" class="borda-tabela" width="80%">
                 <thead class="borda-lista">
                     <tr>
                         <th class="borda-direita" style="text-align: center">Exercícios</th>

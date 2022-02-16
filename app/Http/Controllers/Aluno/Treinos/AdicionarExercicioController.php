@@ -18,10 +18,10 @@ class AdicionarExercicioController extends Controller
     public function index($treino_id)
     {
         // $treinos = AdicionarExercicio::where('treino_id', $treino_id)->pluck('divisao_treino')->first();
-        $treino_a = AdicionarExercicio::where('treino_id', $treino_id)->where('divisao_treino', 'treino_a')->get();
-        $treino_b = AdicionarExercicio::where('treino_id', $treino_id)->where('divisao_treino', 'treino_b')->get();
-        $treino_c = AdicionarExercicio::where('treino_id', $treino_id)->where('divisao_treino', 'treino_c')->get();
-        $treino_d = AdicionarExercicio::where('treino_id', $treino_id)->where('divisao_treino', 'treino_d')->get();
+        $treino_a = AdicionarExercicio::where('treino_id', $treino_id)->where('divisao_treino', 'treino_a')->orderBy('order')->get();
+        $treino_b = AdicionarExercicio::where('treino_id', $treino_id)->where('divisao_treino', 'treino_b')->orderBy('order')->get();
+        $treino_c = AdicionarExercicio::where('treino_id', $treino_id)->where('divisao_treino', 'treino_c')->orderBy('order')->get();
+        $treino_d = AdicionarExercicio::where('treino_id', $treino_id)->where('divisao_treino', 'treino_d')->orderBy('order')->get();
 
         $treino = MontarTreino::where('id', $treino_id)->orderBy('id', 'DESC')->first();
 
@@ -94,17 +94,6 @@ class AdicionarExercicioController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\TreinoAluno\AdicionarExercicio  $adicionarExercicio
-     * @return \Illuminate\Http\Response
-     */
-    public function show(AdicionarExercicio $adicionarExercicio)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\TreinoAluno\AdicionarExercicio  $adicionarExercicio
@@ -136,6 +125,54 @@ class AdicionarExercicioController extends Controller
         ]);
 
         return redirect()->route('adicionar.index', $treino_id);
+    }
+
+    public function updateItems(Request $request) {
+        $input = $request->all();
+
+        if(!empty($input['treino_a'])) {
+            foreach($input['treino_a'] as $key => $value) {
+                $key = $key + 1;
+
+                AdicionarExercicio::where('id', $value)->update([
+                    'order' => $key
+                ]);
+            }
+        }
+
+        if(!empty($input['treino_b'])) {
+            foreach($input['treino_b'] as $key => $value) {
+                $key = $key + 1;
+
+                AdicionarExercicio::where('id', $value)->update([
+                    'order' => $key
+                ]);
+            }
+        }
+
+        if(!empty($input['treino_c'])) {
+            foreach($input['treino_c'] as $key => $value) {
+                $key = $key + 1;
+
+                AdicionarExercicio::where('id', $value)->update([
+                    'order' => $key
+                ]);
+            }
+        }
+
+        if(!empty($input['treino_d'])) {
+            foreach($input['treino_d'] as $key => $value) {
+                $key = $key + 1;
+
+                AdicionarExercicio::where('id', $value)->update([
+                    'order' => $key
+                ]);
+            }
+        }
+
+        return response()->json([
+            'status' => 'Sucesso!'
+        ]);
     }
 
     /**

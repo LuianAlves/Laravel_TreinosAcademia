@@ -49,18 +49,6 @@ class GeralController extends Controller
         return view('app.alunos.index', compact('alunos'));
     }
 
-    public function searchCategoriaTreino(Request $request)
-    {
-        $request->validate(
-            ['search_categoria_treino' => 'required' ],
-            [ 'required' => 'Digite uma categoria!' ]
-        );
-
-        $categoria_treino = CategoriaTreinos::where('nome_categoria_treino', 'LIKE', '%'.$request->search_categoria_treino.'%')->latest()->paginate(6);
-
-        return view('app.treinos.categorias.index', compact('categoria_treino'));
-    }
-
     // NavBar Persquisar Alunos com JQuery
         public function pesquisarAlunos(Request $request) {
             $request->validate(['pesquisar' => 'required']);

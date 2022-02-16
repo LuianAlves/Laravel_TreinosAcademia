@@ -26,7 +26,7 @@ $pgt = App\Models\Pagamentos\Pagamento::where('data_pagamento_geral', '<', Carbo
     <div class="search-bar">
         <form class="search-form d-flex align-items-center" method="POST" action="#">
             <input type="text" onfocus="mostrar()" onblur="esconder()" id="pesquisar" name="pesquisar"
-                placeholder="Pesquisar">
+                placeholder="Procurar Aluno">
             <button type="button"><i class="bi bi-search"></i></button>
             <div id="pesquisarAlunos" class="pesquisar"></div>
         </form>

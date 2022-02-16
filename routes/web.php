@@ -78,9 +78,6 @@ Route::middleware('auth')->group(function () {
     Route::any('aluno/search', [GeralController::class, 'searchAluno'])->name('alunos.search');
     Route::any('aluno/search/cadastro', [GeralController::class, 'searchCadastroAluno'])->name('alunos.search.cadastro');
 
-    // Search Categoria de Treinos
-    Route::any('/treinos/categoria/search', [GeralController::class, 'searchCategoriaTreino'])->name('categoria.treinos.search');
-
     // Pesquisar Alunos com JQuery
     Route::post('pesquisar/alunos', [GeralController::class, 'pesquisarAlunos'])->name('pesquisar-alunos');
 
@@ -109,6 +106,10 @@ Route::middleware('auth')->group(function () {
         Route::get('adicionar/edit/{id}/{exercicio_id}', [AdicionarExercicioController::class, 'edit'])->name('adicionar.edit');
         Route::post('adicionar/update/{id}/{exercicio_id}', [AdicionarExercicioController::class, 'update'])->name('adicionar.update');
         Route::get('adicionar/destroy/{id}/{exercicio_id}', [AdicionarExercicioController::class, 'destroy'])->name('adicionar.destroy');
+        
+        // Dragg List - Alterar ordem dos itens
+        Route::post('adicionar/update/dragg', [AdicionarExercicioController::class, 'updateItems'])->name('update.items');
+        
     });
 
     // Avaliação Física
