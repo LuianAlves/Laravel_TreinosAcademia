@@ -116,6 +116,9 @@
                         <!-- Conteudos Selecionados do Tab -->
                         <div class="col-6" style="max-height: 500px; overflow-y: auto;">
                             <div class="card-body">
+                                @error('exercicio_id')
+                                    <span class="text-danger text-sm">{{$message}}</span>   
+                                @enderror
                                 <div class="row">
                                     <div class="col-6">
                                         <h5 class="card-title text-muted">Selecionados</h5>

@@ -90,7 +90,12 @@ class AdicionarExercicioController extends Controller
             ]);
         }
 
-        return redirect()->route('adicionar.index', $treino_id);
+        $noti = [
+            'message' => 'Exercicio adicionado ao treino!',
+            'alert-type' => 'success'
+        ];
+
+        return redirect()->route('adicionar.index', $treino_id)->with($noti);
     }
 
     /**
@@ -124,7 +129,12 @@ class AdicionarExercicioController extends Controller
             'updated_at' => Carbon::now()
         ]);
 
-        return redirect()->route('adicionar.index', $treino_id);
+        $noti = [
+            'message' => 'Exercicio alterado com sucesso!',
+            'alert-type' => 'warning'
+        ];
+
+        return redirect()->route('adicionar.index', $treino_id)->with($noti);
     }
 
     public function updateItems(Request $request) {
@@ -188,6 +198,11 @@ class AdicionarExercicioController extends Controller
 
         AdicionarExercicio::where('id', $id)->where('exercicio_id', $exercicio_id)->delete();
 
-        return redirect()->route('adicionar.index', $treino_id);
+        $noti = [
+            'message' => 'Exercicio removido com sucesso!',
+            'alert-type' => 'error'
+        ];
+
+        return redirect()->route('adicionar.index', $treino_id)->with($noti);
     }
 }

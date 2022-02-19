@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 
 use App\Models\Aluno;
 use App\Models\TreinoAluno\MontarTreino;
+use App\Models\TreinoAluno\AdicionarExercicio;
 
 use App\Models\Contratos\DadosProfessorContrato;
 
@@ -122,6 +123,7 @@ class MontarTreinoController extends Controller
         $aluno_id = $request->aluno_id;
 
         MontarTreino::findOrFail($treino_id)->delete();
+        AdicionarExercicio::where('treino_id', $treino_id)->delete();
 
         return redirect()->route('montado.index', $aluno_id);
     }
